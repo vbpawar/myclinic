@@ -8,12 +8,12 @@ if(isset($_SESSION['branchId'])){
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Package Master | Praxello solutions</title>
+        <title>Package Master | <?php echo $_SESSION['company'];?></title>
         <meta name="description" content="">
         <meta name="keywords" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="icon" href="favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="<?php echo $_SESSION['favicon'];?>" type="image/x-icon" />
 
         <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800" rel="stylesheet">
 
@@ -45,9 +45,9 @@ if(isset($_SESSION['branchId'])){
                             <div class="row align-items-end">
                                 <div class="col-lg-8">
                                     <div class="page-header-title">
-                                        <i class="ik ik-package bg-blue"></i>
+                                        <i class="ik ik-package" style="background-color: #333e52;"></i>
                                         <div class="d-inline">
-                                            <h5><u>Package Master</u></h5>
+                                            <h4>PACKAGE MASTER</h4>
                                             <span>create an package</span>
                                         </div>
                                     </div>
@@ -70,7 +70,7 @@ if(isset($_SESSION['branchId'])){
                     
                         <div class="row" id="package">
                             <div class="col-md-12">
-                            <button type="button" class="btn  btn-success" style="float: right;" onclick="addPackage()">Add New</button>
+                            <button type="button" class="btn  btn-danger" style="float: right;" onclick="addPackage()">Add New</button>
                                 <div class="card">
                                     <div class="card-header">
                                         <h3>Packages</h3>
@@ -104,8 +104,8 @@ if(isset($_SESSION['branchId'])){
                 <div id="loader"></div>
                 <footer class="footer">
                     <div class="w-100 clearfix">
-                        <span class="text-center text-sm-left d-md-inline-block">Copyright © 2018 ThemeKit v2.0. All Rights Reserved.</span>
-                        <span class="float-none float-sm-right mt-1 mt-sm-0 text-center">Crafted with <i class="fa fa-heart text-danger"></i> by <a href="http://lavalite.org/" class="text-dark" target="_blank">Lavalite</a></span>
+                        <span class="text-center text-sm-left d-md-inline-block">Copyright © 2021 Soulsoft. All Rights Reserved.</span>
+                        <span class="float-none float-sm-right mt-1 mt-sm-0 text-center">Crafted with <i class="fa fa-heart text-danger"></i> by <a href="#" class="text-dark" target="_blank"><?PHP echo $_SESSION['company'];?></a></span>
                     </div>
                 </footer>
             </div>

@@ -13,7 +13,7 @@ if(isset($_SESSION['branchId'])){
         <meta name="keywords" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="icon" href="temp-icon.png" type="image/x-icon" />
+        <link rel="icon" href="<?php echo $_SESSION['favicon'];?>" type="image/x-icon" />
 
         <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800" rel="stylesheet">
 
@@ -112,7 +112,7 @@ if(isset($_SESSION['branchId'])){
                             <!-- <div style="overflow-x:auto;"> -->
                             <div class="dt-responsive tbl">
                                 <table id="pTable" class="table">
-                                    <thead>
+                                    <thead class="thead-dark" >
                                         <tr>
                                             <th class="nosort">Profile</th>
                                             <th>Name</th>

@@ -7,11 +7,11 @@ if(isset($_SESSION['branchId'])){
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Praxello solutions </title>
+        <title><?php echo $_SESSION['company'];?> </title>
         <meta name="description" content="">
         <meta name="keywords" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" href="favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="<?php echo $_SESSION['favicon'];?>" type="image/x-icon" />
         <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800" rel="stylesheet">
         <link rel="stylesheet" href="plugins/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
@@ -46,15 +46,15 @@ if(isset($_SESSION['branchId'])){
                 <div id="TestNew"></div>
                 <div class="main-content template-demo " id="testDiagnosisData">
                 
-                <button class="btn btn-success" type="button" style="float: right;margin-bottom: 10px;" data-toggle="modal" data-target="#testModal">Add New Diagnosis Test</button>
+                <button class="btn btn-danger" type="button" style="float: right;margin-bottom: 10px;" data-toggle="modal" data-target="#testModal">Add New Diagnosis Test</button>
                     <div class="container-fluid">
                     <div class="page-header">
                             <div class="row align-items-end">
                                 <div class="col-lg-8">
                                     <div class="page-header-title">
-                                        <i class="ik ik-package bg-blue"></i>
+                                        <i class="ik ik-package" style="background-color: #333e52;"></i>
                                         <div class="d-inline">
-                                            <h5><u>Procedure Master</u></h5>
+                                            <h4>PROCEDURE MASTER</h4>
                                         </div>
                                     </div>
                                 </div>

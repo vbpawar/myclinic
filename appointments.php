@@ -61,9 +61,9 @@ if (isset($_SESSION['userId'])) {
                             <div class="row align-items-end">
                                 <div class="col-lg-8">
                                     <div class="page-header-title">
-                                        <i class="ik ik-package bg-blue"></i>
+                                        <i class="ik ik-package" style="background-color: #333e52;"></i>
                                         <div class="d-inline">
-                                            <h5><u>Appointments</u></h5>
+                                            <h4>APPOINMENTS</h4>
                                         </div>
                                     </div>
                                 </div>

@@ -10,6 +10,7 @@ if(isset($_GET['page']) && isset($_GET['franchiseid']) && isset($_GET['userId'])
     $_SESSION['franchiseid'] = $franchiseid;
     $_SESSION['company'] = 'Soulsoft';
     $_SESSION['hospital'] = 'Myclinic';
+    $_SESSION['favicon'] = 'temp-icon.png';
     $page = $page;
 header('Location:'.$page);
 }else{
