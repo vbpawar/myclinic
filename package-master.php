@@ -78,7 +78,7 @@ if(isset($_SESSION['branchId'])){
                                     <div class="card-block table-responsive">
                                     <div class="dt-responsive tbl" >
                                 <table id="pTable" class="table table-bordered">
-                                    <thead>
+                                    <thead class="thead-dark">
                                         <tr>
                                             <th>#</th>
                                             <th>Package</th>

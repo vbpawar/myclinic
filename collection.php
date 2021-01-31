@@ -7,12 +7,12 @@ if(isset($_SESSION['branchId'])){
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Praxello solutions</title>
+        <title><?php echo $_SESSION['company'];?></title>
         <meta name="description" content="">
         <meta name="keywords" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="icon" href="favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="<?php echo $_SESSION['favicon'];?>" type="image/x-icon" />
         <link href="dist/css/font.css" rel="stylesheet">
         <link rel="stylesheet" href="plugins/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
@@ -144,7 +144,7 @@ if(isset($_SESSION['branchId'])){
                                     <div class="card-body table-responsive">
                                         <div class="dt-responsive">
                                             <table id="collectionT" class="table table-bordered">
-                                                <thead>
+                                                <thead class="thead-dark">
                                                     <tr>
                                                         <th>Reciept Id</th>
                                                         <th>Bill date</th>
@@ -235,8 +235,8 @@ if(isset($_SESSION['branchId'])){
                         <div id="loader"></div>
                         <footer class="footer">
                             <div class="w-100 clearfix">
-                                <span class="text-center text-sm-left d-md-inline-block">Copyright © 2020 Praxello Solutions All Rights Reserved.</span>
-                                <span class="float-none float-sm-right mt-1 mt-sm-0 text-center">Crafted with <i class="fa fa-heart text-danger"></i> by <a href="https://praxello.com/" class="text-dark" target="_blank">Praxello</a></span>
+                                <span class="text-center text-sm-left d-md-inline-block">Copyright © 2020 <?php echo $_SESSION['company'];?> All Rights Reserved.</span>
+                                <span class="float-none float-sm-right mt-1 mt-sm-0 text-center">Crafted with <i class="fa fa-heart text-danger"></i> by <a href="#" class="text-dark" target="_blank"><?php echo $_SESSION['company'];?></a></span>
                             </div>
                         </footer>
 

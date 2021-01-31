@@ -80,7 +80,7 @@ if(isset($_SESSION['branchId'])){
                             <!-- <div style="overflow-x:auto;"> -->
                             <div class="dt-responsive tbl" >
                                 <table id="diaTestTable" class="table">
-                                    <thead>
+                                    <thead class="thead-dark">
                                         <tr>
                                            
                                             <th>Test Name</th>
@@ -105,8 +105,8 @@ if(isset($_SESSION['branchId'])){
                 <div id="loader"></div>
                 <footer class="footer">
                     <div class="w-100 clearfix">
-                        <span class="text-center text-sm-left d-md-inline-block">Copyright © 2020 Praxello Solutions All Rights Reserved.</span>
-                        <span class="float-none float-sm-right mt-1 mt-sm-0 text-center">Crafted with <i class="fa fa-heart text-danger"></i> by <a href="https://praxello.com/" class="text-dark" target="_blank">Praxello</a></span>
+                        <span class="text-center text-sm-left d-md-inline-block">Copyright © 2020 <?php echo $_SESSION['company'];?> All Rights Reserved.</span>
+                        <span class="float-none float-sm-right mt-1 mt-sm-0 text-center">Crafted with <i class="fa fa-heart text-danger"></i> by <a href="#" class="text-dark" target="_blank"><?php echo $_SESSION['company'];?></a></span>
                     </div>
                 </footer>
 

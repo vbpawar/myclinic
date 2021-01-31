@@ -8,12 +8,12 @@ if(isset($_SESSION['branchId'])){
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Praxello solutions </title>
+        <title><?php echo $_SESSION['company'];?> </title>
         <meta name="description" content="">
         <meta name="keywords" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="icon" href="favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="<?php echo $_SESSION['favicon'];?>" type="image/x-icon" />
 
         <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800" rel="stylesheet">
 
@@ -52,9 +52,33 @@ if(isset($_SESSION['branchId'])){
                 <div id="medicineNew"></div>
                 <div class="main-content template-demo" id="addMedicines">
                 
-                <button class="btn btn-success" type="button" style="float: right;margin-bottom: 10px;" data-toggle="modal" data-target="#medicinesModal">Add New Medicines</button>
+                <button class="btn btn-danger" type="button" style="float: right;margin-bottom: 10px;" data-toggle="modal" data-target="#medicinesModal">Add New Medicines</button>
                     <div class="container-fluid">
-                   
+                   <div class="page-header">
+                            <div class="row align-items-end">
+                                <div class="col-lg-8">
+                                    <div class="page-header-title">
+                                        <i class="ik ik-package" style="background-color: #333e52;"></i>
+                                        <div class="d-inline">
+                                            <h4>MEDICINES MASTER</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <nav class="breadcrumb-container" aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item">
+                                                <a href="index.php"><i class="ik ik-home"></i></a>
+                                            </li>
+                                            <li class="breadcrumb-item">
+                                                <a href="#">Medicines Master</a>
+                                            </li>
+                                           
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
                         <div class="card">
                         
                           
@@ -62,7 +86,7 @@ if(isset($_SESSION['branchId'])){
                             <!-- <div style="overflow-x:auto;"> -->
                             <div class="dt-responsive tbl" >
                                 <table id="medicinesTable" class="table">
-                                    <thead>
+                                    <thead class="thead-dark">
                                         <tr>
                                            
                                             <!-- <th>Type</th> -->
@@ -94,8 +118,8 @@ if(isset($_SESSION['branchId'])){
                 <div id="loader"></div>
                 <footer class="footer">
                     <div class="w-100 clearfix">
-                        <span class="text-center text-sm-left d-md-inline-block">Copyright © 2020 Praxello Solutions All Rights Reserved.</span>
-                        <span class="float-none float-sm-right mt-1 mt-sm-0 text-center">Crafted with <i class="fa fa-heart text-danger"></i> by <a href="https://praxello.com/" class="text-dark" target="_blank">Praxello</a></span>
+                        <span class="text-center text-sm-left d-md-inline-block">Copyright © 2020 <?php echo $_SESSION['company'];?> All Rights Reserved.</span>
+                        <span class="float-none float-sm-right mt-1 mt-sm-0 text-center">Crafted with <i class="fa fa-heart text-danger"></i> by <a href="#" class="text-dark" target="_blank"><?php echo $_SESSION['company'];?></a></span>
                     </div>
                 </footer>
 
