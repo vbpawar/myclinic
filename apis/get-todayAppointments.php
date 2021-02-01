@@ -12,7 +12,7 @@ $sql = "SELECT pdas.appointmentId,pdas.appointmentDate,pdas.scheduledBy,pdas.pat
 rm.doctorName,pm.firstVisitDate,pdas.doctorId,rm.address,DATE(pdas.appointmentDate) appointment,pm.mobile1
 FROM patient_doctor_appointment_scheduling pdas INNER JOIN patient_master pm ON pm.patientId = pdas.patientId 
 INNER JOIN user_master um ON um.userId = pdas.doctorId LEFT JOIN referring_master rm ON pm.referredby = rm.refferId
-WHERE pdas.doctorId = $doctorId AND DATE(pdas.appointmentDate) >= '$date' ORDER BY pdas.appointmentDate DESC";
+WHERE pdas.doctorId = $doctorId AND DATE(pdas.appointmentDate) = '$date' ORDER BY pdas.appointmentDate DESC";
 $jobQuery = mysqli_query($conn, $sql);
 if ($jobQuery != null) {
     $academicAffected = mysqli_num_rows($jobQuery);
