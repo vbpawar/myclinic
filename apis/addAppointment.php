@@ -16,11 +16,11 @@ if (isset($_POST['patientId']) && isset($_POST['appointmentDate']) && isset($_PO
     
     $rowsAffected = mysqli_affected_rows($conn);
     if ($rowsAffected == 1) {
-        if(sendSMS($patientId,$appointmentDate)){
-            $sms = 1;
-        }else{
-           $sms = 0;
-        }
+        // if(sendSMS($patientId,$appointmentDate)){
+        //     $sms = 1;
+        // }else{
+        //    $sms = 0;
+        // }
         $appointmentId = $conn->insert_id;
         $message = $susername.' has booked the appointment of a customer at date '.$appointmentDate;
         $value = auditlog('patient_doctor_appointment_scheduling','create',$suserid,$patientId,$message);
