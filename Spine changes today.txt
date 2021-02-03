@@ -1,0 +1,5 @@
+Spine changes today
+1:download reports in franchise
+2:package master,discount master,discount class
+3:licencer login
+4:licencer reports
