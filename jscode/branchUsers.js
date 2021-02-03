@@ -1,1 +1,0 @@
-loadUsers(data.branchId);
