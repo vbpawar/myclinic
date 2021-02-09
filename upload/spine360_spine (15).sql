@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jan 27, 2021 at 02:46 PM
--- Server version: 10.4.8-MariaDB
--- PHP Version: 7.3.11
+-- Host: localhost
+-- Generation Time: Feb 09, 2021 at 05:41 PM
+-- Server version: 10.1.45-MariaDB
+-- PHP Version: 7.2.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `spine_demo`
+-- Database: `spine360_spine`
 --
 
 DELIMITER $$
@@ -72,7 +71,7 @@ CREATE TABLE `access_control` (
   `accessid` int(10) UNSIGNED NOT NULL,
   `roleid` int(11) NOT NULL,
   `activityid` int(10) UNSIGNED NOT NULL,
-  `created` datetime NOT NULL DEFAULT current_timestamp()
+  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -172,7 +171,7 @@ CREATE TABLE `activities` (
   `activity` varchar(100) NOT NULL,
   `url` varchar(100) NOT NULL,
   `icon` varchar(25) NOT NULL,
-  `created` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -213,7 +212,7 @@ INSERT INTO `activities` (`activityid`, `activity`, `url`, `icon`, `created`) VA
 CREATE TABLE `advice_master` (
   `adviceId` int(11) NOT NULL,
   `advice` varchar(500) NOT NULL,
-  `isActive` int(11) DEFAULT 1
+  `isActive` int(11) DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -304,7 +303,7 @@ CREATE TABLE `audit_log` (
   `rowid` int(11) NOT NULL COMMENT 'corresponding table primary key',
   `message` varchar(255) NOT NULL,
   `ipaddress` varchar(20) DEFAULT NULL,
-  `created` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -2735,36 +2734,195 @@ INSERT INTO `audit_log` (`logid`, `tablename`, `actiontype`, `userid`, `rowid`, 
 (2413, 'patient_doctor_appointment_scheduling', 'create', 27, 517, 'Prajakta Tamhankar has booked the appointment of a customer at date 2021-01-23 16:30:00', '219.91.250.88', '2021-01-23 16:30:20'),
 (2414, 'opd_patient_payment_master', 'create', 27, 693, 'Prajakta Tamhankar has generate the OPD payment of a customer ', '219.91.248.163', '2021-01-23 17:44:54'),
 (2415, 'opd_patient_payment_master', 'create', 27, 693, 'Prajakta Tamhankar has recorded the payment 800', '219.91.248.163', '2021-01-23 17:45:26'),
-(2416, 'patient_doctor_appointment_scheduling', 'create', 1, 552, 'Dr. Pradyna Pansare has booked the appointment of a customer at date 2021-01-23 22:00:00', '::1', '2021-01-23 20:33:48'),
-(2417, 'opd_patient_payment_master', 'create', 1, 694, 'Dr. Pradyna Pansare has generate the OPD payment of a customer ', '::1', '2021-01-23 20:34:34'),
-(2418, 'opd_patient_payment_master', 'create', 1, 694, 'Dr. Pradyna Pansare has recorded the payment 360', '::1', '2021-01-23 20:34:59'),
-(2419, 'patient_doctor_appointment_scheduling', 'create', 1, 552, 'Dr. Pradyna Pansare has booked the appointment of a customer at date 2021-01-27 22:00:00', '::1', '2021-01-26 20:01:27'),
-(2420, 'patient_doctor_appointment_scheduling', 'create', 1, 549, 'Dr. Pradyna Pansare has booked the appointment of a customer at date 2021-01-26 20:02:00', '::1', '2021-01-26 20:02:29'),
-(2421, 'franchise_master', 'create', 31, 7, 'Dr. Rashmi Mathur has added new franchise Vikas Medical', '::1', '2021-01-27 12:47:05'),
-(2422, 'hospital_branch_master', 'create', 31, 13, 'Dr. Rashmi Mathur has added new branch Rahuri City', '::1', '2021-01-27 12:47:38'),
-(2423, 'user_master', 'create', 31, 45, 'Dr. Rashmi Mathur has added new user vikas', '::1', '2021-01-27 12:49:29');
+(2416, 'patient_doctor_appointment_scheduling', 'create', 27, 535, 'Prajakta Tamhankar has booked the appointment of a customer at date 2021-01-25 11:00:00', '219.91.248.188', '2021-01-25 12:52:36'),
+(2417, 'patient_doctor_appointment_scheduling', 'create', 27, 549, 'Prajakta Tamhankar has booked the appointment of a customer at date 2021-01-25 12:00:00', '219.91.248.188', '2021-01-25 12:53:05'),
+(2418, 'opd_patient_payment_master', 'create', 27, 694, 'Prajakta Tamhankar has generate the OPD payment of a customer ', '219.91.248.188', '2021-01-25 12:57:51'),
+(2419, 'opd_patient_payment_master', 'create', 27, 694, 'Prajakta Tamhankar has recorded the payment 9000', '219.91.248.188', '2021-01-25 12:58:30'),
+(2420, 'patient_doctor_appointment_scheduling', 'create', 27, 554, 'Prajakta Tamhankar has booked the appointment of a customer at date 2021-01-25 14:00:00', '219.91.250.229', '2021-01-25 17:20:02'),
+(2421, 'patient_doctor_appointment_scheduling', 'create', 27, 556, 'Prajakta Tamhankar has booked the appointment of a customer at date 2021-01-25 17:20:00', '219.91.250.229', '2021-01-25 17:20:15'),
+(2422, 'opd_patient_payment_master', 'create', 36, 695, 'Mary Roshmy T. A. has generate the OPD payment of a customer ', '122.164.87.231', '2021-01-25 17:28:31'),
+(2423, 'opd_patient_payment_master', 'create', 36, 695, 'Mary Roshmy T. A. has recorded the payment 23004', '122.164.87.231', '2021-01-25 17:29:05'),
+(2424, 'patient_doctor_appointment_scheduling', 'create', 27, 557, 'Prajakta Tamhankar has booked the appointment of a customer at date 2021-01-25 18:04:00', '219.91.250.229', '2021-01-25 18:04:59'),
+(2425, 'opd_patient_payment_master', 'create', 36, 560, 'Mary Roshmy T. A. has recorded the payment 7000', '122.164.87.231', '2021-01-25 18:38:52'),
+(2426, 'patient_doctor_appointment_scheduling', 'create', 27, 535, 'Prajakta Tamhankar has booked the appointment of a customer at date 2021-01-27 11:00:00', '219.91.249.169', '2021-01-27 11:58:07'),
+(2427, 'patient_doctor_appointment_scheduling', 'create', 27, 549, 'Prajakta Tamhankar has booked the appointment of a customer at date 2021-01-27 12:00:00', '219.91.249.169', '2021-01-27 11:58:35'),
+(2428, 'opd_patient_payment_master', 'create', 40, 696, 'Archana Vikas Lokhande has generate the OPD payment of a customer ', '183.87.152.14', '2021-01-27 12:08:10'),
+(2429, 'opd_patient_payment_master', 'delete', 40, 676, 'Archana Vikas Lokhande has removed the payment details ', '183.87.152.14', '2021-01-27 12:08:24'),
+(2430, 'opd_patient_payment_master', 'create', 40, 696, 'Archana Vikas Lokhande has recorded the payment 2500.00', '183.87.152.14', '2021-01-27 12:08:42'),
+(2431, 'opd_patient_payment_master', 'create', 27, 697, 'Prajakta Tamhankar has generate the OPD payment of a customer ', '219.91.249.36', '2021-01-27 12:15:09'),
+(2432, 'opd_patient_payment_master', 'create', 27, 697, 'Prajakta Tamhankar has recorded the payment 2010', '219.91.249.36', '2021-01-27 12:15:24'),
+(2433, 'patient_doctor_appointment_scheduling', 'create', 27, 558, 'Prajakta Tamhankar has booked the appointment of a customer at date 2021-01-27 12:48:00', '219.91.249.36', '2021-01-27 12:49:04'),
+(2434, 'opd_patient_payment_master', 'create', 27, 698, 'Prajakta Tamhankar has generate the OPD payment of a customer ', '219.91.249.36', '2021-01-27 12:49:55'),
+(2435, 'opd_patient_payment_master', 'create', 27, 698, 'Prajakta Tamhankar has recorded the payment 3000', '219.91.249.36', '2021-01-27 12:50:29'),
+(2436, 'patient_doctor_appointment_scheduling', 'create', 34, 530, 'Dr. Abhirami J has booked the appointment of a customer at date 2021-01-27 14:00:00', '122.164.87.231', '2021-01-27 14:14:13'),
+(2437, 'patient_doctor_appointment_scheduling', 'create', 34, 555, 'Dr. Abhirami J has booked the appointment of a customer at date 2021-01-27 14:00:00', '122.164.87.231', '2021-01-27 14:14:42'),
+(2438, 'patient_doctor_appointment_scheduling', 'create', 34, 548, 'Dr. Abhirami J has booked the appointment of a customer at date 2021-01-27 14:00:00', '122.164.87.231', '2021-01-27 14:14:53'),
+(2439, 'patient_doctor_appointment_scheduling', 'create', 34, 546, 'Dr. Abhirami J has booked the appointment of a customer at date 2021-01-27 14:00:00', '122.164.87.231', '2021-01-27 14:15:05'),
+(2440, 'patient_doctor_appointment_scheduling', 'create', 34, 553, 'Dr. Abhirami J has booked the appointment of a customer at date 2021-01-27 14:00:00', '122.164.87.231', '2021-01-27 14:15:16'),
+(2441, 'patient_doctor_appointment_scheduling', 'create', 34, 551, 'Dr. Abhirami J has booked the appointment of a customer at date 2021-01-27 14:00:00', '122.164.87.231', '2021-01-27 14:15:28'),
+(2442, 'patient_doctor_appointment_scheduling', 'create', 34, 538, 'Dr. Abhirami J has booked the appointment of a customer at date 2021-01-27 15:00:00', '122.164.87.231', '2021-01-27 14:42:31'),
+(2443, 'patient_doctor_appointment_scheduling', 'create', 34, 531, 'Dr. Abhirami J has booked the appointment of a customer at date 2021-01-27 15:00:00', '122.164.87.231', '2021-01-27 15:03:39'),
+(2444, 'patient_doctor_appointment_scheduling', 'create', 34, 505, 'Dr. Abhirami J has booked the appointment of a customer at date 2021-01-27 15:00:00', '122.164.87.231', '2021-01-27 15:12:18'),
+(2445, 'patient_doctor_appointment_scheduling', 'create', 34, 537, 'Dr. Abhirami J has booked the appointment of a customer at date 2021-01-27 15:00:00', '122.164.87.231', '2021-01-27 15:13:00'),
+(2446, 'patient_doctor_appointment_scheduling', 'create', 34, 526, 'Dr. Abhirami J has booked the appointment of a customer at date 2021-01-27 15:00:00', '122.164.87.231', '2021-01-27 15:18:33'),
+(2447, 'patient_doctor_appointment_scheduling', 'create', 34, 522, 'Dr. Abhirami J has booked the appointment of a customer at date 2021-01-27 15:00:00', '122.164.87.231', '2021-01-27 15:23:24'),
+(2448, 'patient_doctor_appointment_scheduling', 'create', 34, 525, 'Dr. Abhirami J has booked the appointment of a customer at date 2021-01-27 15:00:00', '122.164.87.231', '2021-01-27 15:26:23'),
+(2449, 'patient_doctor_appointment_scheduling', 'create', 34, 502, 'Dr. Abhirami J has booked the appointment of a customer at date 2021-01-27 15:00:00', '122.164.87.231', '2021-01-27 15:27:19'),
+(2450, 'patient_doctor_appointment_scheduling', 'create', 34, 547, 'Dr. Abhirami J has booked the appointment of a customer at date 2021-01-27 16:00:00', '122.164.87.231', '2021-01-27 15:46:47'),
+(2451, 'patient_doctor_appointment_scheduling', 'create', 34, 532, 'Dr. Abhirami J has booked the appointment of a customer at date 2021-01-27 16:00:00', '122.164.87.231', '2021-01-27 15:47:02'),
+(2452, 'patient_doctor_appointment_scheduling', 'create', 34, 553, 'Dr. Abhirami J has booked the appointment of a customer at date 2021-01-27 16:00:00', '122.164.87.231', '2021-01-27 15:47:21'),
+(2453, 'patient_doctor_appointment_scheduling', 'create', 34, 539, 'Dr. Abhirami J has booked the appointment of a customer at date 2021-01-27 16:00:00', '122.164.87.231', '2021-01-27 16:00:41'),
+(2454, 'opd_patient_payment_master', 'create', 34, 630, 'Dr. Abhirami J has recorded the payment 5000', '122.164.87.231', '2021-01-27 17:29:21'),
+(2455, 'patient_doctor_appointment_scheduling', 'create', 27, 535, 'Prajakta Tamhankar has booked the appointment of a customer at date 2021-01-28 11:06:00', '219.91.249.212', '2021-01-28 11:06:31'),
+(2456, 'opd_patient_payment_master', 'create', 36, 591, 'Mary Roshmy T. A. has recorded the payment 6000', '171.49.185.97', '2021-01-28 11:10:17'),
+(2457, 'patient_doctor_appointment_scheduling', 'create', 27, 549, 'Prajakta Tamhankar has booked the appointment of a customer at date 2021-01-28 12:06:00', '219.91.249.212', '2021-01-28 12:06:56'),
+(2458, 'opd_patient_payment_master', 'create', 27, 699, 'Prajakta Tamhankar has generate the OPD payment of a customer ', '219.91.250.112', '2021-01-28 12:36:02'),
+(2459, 'opd_patient_payment_master', 'create', 27, 699, 'Prajakta Tamhankar has recorded the payment 14000', '219.91.250.112', '2021-01-28 12:37:21'),
+(2460, 'opd_patient_payment_master', 'create', 40, 700, 'Archana Vikas Lokhande has generate the OPD payment of a customer ', '183.87.152.14', '2021-01-28 16:12:26'),
+(2461, 'opd_patient_payment_master', 'create', 40, 700, 'Archana Vikas Lokhande has recorded the payment 400', '183.87.152.14', '2021-01-28 16:12:44'),
+(2462, 'opd_patient_payment_master', 'create', 40, 701, 'Archana Vikas Lokhande has generate the OPD payment of a customer ', '183.87.152.14', '2021-01-28 16:23:42'),
+(2463, 'opd_patient_payment_master', 'create', 40, 701, 'Archana Vikas Lokhande has recorded the payment 700.2', '183.87.152.14', '2021-01-28 16:24:34'),
+(2464, 'patient_doctor_appointment_scheduling', 'create', 27, 558, 'Prajakta Tamhankar has booked the appointment of a customer at date 2021-01-29 12:43:00', '219.91.250.20', '2021-01-29 12:43:09'),
+(2465, 'patient_master', 'update', 36, 565, 'Mary Roshmy T. A. has update the customer details of SANTHAMMA  APPUKKUTTAN ', '122.183.167.152', '2021-01-29 16:11:03'),
+(2466, 'patient_master', 'update', 36, 564, 'Mary Roshmy T. A. has update the customer details of JOSEPH  SHAJI', '122.183.167.152', '2021-01-29 16:11:47'),
+(2467, 'patient_doctor_appointment_scheduling', 'create', 27, 558, 'Prajakta Tamhankar has booked the appointment of a customer at date 2021-01-30 12:30:00', '219.91.248.139', '2021-01-30 13:09:21'),
+(2468, 'opd_patient_payment_master', 'create', 27, 702, 'Prajakta Tamhankar has generate the OPD payment of a customer ', '219.91.248.139', '2021-01-30 13:09:51'),
+(2469, 'opd_patient_payment_master', 'delete', 27, 702, 'Prajakta Tamhankar has removed the payment details ', '219.91.248.139', '2021-01-30 13:12:53'),
+(2470, 'opd_patient_payment_master', 'create', 27, 703, 'Prajakta Tamhankar has generate the OPD payment of a customer ', '219.91.248.139', '2021-01-30 13:13:52'),
+(2471, 'opd_patient_payment_master', 'create', 27, 703, 'Prajakta Tamhankar has recorded the payment 6000', '219.91.248.139', '2021-01-30 13:14:22'),
+(2472, 'opd_patient_payment_master', 'create', 27, 704, 'Prajakta Tamhankar has generate the OPD payment of a customer ', '219.91.248.139', '2021-01-30 14:33:17'),
+(2473, 'opd_patient_payment_master', 'create', 27, 704, 'Prajakta Tamhankar has recorded the payment 500', '219.91.248.139', '2021-01-30 14:33:31'),
+(2474, 'patient_doctor_appointment_scheduling', 'create', 27, 567, 'Prajakta Tamhankar has booked the appointment of a customer at date 2021-01-30 14:35:00', '219.91.248.139', '2021-01-30 14:35:28'),
+(2475, 'patient_doctor_appointment_scheduling', 'create', 27, 566, 'Prajakta Tamhankar has booked the appointment of a customer at date 2021-01-30 13:00:00', '219.91.248.139', '2021-01-30 14:35:46'),
+(2476, 'patient_doctor_appointment_scheduling', 'create', 27, 535, 'Prajakta Tamhankar has booked the appointment of a customer at date 2021-02-01 11:00:00', '219.91.249.122', '2021-02-01 13:34:08'),
+(2477, 'patient_doctor_appointment_scheduling', 'create', 27, 558, 'Prajakta Tamhankar has booked the appointment of a customer at date 2021-02-01 12:30:00', '219.91.249.122', '2021-02-01 13:34:48'),
+(2478, 'opd_patient_payment_master', 'create', 27, 705, 'Prajakta Tamhankar has generate the OPD payment of a customer ', '219.91.249.122', '2021-02-01 13:39:03'),
+(2479, 'opd_patient_payment_master', 'create', 27, 705, 'Prajakta Tamhankar has recorded the payment 3000', '219.91.249.122', '2021-02-01 13:46:28'),
+(2480, 'opd_patient_payment_master', 'create', 36, 630, 'Mary Roshmy T. A. has recorded the payment 10000', '122.164.41.115', '2021-02-01 14:14:06'),
+(2481, 'patient_doctor_appointment_scheduling', 'create', 34, 562, 'Dr. Abhirami J has booked the appointment of a customer at date 2021-02-01 15:00:00', '122.164.41.115', '2021-02-01 15:09:59'),
+(2482, 'patient_doctor_appointment_scheduling', 'create', 34, 555, 'Dr. Abhirami J has booked the appointment of a customer at date 2021-02-01 15:00:00', '122.164.41.115', '2021-02-01 15:11:38'),
+(2483, 'patient_doctor_appointment_scheduling', 'create', 34, 563, 'Dr. Abhirami J has booked the appointment of a customer at date 2021-02-01 15:00:00', '122.164.41.115', '2021-02-01 15:13:07'),
+(2484, 'patient_doctor_appointment_scheduling', 'create', 27, 567, 'Prajakta Tamhankar has booked the appointment of a customer at date 2021-02-01 15:18:00', '219.91.249.122', '2021-02-01 15:18:37'),
+(2485, 'opd_patient_payment_master', 'create', 27, 706, 'Prajakta Tamhankar has generate the OPD payment of a customer ', '219.91.249.122', '2021-02-01 15:42:56'),
+(2486, 'opd_patient_payment_master', 'create', 27, 706, 'Prajakta Tamhankar has recorded the payment 500', '219.91.249.122', '2021-02-01 15:43:24'),
+(2487, 'opd_patient_payment_master', 'create', 36, 707, 'Mary Roshmy T. A. has generate the OPD payment of a customer ', '122.164.41.115', '2021-02-01 16:15:03'),
+(2488, 'opd_patient_payment_master', 'create', 36, 707, 'Mary Roshmy T. A. has recorded the payment 5000', '122.164.41.115', '2021-02-01 16:16:48'),
+(2489, 'patient_doctor_appointment_scheduling', 'create', 27, 460, 'Prajakta Tamhankar has booked the appointment of a customer at date 2021-02-01 18:45:00', '219.91.248.169', '2021-02-01 18:45:51'),
+(2490, 'opd_patient_payment_master', 'create', 27, 708, 'Prajakta Tamhankar has generate the OPD payment of a customer ', '219.91.248.169', '2021-02-01 18:46:16'),
+(2491, 'opd_patient_payment_master', 'create', 27, 708, 'Prajakta Tamhankar has recorded the payment 500', '219.91.248.169', '2021-02-01 18:46:26'),
+(2492, 'patient_doctor_appointment_scheduling', 'create', 27, 374, 'Prajakta Tamhankar has booked the appointment of a customer at date 2021-02-01 18:49:00', '219.91.248.169', '2021-02-01 18:49:44'),
+(2493, 'patient_doctor_appointment_scheduling', 'create', 27, 535, 'Prajakta Tamhankar has booked the appointment of a customer at date 2021-02-02 10:51:00', '219.91.249.205', '2021-02-02 10:51:21'),
+(2494, 'opd_patient_payment_master', 'create', 40, 709, 'Archana Vikas Lokhande has generate the OPD payment of a customer ', '183.87.152.14', '2021-02-02 11:15:30'),
+(2495, 'opd_patient_payment_master', 'create', 40, 709, 'Archana Vikas Lokhande has recorded the payment 2000', '183.87.152.14', '2021-02-02 11:15:47'),
+(2496, 'opd_patient_payment_master', 'create', 36, 548, 'Mary Roshmy T. A. has recorded the payment 10000', '122.164.41.115', '2021-02-02 11:40:14'),
+(2497, 'opd_patient_payment_master', 'create', 27, 710, 'Prajakta Tamhankar has generate the OPD payment of a customer ', '219.91.250.2', '2021-02-02 12:19:52'),
+(2498, 'opd_patient_payment_master', 'create', 27, 710, 'Prajakta Tamhankar has recorded the payment 3000', '219.91.250.2', '2021-02-02 12:20:45'),
+(2499, 'patient_doctor_appointment_scheduling', 'create', 27, 558, 'Prajakta Tamhankar has booked the appointment of a customer at date 2021-02-02 12:36:00', '219.91.250.2', '2021-02-02 12:36:34'),
+(2500, 'opd_patient_payment_master', 'create', 36, 711, 'Mary Roshmy T. A. has generate the OPD payment of a customer ', '122.164.41.115', '2021-02-02 13:29:44'),
+(2501, 'opd_patient_payment_master', 'create', 36, 711, 'Mary Roshmy T. A. has recorded the payment 3000', '122.164.41.115', '2021-02-02 13:30:00'),
+(2502, 'patient_doctor_appointment_scheduling', 'create', 27, 569, 'Prajakta Tamhankar has booked the appointment of a customer at date 2021-02-02 13:30:00', '219.91.249.31', '2021-02-02 13:30:26'),
+(2503, 'opd_patient_payment_master', 'create', 36, 711, 'Mary Roshmy T. A. has recorded the payment 20000', '122.164.41.115', '2021-02-02 13:30:28'),
+(2504, 'opd_patient_payment_master', 'create', 27, 712, 'Prajakta Tamhankar has generate the OPD payment of a customer ', '219.91.249.31', '2021-02-02 14:01:56'),
+(2505, 'opd_patient_payment_master', 'create', 27, 712, 'Prajakta Tamhankar has recorded the payment 400', '219.91.249.31', '2021-02-02 14:02:09'),
+(2506, 'patient_doctor_appointment_scheduling', 'create', 27, 567, 'Prajakta Tamhankar has booked the appointment of a customer at date 2021-02-02 15:32:00', '219.91.249.31', '2021-02-02 15:32:42'),
+(2507, 'opd_patient_payment_master', 'create', 27, 713, 'Prajakta Tamhankar has generate the OPD payment of a customer ', '219.91.249.31', '2021-02-02 15:33:57'),
+(2508, 'opd_patient_payment_master', 'create', 27, 713, 'Prajakta Tamhankar has recorded the payment 500', '219.91.249.31', '2021-02-02 15:35:35'),
+(2509, 'opd_patient_payment_master', 'create', 36, 707, 'Mary Roshmy T. A. has recorded the payment 19500', '122.164.41.115', '2021-02-02 16:46:56'),
+(2510, 'patient_doctor_appointment_scheduling', 'create', 27, 418, 'Prajakta Tamhankar has booked the appointment of a customer at date 2021-02-02 16:57:00', '219.91.249.31', '2021-02-02 16:57:22'),
+(2511, 'opd_patient_payment_master', 'create', 27, 714, 'Prajakta Tamhankar has generate the OPD payment of a customer ', '219.91.249.31', '2021-02-02 17:12:40'),
+(2512, 'opd_patient_payment_master', 'create', 27, 714, 'Prajakta Tamhankar has recorded the payment 400', '219.91.249.31', '2021-02-02 17:12:52'),
+(2513, 'patient_doctor_appointment_scheduling', 'create', 27, 535, 'Prajakta Tamhankar has booked the appointment of a customer at date 2021-02-03 11:05:00', '219.91.248.88', '2021-02-03 11:05:45'),
+(2514, 'opd_patient_payment_master', 'create', 27, 715, 'Prajakta Tamhankar has generate the OPD payment of a customer ', '219.91.248.43', '2021-02-03 12:33:52'),
+(2515, 'opd_patient_payment_master', 'create', 27, 715, 'Prajakta Tamhankar has recorded the payment 3000', '219.91.248.43', '2021-02-03 12:34:45'),
+(2516, 'patient_doctor_appointment_scheduling', 'create', 27, 558, 'Prajakta Tamhankar has booked the appointment of a customer at date 2021-02-03 12:42:00', '219.91.248.43', '2021-02-03 12:42:11'),
+(2517, 'opd_patient_payment_master', 'create', 40, 716, 'Archana Vikas Lokhande has generate the OPD payment of a customer ', '183.87.152.14', '2021-02-03 13:29:19'),
+(2518, 'opd_patient_payment_master', 'delete', 40, 716, 'Archana Vikas Lokhande has removed the payment details ', '183.87.152.14', '2021-02-03 13:29:30'),
+(2519, 'opd_patient_payment_master', 'create', 40, 709, 'Archana Vikas Lokhande has recorded the payment 4000', '183.87.152.14', '2021-02-03 13:30:35'),
+(2520, 'patient_doctor_appointment_scheduling', 'create', 27, 567, 'Prajakta Tamhankar has booked the appointment of a customer at date 2021-02-03 15:00:00', '219.91.248.82', '2021-02-03 15:31:23'),
+(2521, 'opd_patient_payment_master', 'create', 27, 717, 'Prajakta Tamhankar has generate the OPD payment of a customer ', '219.91.248.82', '2021-02-03 15:31:48'),
+(2522, 'opd_patient_payment_master', 'create', 27, 717, 'Prajakta Tamhankar has recorded the payment 500', '219.91.248.82', '2021-02-03 15:31:58'),
+(2523, 'opd_patient_payment_master', 'create', 40, 718, 'Archana Vikas Lokhande has generate the OPD payment of a customer ', '183.87.152.14', '2021-02-03 16:00:26'),
+(2524, 'opd_patient_payment_master', 'create', 40, 718, 'Archana Vikas Lokhande has recorded the payment 400', '183.87.152.14', '2021-02-03 16:02:17'),
+(2525, 'opd_patient_payment_master', 'create', 40, 719, 'Archana Vikas Lokhande has generate the OPD payment of a customer ', '183.87.152.14', '2021-02-03 18:31:28'),
+(2526, 'opd_patient_payment_master', 'create', 40, 719, 'Archana Vikas Lokhande has recorded the payment 400', '183.87.152.14', '2021-02-03 18:31:53'),
+(2527, 'patient_doctor_appointment_scheduling', 'create', 27, 573, 'Prajakta Tamhankar has booked the appointment of a customer at date 2021-02-03 18:44:00', '219.91.248.62', '2021-02-03 18:44:58'),
+(2528, 'opd_patient_payment_master', 'create', 27, 720, 'Prajakta Tamhankar has generate the OPD payment of a customer ', '219.91.248.62', '2021-02-03 18:45:21'),
+(2529, 'opd_patient_payment_master', 'create', 27, 720, 'Prajakta Tamhankar has recorded the payment 400', '219.91.248.62', '2021-02-03 18:45:29'),
+(2530, 'opd_patient_payment_master', 'create', 27, 721, 'Prajakta Tamhankar has generate the OPD payment of a customer ', '219.91.248.62', '2021-02-03 19:06:26'),
+(2531, 'opd_patient_payment_master', 'create', 27, 721, 'Prajakta Tamhankar has recorded the payment 400', '219.91.248.62', '2021-02-03 19:06:35'),
+(2532, 'patient_doctor_appointment_scheduling', 'create', 27, 535, 'Prajakta Tamhankar has booked the appointment of a customer at date 2021-02-04 11:00:00', '219.91.250.63', '2021-02-04 11:40:58'),
+(2533, 'patient_doctor_appointment_scheduling', 'create', 27, 549, 'Prajakta Tamhankar has booked the appointment of a customer at date 2021-02-04 12:11:00', '219.91.250.63', '2021-02-04 12:11:45'),
+(2534, 'opd_patient_payment_master', 'create', 27, 722, 'Prajakta Tamhankar has generate the OPD payment of a customer ', '219.91.250.63', '2021-02-04 12:24:03'),
+(2535, 'opd_patient_payment_master', 'create', 27, 722, 'Prajakta Tamhankar has recorded the payment 3000', '219.91.250.63', '2021-02-04 12:25:06'),
+(2536, 'patient_doctor_appointment_scheduling', 'create', 27, 575, 'Prajakta Tamhankar has booked the appointment of a customer at date 2021-02-04 16:03:00', '219.91.250.63', '2021-02-04 16:03:48'),
+(2537, 'opd_patient_payment_master', 'create', 27, 723, 'Prajakta Tamhankar has generate the OPD payment of a customer ', '219.91.250.63', '2021-02-04 16:11:29'),
+(2538, 'opd_patient_payment_master', 'create', 27, 723, 'Prajakta Tamhankar has recorded the payment 500', '219.91.250.63', '2021-02-04 16:11:38'),
+(2539, 'opd_patient_payment_master', 'create', 36, 724, 'Mary Roshmy T. A. has generate the OPD payment of a customer ', '122.174.162.211', '2021-02-05 13:53:51'),
+(2540, 'opd_patient_payment_master', 'create', 36, 724, 'Mary Roshmy T. A. has recorded the payment 25500', '122.174.162.211', '2021-02-05 13:54:22'),
+(2541, 'patient_doctor_appointment_scheduling', 'create', 27, 549, 'Prajakta Tamhankar has booked the appointment of a customer at date 2021-02-05 12:00:00', '219.91.248.222', '2021-02-05 14:04:42'),
+(2542, 'patient_doctor_appointment_scheduling', 'create', 27, 535, 'Prajakta Tamhankar has booked the appointment of a customer at date 2021-02-05 13:30:00', '219.91.248.222', '2021-02-05 14:05:09'),
+(2543, 'opd_patient_payment_master', 'create', 40, 725, 'Archana Vikas Lokhande has generate the OPD payment of a customer ', '183.87.152.14', '2021-02-05 14:20:51'),
+(2544, 'opd_patient_payment_master', 'create', 40, 725, 'Archana Vikas Lokhande has recorded the payment 400', '183.87.152.14', '2021-02-05 14:21:40'),
+(2545, 'opd_patient_payment_master', 'create', 27, 726, 'Prajakta Tamhankar has generate the OPD payment of a customer ', '219.91.248.222', '2021-02-05 14:48:51'),
+(2546, 'opd_patient_payment_master', 'create', 27, 726, 'Prajakta Tamhankar has recorded the payment 3000', '219.91.248.222', '2021-02-05 14:49:35'),
+(2547, 'patient_doctor_appointment_scheduling', 'create', 34, 474, 'Dr. Abhirami J has booked the appointment of a customer at date 2021-02-05 16:00:00', '122.183.169.128', '2021-02-05 16:24:59'),
+(2548, 'opd_patient_payment_master', 'create', 40, 727, 'Archana Vikas Lokhande has generate the OPD payment of a customer ', '183.87.152.14', '2021-02-06 11:31:00'),
+(2549, 'opd_patient_payment_master', 'create', 40, 727, 'Archana Vikas Lokhande has recorded the payment 400', '183.87.152.14', '2021-02-06 11:33:39'),
+(2550, 'opd_patient_payment_master', 'create', 40, 728, 'Archana Vikas Lokhande has generate the OPD payment of a customer ', '183.87.152.14', '2021-02-06 17:55:34'),
+(2551, 'opd_patient_payment_master', 'delete', 40, 728, 'Archana Vikas Lokhande has removed the payment details ', '183.87.152.14', '2021-02-06 17:55:54'),
+(2552, 'opd_patient_payment_master', 'create', 40, 641, 'Archana Vikas Lokhande has recorded the payment 15000', '183.87.152.14', '2021-02-06 18:03:17'),
+(2553, 'opd_patient_payment_master', 'create', 40, 729, 'Archana Vikas Lokhande has generate the OPD payment of a customer ', '183.87.152.14', '2021-02-06 18:04:46'),
+(2554, 'opd_patient_payment_master', 'delete', 40, 729, 'Archana Vikas Lokhande has removed the payment details ', '183.87.152.14', '2021-02-06 18:05:04'),
+(2555, 'opd_patient_payment_master', 'create', 40, 730, 'Archana Vikas Lokhande has generate the OPD payment of a customer ', '183.87.152.14', '2021-02-06 18:16:40'),
+(2556, 'opd_patient_payment_master', 'create', 40, 730, 'Archana Vikas Lokhande has recorded the payment 2500.4', '183.87.152.14', '2021-02-06 18:17:16'),
+(2557, 'opd_patient_payment_master', 'create', 40, 731, 'Archana Vikas Lokhande has generate the OPD payment of a customer ', '183.87.152.14', '2021-02-08 10:57:55'),
+(2558, 'opd_patient_payment_master', 'create', 40, 731, 'Archana Vikas Lokhande has recorded the payment 900', '183.87.152.14', '2021-02-08 10:58:11'),
+(2559, 'patient_doctor_appointment_scheduling', 'create', 27, 584, 'Prajakta Tamhankar has booked the appointment of a customer at date 2021-02-08 12:05:00', '219.91.250.240', '2021-02-08 12:05:54'),
+(2560, 'opd_patient_payment_master', 'create', 27, 732, 'Prajakta Tamhankar has generate the OPD payment of a customer ', '219.91.250.240', '2021-02-08 12:14:29'),
+(2561, 'opd_patient_payment_master', 'create', 27, 732, 'Prajakta Tamhankar has recorded the payment 400', '219.91.250.240', '2021-02-08 12:15:10'),
+(2562, 'patient_doctor_appointment_scheduling', 'create', 27, 535, 'Prajakta Tamhankar has booked the appointment of a customer at date 2021-02-08 14:30:00', '219.91.248.142', '2021-02-08 15:12:55'),
+(2563, 'opd_patient_payment_master', 'create', 27, 733, 'Prajakta Tamhankar has generate the OPD payment of a customer ', '219.91.248.142', '2021-02-08 15:56:54'),
+(2564, 'opd_patient_payment_master', 'create', 27, 733, 'Prajakta Tamhankar has recorded the payment 3000', '219.91.248.142', '2021-02-08 15:57:38'),
+(2565, 'patient_doctor_appointment_scheduling', 'create', 27, 586, 'Prajakta Tamhankar has booked the appointment of a customer at date 2021-02-08 16:51:00', '219.91.248.142', '2021-02-08 16:51:21'),
+(2566, 'opd_patient_payment_master', 'create', 27, 734, 'Prajakta Tamhankar has generate the OPD payment of a customer ', '219.91.248.142', '2021-02-08 17:20:37'),
+(2567, 'opd_patient_payment_master', 'create', 27, 734, 'Prajakta Tamhankar has recorded the payment 400', '219.91.248.142', '2021-02-08 17:20:48'),
+(2568, 'opd_patient_payment_master', 'create', 36, 735, 'Mary Roshmy T. A. has generate the OPD payment of a customer ', '122.164.223.128', '2021-02-08 17:58:00'),
+(2569, 'opd_patient_payment_master', 'create', 36, 735, 'Mary Roshmy T. A. has recorded the payment 500', '122.164.223.128', '2021-02-08 17:59:03'),
+(2570, 'patient_doctor_appointment_scheduling', 'create', 27, 589, 'Prajakta Tamhankar has booked the appointment of a customer at date 2021-02-08 19:26:00', '219.91.248.142', '2021-02-08 19:26:21'),
+(2571, 'patient_doctor_appointment_scheduling', 'create', 34, 580, 'Dr. Abhirami J has booked the appointment of a customer at date 2021-02-09 13:00:00', '122.164.223.128', '2021-02-09 13:18:36'),
+(2572, 'patient_doctor_appointment_scheduling', 'create', 27, 535, 'Prajakta Tamhankar has booked the appointment of a customer at date 2021-02-09 13:37:00', '219.91.250.240', '2021-02-09 13:38:38'),
+(2573, 'patient_doctor_appointment_scheduling', 'create', 34, 564, 'Dr. Abhirami J has booked the appointment of a customer at date 2021-02-09 15:00:00', '122.164.223.128', '2021-02-09 15:13:45'),
+(2574, 'patient_doctor_appointment_scheduling', 'create', 34, 539, 'Dr. Abhirami J has booked the appointment of a customer at date 2021-02-09 15:00:00', '122.164.223.128', '2021-02-09 15:14:18'),
+(2575, 'patient_doctor_appointment_scheduling', 'create', 34, 565, 'Dr. Abhirami J has booked the appointment of a customer at date 2021-02-09 15:00:00', '122.164.223.128', '2021-02-09 15:14:39'),
+(2576, 'patient_doctor_appointment_scheduling', 'create', 34, 562, 'Dr. Abhirami J has booked the appointment of a customer at date 2021-02-09 15:00:00', '122.164.223.128', '2021-02-09 15:15:00'),
+(2577, 'opd_patient_payment_master', 'create', 27, 736, 'Prajakta Tamhankar has generate the OPD payment of a customer ', '219.91.250.253', '2021-02-09 16:42:47'),
+(2578, 'opd_patient_payment_master', 'create', 27, 736, 'Prajakta Tamhankar has recorded the payment 3000', '219.91.250.253', '2021-02-09 16:43:27'),
+(2579, 'patient_doctor_appointment_scheduling', 'create', 34, 585, 'Dr. Abhirami J has booked the appointment of a customer at date 2021-02-06 18:00:00', '122.164.223.128', '2021-02-09 16:56:05'),
+(2580, 'opd_patient_payment_master', 'create', 27, 737, 'Prajakta Tamhankar has generate the OPD payment of a customer ', '219.91.250.253', '2021-02-09 17:17:20'),
+(2581, 'opd_patient_payment_master', 'create', 27, 737, 'Prajakta Tamhankar has recorded the payment 3520', '219.91.250.253', '2021-02-09 17:17:50'),
+(2582, 'patient_doctor_appointment_scheduling', 'create', 27, 589, 'Prajakta Tamhankar has booked the appointment of a customer at date 2021-02-09 16:00:00', '219.91.250.253', '2021-02-09 18:08:57');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bill_details`
+-- Table structure for table `Bill_Details`
 --
 
-CREATE TABLE `bill_details` (
+CREATE TABLE `Bill_Details` (
   `billId` int(11) NOT NULL,
   `paymentId` int(11) DEFAULT NULL,
   `testId` int(11) DEFAULT NULL,
-  `feesType` text DEFAULT NULL,
+  `feesType` text,
   `fees` float DEFAULT NULL,
   `Quantity` int(10) NOT NULL,
-  `createdAt` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `bill_details`
+-- Dumping data for table `Bill_Details`
 --
 
-INSERT INTO `bill_details` (`billId`, `paymentId`, `testId`, `feesType`, `fees`, `Quantity`, `createdAt`) VALUES
+INSERT INTO `Bill_Details` (`billId`, `paymentId`, `testId`, `feesType`, `fees`, `Quantity`, `createdAt`) VALUES
 (1, 1, 2, '3D Decompression + Mobilisation + 3D Correction', 3000, 0, '2020-03-12 07:40:39'),
 (2, 2, 1, 'First Time Consultation-Physiotherapy Evaluation', 1000, 0, '2020-03-12 09:07:55'),
 (4, 4, 1, 'First Time Consultation-Physiotherapy Evaluation', 400, 0, '2020-03-13 14:31:41'),
@@ -3341,7 +3499,7 @@ INSERT INTO `bill_details` (`billId`, `paymentId`, `testId`, `feesType`, `fees`,
 (583, 472, 3, 'Electro Therapies (IFT/TENS/EMS/US) ', 500, 1, '2020-12-03 08:07:56'),
 (584, 473, 1, 'First Time Consultation-Physiotherapy Evaluation ', 400, 1, '2020-12-03 08:27:41'),
 (585, 474, 2, '3D Decompression + Mobilisation + 3D Correction', 20, 20, '2020-12-04 01:56:48');
-INSERT INTO `bill_details` (`billId`, `paymentId`, `testId`, `feesType`, `fees`, `Quantity`, `createdAt`) VALUES
+INSERT INTO `Bill_Details` (`billId`, `paymentId`, `testId`, `feesType`, `fees`, `Quantity`, `createdAt`) VALUES
 (586, 474, 3, 'Electro Therapies (IFT/TENS/EMS/US)', 20, 20, '2020-12-04 01:56:48'),
 (587, 474, 7, 'Manual/Exercise Therapy/Manipulations', 20, 20, '2020-12-04 01:56:48'),
 (588, 475, 8, 'Regular Exercise Therapy ', 400, 1, '2020-12-04 03:03:27'),
@@ -3601,7 +3759,67 @@ INSERT INTO `bill_details` (`billId`, `paymentId`, `testId`, `feesType`, `fees`,
 (856, 691, 3, 'Electro Therapies (IFT/TENS/EMS/US) ', 1000, 2, '2021-01-22 18:49:57'),
 (857, 692, 14, '3D compression+mobilization+3D correction ', 21000, 7, '2021-01-23 13:52:32'),
 (858, 693, 3, 'Electro Therapies (IFT/TENS/EMS/US) ', 1000, 2, '2021-01-23 17:44:54'),
-(859, 694, 1, 'First Time Consultation-Physiotherapy Evaluation ', 400, 1, '2021-01-23 20:34:34');
+(859, 694, 14, '3D compression+mobilization+3D correction ', 9000, 3, '2021-01-25 12:57:51'),
+(860, 695, 2, '3D Decompression + Mobilisation + 3D Correction', 15, 15, '2021-01-25 17:28:31'),
+(861, 695, 3, 'Electro Therapies (IFT/TENS/EMS/US)', 15, 15, '2021-01-25 17:28:31'),
+(862, 695, 7, 'Manual/Exercise Therapy/Manipulations', 10, 10, '2021-01-25 17:28:31'),
+(863, 695, 1, 'First Time Consultation-Physiotherapy Evaluation', 1, 1, '2021-01-25 17:28:31'),
+(864, 696, 12, 'Shockwave Therapy (ESWT) ', 2000, 1, '2021-01-27 12:08:10'),
+(865, 696, 8, 'Regular Exercise Therapy ', 1600, 4, '2021-01-27 12:08:10'),
+(866, 697, 14, '3D compression+mobilization+3D correction ', 3000, 1, '2021-01-27 12:15:09'),
+(867, 698, 14, '3D compression+mobilization+3D correction ', 3000, 1, '2021-01-27 12:49:55'),
+(868, 699, 2, '3D Decompression + Mobilisation + 3D Correction ', 17500, 7, '2021-01-28 12:36:02'),
+(869, 700, 1, 'First Time Consultation-Physiotherapy Evaluation ', 400, 1, '2021-01-28 16:12:26'),
+(870, 701, 8, 'Regular Exercise Therapy ', 400, 1, '2021-01-28 16:23:42'),
+(871, 701, 3, 'Electro Therapies (IFT/TENS/EMS/US) ', 500, 1, '2021-01-28 16:23:42'),
+(872, 702, 14, '3D compression+mobilization+3D correction ', 3000, 1, '2021-01-30 13:09:51'),
+(873, 703, 14, '3D compression+mobilization+3D correction ', 6000, 2, '2021-01-30 13:13:52'),
+(874, 704, 3, 'Electro Therapies (IFT/TENS/EMS/US) ', 500, 1, '2021-01-30 14:33:17'),
+(875, 705, 14, '3D compression+mobilization+3D correction ', 3000, 1, '2021-02-01 13:39:03'),
+(876, 706, 3, 'Electro Therapies (IFT/TENS/EMS/US) ', 500, 1, '2021-02-01 15:42:56'),
+(877, 707, 2, '3D Decompression + Mobilisation + 3D Correction', 15, 15, '2021-02-01 16:15:03'),
+(878, 707, 3, 'Electro Therapies (IFT/TENS/EMS/US)', 15, 15, '2021-02-01 16:15:03'),
+(879, 707, 7, 'Manual/Exercise Therapy/Manipulations', 10, 10, '2021-02-01 16:15:03'),
+(880, 707, 1, 'First Time Consultation-Physiotherapy Evaluation', 1, 1, '2021-02-01 16:15:03'),
+(881, 708, 3, 'Electro Therapies (IFT/TENS/EMS/US) ', 500, 1, '2021-02-01 18:46:16'),
+(882, 709, 2, '3D Decompression + Mobilisation + 3D Correction', 15, 15, '2021-02-02 11:15:30'),
+(883, 709, 8, 'Regular Exercise Therapy', 15, 15, '2021-02-02 11:15:30'),
+(884, 709, 3, 'Electro Therapies (IFT/TENS/EMS/US)', 15, 15, '2021-02-02 11:15:30'),
+(885, 710, 14, '3D compression+mobilization+3D correction ', 3000, 1, '2021-02-02 12:19:52'),
+(886, 711, 2, '3D Decompression + Mobilisation + 3D Correction', 15, 15, '2021-02-02 13:29:44'),
+(887, 711, 3, 'Electro Therapies (IFT/TENS/EMS/US)', 15, 15, '2021-02-02 13:29:44'),
+(888, 711, 7, 'Manual/Exercise Therapy/Manipulations', 10, 10, '2021-02-02 13:29:44'),
+(889, 711, 1, 'First Time Consultation-Physiotherapy Evaluation', 1, 1, '2021-02-02 13:29:44'),
+(890, 712, 1, 'First Time Consultation-Physiotherapy Evaluation ', 400, 1, '2021-02-02 14:01:56'),
+(891, 713, 3, 'Electro Therapies (IFT/TENS/EMS/US) ', 500, 1, '2021-02-02 15:33:57'),
+(892, 714, 8, 'Regular Exercise Therapy ', 400, 1, '2021-02-02 17:12:40'),
+(893, 715, 14, '3D compression+mobilization+3D correction ', 3000, 1, '2021-02-03 12:33:52'),
+(894, 716, 1, 'First Time Consultation-Physiotherapy Evaluation ', 400, 1, '2021-02-03 13:29:19'),
+(895, 717, 3, 'Electro Therapies (IFT/TENS/EMS/US) ', 500, 1, '2021-02-03 15:31:48'),
+(896, 718, 1, 'First Time Consultation-Physiotherapy Evaluation ', 400, 1, '2021-02-03 16:00:26'),
+(897, 719, 1, 'First Time Consultation-Physiotherapy Evaluation ', 400, 1, '2021-02-03 18:31:28'),
+(898, 720, 8, 'Regular Exercise Therapy ', 400, 1, '2021-02-03 18:45:21'),
+(899, 721, 8, 'Regular Exercise Therapy ', 400, 1, '2021-02-03 19:06:26'),
+(900, 722, 14, '3D compression+mobilization+3D correction ', 3000, 1, '2021-02-04 12:24:03'),
+(901, 723, 3, 'Electro Therapies (IFT/TENS/EMS/US) ', 500, 1, '2021-02-04 16:11:29'),
+(902, 724, 2, '3D Decompression + Mobilisation + 3D Correction', 15, 15, '2021-02-05 13:53:51'),
+(903, 724, 3, 'Electro Therapies (IFT/TENS/EMS/US)', 15, 15, '2021-02-05 13:53:51'),
+(904, 724, 7, 'Manual/Exercise Therapy/Manipulations', 10, 10, '2021-02-05 13:53:51'),
+(905, 724, 1, 'First Time Consultation-Physiotherapy Evaluation', 1, 1, '2021-02-05 13:53:51'),
+(906, 725, 1, 'First Time Consultation-Physiotherapy Evaluation ', 400, 1, '2021-02-05 14:20:51'),
+(907, 726, 14, '3D compression+mobilization+3D correction ', 3000, 1, '2021-02-05 14:48:51'),
+(908, 727, 7, 'Manual/Exercise Therapy/Manipulations ', 400, 1, '2021-02-06 11:31:00'),
+(909, 728, 1, 'First Time Consultation-Physiotherapy Evaluation ', 400, 1, '2021-02-06 17:55:34'),
+(910, 729, 7, 'Manual/Exercise Therapy/Manipulations ', 400, 1, '2021-02-06 18:04:46'),
+(911, 730, 7, 'Manual/Exercise Therapy/Manipulations ', 2800, 7, '2021-02-06 18:16:40'),
+(912, 731, 3, 'Electro Therapies (IFT/TENS/EMS/US) ', 500, 1, '2021-02-08 10:57:55'),
+(913, 731, 1, 'First Time Consultation-Physiotherapy Evaluation ', 400, 1, '2021-02-08 10:57:55'),
+(914, 732, 8, 'Regular Exercise Therapy ', 400, 1, '2021-02-08 12:14:29'),
+(915, 733, 14, '3D compression+mobilization+3D correction ', 3000, 1, '2021-02-08 15:56:54'),
+(916, 734, 1, 'First Time Consultation-Physiotherapy Evaluation ', 400, 1, '2021-02-08 17:20:37'),
+(917, 735, 3, 'Electro Therapies (IFT/TENS/EMS/US) ', 5000, 10, '2021-02-08 17:58:00'),
+(918, 736, 14, '3D compression+mobilization+3D correction ', 3000, 1, '2021-02-09 16:42:47'),
+(919, 737, 8, 'Regular Exercise Therapy ', 4000, 10, '2021-02-09 17:17:20');
 
 -- --------------------------------------------------------
 
@@ -3612,7 +3830,7 @@ INSERT INTO `bill_details` (`billId`, `paymentId`, `testId`, `feesType`, `fees`,
 CREATE TABLE `call_center` (
   `callId` int(11) NOT NULL,
   `clientId` int(11) DEFAULT NULL,
-  `callDateTime` datetime NOT NULL DEFAULT current_timestamp(),
+  `callDateTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `branchId` int(11) NOT NULL,
   `doctorId` int(11) DEFAULT NULL,
   `disease` varchar(100) NOT NULL,
@@ -3620,10 +3838,10 @@ CREATE TABLE `call_center` (
   `remarks` text NOT NULL,
   `folowupNeeded` int(11) NOT NULL,
   `folowupNeededDateTime` datetime DEFAULT NULL,
-  `attendedBy` int(11) NOT NULL DEFAULT 0,
-  `createdAt` datetime NOT NULL DEFAULT current_timestamp(),
+  `attendedBy` int(11) NOT NULL DEFAULT '0',
+  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `feedback` text NOT NULL,
-  `callStatus` int(11) NOT NULL DEFAULT 1
+  `callStatus` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -3771,8 +3989,8 @@ CREATE TABLE `call_center_followups` (
   `callFollowupsId` int(11) NOT NULL,
   `callId` int(11) NOT NULL,
   `followUp` text NOT NULL,
-  `followUpDateTime` datetime NOT NULL DEFAULT current_timestamp(),
-  `attendedBy` int(11) NOT NULL DEFAULT 0
+  `followUpDateTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `attendedBy` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -3817,7 +4035,7 @@ CREATE TABLE `call_center_patients` (
   `reference` varchar(100) NOT NULL,
   `gender` varchar(20) NOT NULL,
   `dateOfBirth` date DEFAULT NULL,
-  `createdAt` datetime NOT NULL DEFAULT current_timestamp()
+  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -3961,27 +4179,27 @@ CREATE TABLE `cervical_spine_assessment` (
   `cerFunDisabilityScore` varchar(50) DEFAULT NULL,
   `cerVasScore` varchar(50) DEFAULT NULL,
   `cerPresentSymptoms` varchar(50) DEFAULT NULL,
-  `cerPresentSince` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `cerCommencedAsResult` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `cerSymptAtOnset` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `cerConstSympt` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `disturbedSleep` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `cerAggrFactor` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `cerRelFactor` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `carSymptoms` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `cerMedications` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `cerGenHealth` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `cerImaging` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `cerResurgery` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `cerNightPain` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `cerAccidents` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `cerWeightLoss` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `cerSitting` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `cerStanding` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `protrudedHead` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `cerMomentLoss` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `cerTestMovement` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `cerderagement` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL
+  `cerPresentSince` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `cerCommencedAsResult` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `cerSymptAtOnset` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `cerConstSympt` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `disturbedSleep` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `cerAggrFactor` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `cerRelFactor` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `carSymptoms` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `cerMedications` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `cerGenHealth` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `cerImaging` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `cerResurgery` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `cerNightPain` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `cerAccidents` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `cerWeightLoss` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `cerSitting` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `cerStanding` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `protrudedHead` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `cerMomentLoss` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `cerTestMovement` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `cerderagement` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -4032,7 +4250,8 @@ INSERT INTO `cervical_spine_assessment` (`cerSpineId`, `patientId`, `visitDate`,
 (47, 455, '2020-12-21', '', '6', 'pain in the back both arms and scapula', '{\"Improving\":0,\"Unchanging\":0,\"p1\":\"4 yrs\"}', 'NO AR', '{\"neck\":1,\"arm\":0,\"forearm\":0,\"headache\":0,\"p2\":\"\"}', '{\"neck\":1,\"arm\":1,\"forearm\":0,\"headache\":0,\"p3\":\"\"}', '{\"yes\":0,\"No\":0,\"p4\":\"\"}', '{\"bending\":0,\"sitting\":1,\"turning\":0,\"lying\":0,\"thedayprogresses\":0,\"Whentill\":0,\"ag1\":\"\"}', '{\"bending\":0,\"sitting\":0,\"standing\":0,\"lying\":0,\"the day progresses\":0,\"Whenstill\":0,\"rf1\":\"\"}', '{\"Dizziness\":0,\"tinnitus\":0,\"nausea\":0,\"swallowing\":0,\"+ve\":0,\"-ve\":1}', '{\"Nil\":1,\"NSAIDS\":0,\"Analg\":0,\"Steroids\":0,\"Anticoag\":0,\"p5\":\"\"}', '{\"Good\":0,\"Fair\":1,\"Poor\":0,\"p6\":\"\"}', '{\"Yes\":1,\"No\":0,\"p7\":\"multilevel dicsc bluge\"}', '{\"Yes\":0,\"No\":1,\"p8\":\"\"}', '{\"Yes\":0,\"No\":1,\"p9\":\"\"}', '{\"Yes\":0,\"No\":1,\"p10\":\"\"}', '{\"Yes\":0,\"No\":1,\"wOther\":\"\",\"wt\":\"\"}', '{\"Good\":0,\"Fair\":1,\"poor\":0}', '{\"Good\":0,\"Fair\":1,\"poor\":0}', '{\"Yes\":0,\"No\":0}', '{\"0\":{\"maj\":0,\"mod\":1,\"min\":0,\"nil\":0,\"pain\":0},\"1\":{\"maj\":0,\"mod\":1,\"min\":0,\"nil\":0,\"pain\":0},\"2\":{\"maj\":0,\"mod\":1,\"min\":0,\"nil\":0,\"pain\":0},\"3\":{\"maj\":0,\"mod\":1,\"min\":0,\"nil\":0,\"pain\":0},\"4\":{\"maj\":0,\"mod\":1,\"min\":0,\"nil\":0,\"pain\":0},\"5\":{\"maj\":0,\"mod\":1,\"min\":0,\"nil\":0,\"pain\":0}}', '{\"0\":{\"During-test\":\"\",\"after-test\":\"\",\"m-rom-u\":\"\",\"m-rom-d\":\"\",\"m-noefect\":\"\"}}', '{\"Derangement\":1,\"Dysfunction\":0,\"Posture\":0,\"d1\":\"c . derrangement\",\"d2\":\"\"}'),
 (48, 493, '2021-01-05', '', '6', 'pain in the neck , mid back and  low back', '{\"Improving\":0,\"Unchanging\":0,\"p1\":\"6 months\"}', 'prolong sitting', '{\"neck\":1,\"arm\":0,\"forearm\":0,\"headache\":0,\"p2\":\"\"}', '{\"neck\":1,\"arm\":0,\"forearm\":0,\"headache\":0,\"p3\":\"\"}', '{\"yes\":0,\"No\":0,\"p4\":\"\"}', '{\"bending\":0,\"sitting\":1,\"turning\":1,\"lying\":0,\"thedayprogresses\":0,\"Whentill\":0,\"ag1\":\"\"}', '{\"bending\":0,\"sitting\":0,\"standing\":0,\"lying\":0,\"the day progresses\":0,\"Whenstill\":0,\"rf1\":\"\"}', '{\"Dizziness\":0,\"tinnitus\":0,\"nausea\":0,\"swallowing\":0,\"+ve\":0,\"-ve\":1}', '{\"Nil\":1,\"NSAIDS\":0,\"Analg\":0,\"Steroids\":0,\"Anticoag\":0,\"p5\":\"\"}', '{\"Good\":0,\"Fair\":1,\"Poor\":0,\"p6\":\"\"}', '{\"Yes\":0,\"No\":1,\"p7\":\"\"}', '{\"Yes\":0,\"No\":1,\"p8\":\"\"}', '{\"Yes\":0,\"No\":1,\"p9\":\"\"}', '{\"Yes\":0,\"No\":1,\"p10\":\"\"}', '{\"Yes\":0,\"No\":1,\"wOther\":\"\",\"wt\":\"\"}', '{\"Good\":0,\"Fair\":1,\"poor\":0}', '{\"Good\":0,\"Fair\":0,\"poor\":0}', '{\"Yes\":0,\"No\":0}', '{\"0\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0},\"1\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0},\"2\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0},\"3\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0},\"4\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0},\"5\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0}}', '{\"0\":{\"During-test\":\"\",\"after-test\":\"\",\"m-rom-u\":\"\",\"m-rom-d\":\"\",\"m-noefect\":\"\"}}', '{\"Derangement\":1,\"Dysfunction\":0,\"Posture\":0,\"d1\":\"c5 c6, \",\"d2\":\"\"}'),
 (49, 476, '2021-01-05', '', '4', 'pain in the neck and low back', '{\"Improving\":0,\"Unchanging\":0,\"p1\":\"2 months\"}', 'NO AR', '{\"neck\":1,\"arm\":0,\"forearm\":0,\"headache\":0,\"p2\":\"\"}', '{\"neck\":1,\"arm\":0,\"forearm\":0,\"headache\":0,\"p3\":\"\"}', '{\"yes\":0,\"No\":0,\"p4\":\"\"}', '{\"bending\":0,\"sitting\":0,\"turning\":0,\"lying\":0,\"thedayprogresses\":0,\"Whentill\":0,\"ag1\":\"\"}', '{\"bending\":0,\"sitting\":0,\"standing\":0,\"lying\":0,\"the day progresses\":0,\"Whenstill\":0,\"rf1\":\"\"}', '{\"Dizziness\":0,\"tinnitus\":0,\"nausea\":0,\"swallowing\":0,\"+ve\":0,\"-ve\":1}', '{\"Nil\":1,\"NSAIDS\":0,\"Analg\":0,\"Steroids\":0,\"Anticoag\":0,\"p5\":\"\"}', '{\"Good\":0,\"Fair\":1,\"Poor\":0,\"p6\":\"\"}', '{\"Yes\":1,\"No\":0,\"p7\":\"\"}', '{\"Yes\":0,\"No\":1,\"p8\":\"\"}', '{\"Yes\":0,\"No\":1,\"p9\":\"\"}', '{\"Yes\":0,\"No\":1,\"p10\":\"\"}', '{\"Yes\":0,\"No\":1,\"wOther\":\"\",\"wt\":\"\"}', '{\"Good\":0,\"Fair\":1,\"poor\":0}', '{\"Good\":0,\"Fair\":0,\"poor\":0}', '{\"Yes\":0,\"No\":0}', '{\"0\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0},\"1\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0},\"2\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0},\"3\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0},\"4\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0},\"5\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0}}', '{\"0\":{\"During-test\":\"\",\"after-test\":\"\",\"m-rom-u\":\"\",\"m-rom-d\":\"\",\"m-noefect\":\"\"}}', '{\"Derangement\":1,\"Dysfunction\":0,\"Posture\":0,\"d1\":\"protrusion at l4l5\",\"d2\":\"\"}'),
-(50, 466, '2021-01-06', '', '4', 'PAIN IN THE NECK , BACK , KNEE AND HEEL', '{\"Improving\":0,\"Unchanging\":0,\"p1\":\"SINCE 2WKS NECK PAIN\"}', 'NO AR', '{\"neck\":0,\"arm\":0,\"forearm\":0,\"headache\":0,\"p2\":\"\"}', '{\"neck\":0,\"arm\":0,\"forearm\":1,\"headache\":0,\"p3\":\"\"}', '{\"yes\":0,\"No\":0,\"p4\":\"\"}', '{\"bending\":0,\"sitting\":1,\"turning\":1,\"lying\":0,\"thedayprogresses\":0,\"Whentill\":0,\"ag1\":\"\"}', '{\"bending\":0,\"sitting\":0,\"standing\":0,\"lying\":0,\"the day progresses\":0,\"Whenstill\":0,\"rf1\":\"\"}', '{\"Dizziness\":0,\"tinnitus\":0,\"nausea\":0,\"swallowing\":0,\"+ve\":0,\"-ve\":1}', '{\"Nil\":1,\"NSAIDS\":0,\"Analg\":0,\"Steroids\":0,\"Anticoag\":0,\"p5\":\"\"}', '{\"Good\":0,\"Fair\":1,\"Poor\":0,\"p6\":\"\"}', '{\"Yes\":0,\"No\":1,\"p7\":\"\"}', '{\"Yes\":0,\"No\":1,\"p8\":\"\"}', '{\"Yes\":0,\"No\":1,\"p9\":\"\"}', '{\"Yes\":0,\"No\":1,\"p10\":\"\"}', '{\"Yes\":0,\"No\":1,\"wOther\":\"\",\"wt\":\"\"}', '{\"Good\":0,\"Fair\":1,\"poor\":0}', '{\"Good\":0,\"Fair\":1,\"poor\":1}', '{\"Yes\":0,\"No\":0}', '{\"0\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0},\"1\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0},\"2\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0},\"3\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0},\"4\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0},\"5\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0}}', '{\"0\":{\"During-test\":\"\",\"after-test\":\"\",\"m-rom-u\":\"\",\"m-rom-d\":\"\",\"m-noefect\":\"\"}}', '{\"Derangement\":1,\"Dysfunction\":0,\"Posture\":0,\"d1\":\"C6C7\",\"d2\":\"\"}');
+(50, 466, '2021-01-06', '', '4', 'PAIN IN THE NECK , BACK , KNEE AND HEEL', '{\"Improving\":0,\"Unchanging\":0,\"p1\":\"SINCE 2WKS NECK PAIN\"}', 'NO AR', '{\"neck\":0,\"arm\":0,\"forearm\":0,\"headache\":0,\"p2\":\"\"}', '{\"neck\":0,\"arm\":0,\"forearm\":1,\"headache\":0,\"p3\":\"\"}', '{\"yes\":0,\"No\":0,\"p4\":\"\"}', '{\"bending\":0,\"sitting\":1,\"turning\":1,\"lying\":0,\"thedayprogresses\":0,\"Whentill\":0,\"ag1\":\"\"}', '{\"bending\":0,\"sitting\":0,\"standing\":0,\"lying\":0,\"the day progresses\":0,\"Whenstill\":0,\"rf1\":\"\"}', '{\"Dizziness\":0,\"tinnitus\":0,\"nausea\":0,\"swallowing\":0,\"+ve\":0,\"-ve\":1}', '{\"Nil\":1,\"NSAIDS\":0,\"Analg\":0,\"Steroids\":0,\"Anticoag\":0,\"p5\":\"\"}', '{\"Good\":0,\"Fair\":1,\"Poor\":0,\"p6\":\"\"}', '{\"Yes\":0,\"No\":1,\"p7\":\"\"}', '{\"Yes\":0,\"No\":1,\"p8\":\"\"}', '{\"Yes\":0,\"No\":1,\"p9\":\"\"}', '{\"Yes\":0,\"No\":1,\"p10\":\"\"}', '{\"Yes\":0,\"No\":1,\"wOther\":\"\",\"wt\":\"\"}', '{\"Good\":0,\"Fair\":1,\"poor\":0}', '{\"Good\":0,\"Fair\":1,\"poor\":1}', '{\"Yes\":0,\"No\":0}', '{\"0\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0},\"1\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0},\"2\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0},\"3\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0},\"4\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0},\"5\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0}}', '{\"0\":{\"During-test\":\"\",\"after-test\":\"\",\"m-rom-u\":\"\",\"m-rom-d\":\"\",\"m-noefect\":\"\"}}', '{\"Derangement\":1,\"Dysfunction\":0,\"Posture\":0,\"d1\":\"C6C7\",\"d2\":\"\"}'),
+(51, 548, '2021-01-27', '', '5', 'SHOULDER PAIN LEFT SIDE', '{\"Improving\":0,\"Unchanging\":0,\"p1\":\"6 MONTHS\"}', 'NO AR,', '{\"neck\":0,\"arm\":0,\"forearm\":0,\"headache\":0,\"p2\":\"SHOULDER\"}', '{\"neck\":0,\"arm\":0,\"forearm\":0,\"headache\":0,\"p3\":\"\"}', '{\"yes\":0,\"No\":0,\"p4\":\"\"}', '{\"bending\":0,\"sitting\":0,\"turning\":0,\"lying\":0,\"thedayprogresses\":0,\"Whentill\":0,\"ag1\":\"\"}', '{\"bending\":0,\"sitting\":0,\"standing\":0,\"lying\":0,\"the day progresses\":0,\"Whenstill\":0,\"rf1\":\"\"}', '{\"Dizziness\":0,\"tinnitus\":0,\"nausea\":0,\"swallowing\":0,\"+ve\":0,\"-ve\":0}', '{\"Nil\":0,\"NSAIDS\":0,\"Analg\":0,\"Steroids\":0,\"Anticoag\":0,\"p5\":\"\"}', '{\"Good\":0,\"Fair\":0,\"Poor\":0,\"p6\":\"\"}', '{\"Yes\":0,\"No\":0,\"p7\":\"\"}', '{\"Yes\":0,\"No\":0,\"p8\":\"\"}', '{\"Yes\":0,\"No\":0,\"p9\":\"\"}', '{\"Yes\":0,\"No\":0,\"p10\":\"\"}', '{\"Yes\":0,\"No\":0,\"wOther\":\"\",\"wt\":\"\"}', '{\"Good\":0,\"Fair\":0,\"poor\":0}', '{\"Good\":0,\"Fair\":0,\"poor\":0}', '{\"Yes\":0,\"No\":0}', '{\"0\":{\"maj\":0,\"mod\":0,\"min\":0,\"nil\":0,\"pain\":0},\"1\":{\"maj\":0,\"mod\":0,\"min\":0,\"nil\":0,\"pain\":0},\"2\":{\"maj\":0,\"mod\":0,\"min\":0,\"nil\":0,\"pain\":0},\"3\":{\"maj\":0,\"mod\":0,\"min\":0,\"nil\":0,\"pain\":0},\"4\":{\"maj\":0,\"mod\":0,\"min\":0,\"nil\":0,\"pain\":0},\"5\":{\"maj\":0,\"mod\":0,\"min\":0,\"nil\":0,\"pain\":0}}', '{\"0\":{\"During-test\":\"\",\"after-test\":\"\",\"m-rom-u\":\"\",\"m-rom-d\":\"\",\"m-noefect\":\"\"}}', '{\"Derangement\":0,\"Dysfunction\":0,\"Posture\":0,\"d1\":\"FROZEN SHOULDER LEFT\",\"d2\":\"\"}');
 
 -- --------------------------------------------------------
 
@@ -52392,21 +52611,21 @@ INSERT INTO `cities` (`id`, `name`, `state_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `classdiscountmapping`
+-- Table structure for table `classDiscountMapping`
 --
 
-CREATE TABLE `classdiscountmapping` (
+CREATE TABLE `classDiscountMapping` (
   `Id` int(11) NOT NULL,
   `classId` int(11) DEFAULT NULL,
   `discountId` int(11) DEFAULT NULL,
-  `createdAt` datetime NOT NULL DEFAULT current_timestamp()
+  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `classdiscountmapping`
+-- Dumping data for table `classDiscountMapping`
 --
 
-INSERT INTO `classdiscountmapping` (`Id`, `classId`, `discountId`, `createdAt`) VALUES
+INSERT INTO `classDiscountMapping` (`Id`, `classId`, `discountId`, `createdAt`) VALUES
 (1, 1, 3, '2020-07-25 04:33:32'),
 (2, 1, 2, '2020-09-08 07:59:36');
 
@@ -52419,7 +52638,7 @@ INSERT INTO `classdiscountmapping` (`Id`, `classId`, `discountId`, `createdAt`) 
 CREATE TABLE `complaint_master` (
   `complaintId` int(11) NOT NULL,
   `complaint` text NOT NULL,
-  `isActive` int(11) NOT NULL DEFAULT 1
+  `isActive` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -53429,7 +53648,7 @@ CREATE TABLE `diagnosis_master` (
   `diagnosisId` int(11) NOT NULL,
   `diagnosis` varchar(300) NOT NULL,
   `icdCode` varchar(50) NOT NULL,
-  `isActive` int(11) NOT NULL DEFAULT 1
+  `isActive` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -53932,8 +54151,8 @@ CREATE TABLE `diagnostic_tests_master` (
   `testName` varchar(100) NOT NULL,
   `testDetails` varchar(300) NOT NULL,
   `fees` float NOT NULL,
-  `type` int(11) NOT NULL DEFAULT 0,
-  `isActive` int(11) NOT NULL DEFAULT 1
+  `type` int(11) NOT NULL DEFAULT '0',
+  `isActive` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -53958,21 +54177,21 @@ INSERT INTO `diagnostic_tests_master` (`testId`, `testName`, `testDetails`, `fee
 -- --------------------------------------------------------
 
 --
--- Table structure for table `discountmapping`
+-- Table structure for table `DiscountMapping`
 --
 
-CREATE TABLE `discountmapping` (
+CREATE TABLE `DiscountMapping` (
   `Id` int(11) NOT NULL,
   `ClassType` varchar(255) DEFAULT NULL,
   `branchId` int(11) DEFAULT NULL,
-  `createdAt` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `discountmapping`
+-- Dumping data for table `DiscountMapping`
 --
 
-INSERT INTO `discountmapping` (`Id`, `ClassType`, `branchId`, `createdAt`) VALUES
+INSERT INTO `DiscountMapping` (`Id`, `ClassType`, `branchId`, `createdAt`) VALUES
 (1, 'Employee Discount', 1, '2020-07-25 04:32:27'),
 (2, 'FriendsandFamily', 1, '2020-07-25 04:33:49'),
 (3, 'KochiDiscounts', 9, '2020-07-25 04:58:47'),
@@ -53981,22 +54200,22 @@ INSERT INTO `discountmapping` (`Id`, `ClassType`, `branchId`, `createdAt`) VALUE
 -- --------------------------------------------------------
 
 --
--- Table structure for table `discountmaster`
+-- Table structure for table `DiscountMaster`
 --
 
-CREATE TABLE `discountmaster` (
+CREATE TABLE `DiscountMaster` (
   `discountId` int(11) NOT NULL,
   `discountType` varchar(50) DEFAULT NULL,
   `discount` float DEFAULT NULL,
-  `createdAt` datetime NOT NULL DEFAULT current_timestamp(),
+  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `isActive` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `discountmaster`
+-- Dumping data for table `DiscountMaster`
 --
 
-INSERT INTO `discountmaster` (`discountId`, `discountType`, `discount`, `createdAt`, `isActive`) VALUES
+INSERT INTO `DiscountMaster` (`discountId`, `discountType`, `discount`, `createdAt`, `isActive`) VALUES
 (1, 'Diwali Deal', 10, '2020-07-25 04:31:22', NULL),
 (2, 'Christmas Deal', 15, '2020-07-25 04:31:35', NULL),
 (3, 'Employees', 50, '2020-07-25 04:32:55', NULL),
@@ -54014,7 +54233,7 @@ CREATE TABLE `doctor_fees_master` (
   `doctorId` int(11) NOT NULL,
   `feesType` varchar(50) NOT NULL,
   `fee` float NOT NULL,
-  `isActive` int(11) NOT NULL DEFAULT 1
+  `isActive` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -54075,7 +54294,7 @@ INSERT INTO `document_category` (`category`) VALUES
 CREATE TABLE `dosage_master` (
   `dosageId` int(11) NOT NULL,
   `dosage` varchar(200) NOT NULL,
-  `isActive` int(11) NOT NULL DEFAULT 1
+  `isActive` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -54109,8 +54328,8 @@ CREATE TABLE `exercise_photo_master` (
   `id` int(11) NOT NULL,
   `title` varchar(100) NOT NULL,
   `details` varchar(400) NOT NULL,
-  `isActive` int(11) NOT NULL DEFAULT 1,
-  `createdAt` datetime NOT NULL DEFAULT current_timestamp()
+  `isActive` int(11) NOT NULL DEFAULT '1',
+  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -54178,7 +54397,7 @@ CREATE TABLE `franchise_master` (
   `emailid` varchar(100) NOT NULL,
   `pwd` varchar(50) NOT NULL,
   `contactnumber` varchar(12) NOT NULL,
-  `created` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -54191,8 +54410,7 @@ INSERT INTO `franchise_master` (`franchiseid`, `franchisename`, `contactperson`,
 (3, 'Spine360 Kochi', 'Haritha Krishanan', 'bhishikar@gmail.com', '12345', '7506735669', '2020-07-29 08:40:45'),
 (4, 'Spine360 Nigdi', 'Dr. Pramod Patil', 'drpramodpatil.360spinalwellness@gmail.com', '12345', '7774916458', '2020-07-29 08:44:39'),
 (5, 'Spine360 Pimple Saudagar', 'Dr. Nilesh Patil', 'drnileshpatil.360spinalwellness@gmail.com', '12345', '8446993696', '2020-07-29 08:45:21'),
-(6, 'Spine360 Viman Nagar', 'Dr. Pramod Patil', 'drpramod_patil.360spinalwellness@gmail.com', '12345', '7777777777', '2020-07-29 08:45:49'),
-(7, 'Vikas Medical', 'Vikas Pawar', 'vikaspawar3110@gmail.com', '12345', '9881652726', '2021-01-27 12:47:05');
+(6, 'Spine360 Viman Nagar', 'Dr. Pramod Patil', 'drpramod_patil.360spinalwellness@gmail.com', '12345', '7777777777', '2020-07-29 08:45:49');
 
 -- --------------------------------------------------------
 
@@ -54212,7 +54430,7 @@ CREATE TABLE `hospital_branch_master` (
   `landline2` varchar(15) NOT NULL,
   `fax` varchar(25) NOT NULL,
   `branchAddress` varchar(350) NOT NULL,
-  `isActive` int(11) NOT NULL DEFAULT 1,
+  `isActive` int(11) NOT NULL DEFAULT '1',
   `country` int(11) DEFAULT NULL,
   `state` int(11) DEFAULT NULL,
   `city` int(11) DEFAULT NULL,
@@ -54229,8 +54447,7 @@ INSERT INTO `hospital_branch_master` (`branchId`, `branchName`, `latitude`, `lon
 (9, 'Vennala Kochi', 0, 0, '', '', '', '', '', '', 'La Espina Wellness Clinic-\r\n48/1744 C 47, 7th Floor, Jomer Symphony, Ponnurunni, Vyttila Kochi- 682019\r\n\r\n+91 82701 11171', 1, 101, 17, 1725, 3),
 (10, 'Pimple Saudagar', 0, 0, '', '', '', '', '', '', 'Kriday Clinic\r\nOffice No-303, Royal Tranquil, Kokane Chowk, Pimple Saudagar, Pimpri Chinchwad- 411027\r\n\r\n+91 70941 11161', 1, 101, 22, 2763, 5),
 (11, 'Viman Nagar ', 0, 0, '', '', '', '', '', '', 'Royal Medical Centre-\r\nOffice No-3, Bhakti nest Appartment, First Floor, Datta Mandir Chowk, Viman Nagar, Pune- 411014\r\n\r\n+91 70941 11191', 1, 101, 22, 2763, 6),
-(12, 'TEST', 1, 11, '', '', '', '', '', '', 'deaf', 0, 101, 3, 301, 2),
-(13, 'Rahuri City', 12, 12, '', '9657613754', '9657613754', '', '', '', 'San Diego,California', 1, 101, 22, 2770, 2);
+(12, 'TEST', 1, 11, '', '', '', '', '', '', 'deaf', 0, 101, 3, 301, 2);
 
 -- --------------------------------------------------------
 
@@ -54243,7 +54460,7 @@ CREATE TABLE `instruction_master` (
   `instruction` varchar(200) NOT NULL,
   `hindi` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `marathi` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `isActive` int(11) NOT NULL DEFAULT 1
+  `isActive` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -54458,7 +54675,7 @@ CREATE TABLE `licensor` (
   `contactnumber` varchar(12) NOT NULL,
   `pwd` varchar(50) NOT NULL,
   `liaddress` varchar(255) NOT NULL,
-  `createdat` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `createdat` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -54478,16 +54695,16 @@ CREATE TABLE `low_backpain_questionnaire` (
   `lbackpId` int(11) NOT NULL,
   `patientId` int(11) DEFAULT NULL,
   `visitDate` date DEFAULT NULL,
-  `painIntensity` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `personalCare` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `lifting` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `walking` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `sitting` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `standing` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `sleeping` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `socialLife` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `travel` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `changingDegreeOfPain` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL
+  `painIntensity` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `personalCare` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `lifting` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `walking` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `sitting` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `standing` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `sleeping` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `socialLife` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `travel` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `changingDegreeOfPain` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -54510,34 +54727,34 @@ CREATE TABLE `lumbar_spine_assessment` (
   `visitDate` date DEFAULT NULL,
   `funDisabilityScore` varchar(50) DEFAULT NULL,
   `vasScore` varchar(50) DEFAULT NULL,
-  `presentSymptoms` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `presentSince` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `commencedAsResult` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `symptomsAtOnset` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `constantSymptoms` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `interSymptoms` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `aggravatingFactor` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `relivingFactor` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
+  `presentSymptoms` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `presentSince` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `commencedAsResult` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `symptomsAtOnset` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `constantSymptoms` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `interSymptoms` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `aggravatingFactor` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `relivingFactor` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
   `prevTreatments` varchar(50) DEFAULT NULL,
-  `specSymptoms` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `bladder` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `medications` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `GeneralHealth` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `imaging` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `recentsurgery` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `nightPain` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `accidents` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `weightLoss` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
+  `specSymptoms` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `bladder` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `medications` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `GeneralHealth` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `imaging` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `recentsurgery` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `nightPain` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `accidents` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `weightLoss` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
   `other` varchar(50) DEFAULT NULL,
-  `sitting` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `lordosis` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `lateralshift` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
+  `sitting` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `lordosis` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `lateralshift` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
   `motorDeficit` varchar(50) DEFAULT NULL,
   `sensoryDeficit` varchar(50) DEFAULT NULL,
-  `moveMentLoss` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `testMovement` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `derangement` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `mechTherapy` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL
+  `moveMentLoss` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `testMovement` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `derangement` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `mechTherapy` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -54716,7 +54933,27 @@ INSERT INTO `lumbar_spine_assessment` (`lsAId`, `patientId`, `visitDate`, `funDi
 (186, 480, '2021-01-05', '', '6', 'pain in the low back. ', '{\"Improving\":0,\"Unchanging\":0,\"Worsening\":0,\"s\":\"5 to 8 yrs\"}', 'work related, cater', '{\"back\":1,\"thigh\":0,\"leg\":0,\"s1\":\"\"}', '{\"back\":1,\"thigh\":0,\"leg\":0,\"s2\":\"\"}', '{\"back\":1,\"thigh\":1,\"leg\":1,\"s3\":\"\"}', '{\"bending\":0,\"sitting\":1,\"standing\":1,\"walking\":1,\"lying\":0,\"thedayprogresses\":0,\"Whentill\":0,\"otherA\":\"\"}', '{\"bending\":0,\"sitting\":0,\"standing\":0,\"walking\":0,\"lying\":0,\"the day progresses\":0,\"Whenstill\":0,\"otherR\":\"\"}', '', '{\"Cough\":0,\"Sneeze\":0,\"Strain\":0,\"+ve\":0,\"-ve\":1}', '{\"Normal\":1,\"Abnormal\":0}', '{\"Nil\":1,\"NSAIDS\":0,\"Analg\":0,\"Steroids\":0,\"Anticoag\":0,\"other\":\"\"}', '{\"Good\":0,\"Fair\":1,\"Poor\":0,\"GHealth\":\"\"}', '{\"Yes\":0,\"No\":1,\"imaging\":\"\"}', '{\"Yes\":0,\"No\":1,\"surgery\":\"\"}', '{\"Yes\":0,\"No\":1,\"nPain\":\"\"}', '{\"Yes\":0,\"No\":1,\"acc\":\"\"}', '{\"Yes\":0,\"No\":1,\"weight\":\"\",\"other1\":\"\"}', NULL, '{\"Good\":0,\"Fair\":1,\"poor\":0}', '{\"Red\":0,\"Acc\":0,\"Normal\":0}', '{\"Right\":0,\"Left\":0,\"Nil\":0}', 'NIL', 'NIL', '{\"0\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0},\"1\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0},\"2\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0},\"3\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0}}', '{\"0\":{\"During-test\":\"\",\"after-test\":\"\",\"m-rom-u\":\"\",\"m-rom-d\":\"\",\"m-noefect\":\"\"}}', '{\"Derangement\":1,\"Dysfunction\":0,\"Posture\":0,\"other\":\"\",\"painlocation\":\"L5 S1\"}', '{\"Yes\":0,\"No\":0,\"therapy\":\"\"}'),
 (187, 473, '2021-01-05', '', '6', 'pain in the low back ', '{\"Improving\":0,\"Unchanging\":0,\"Worsening\":0,\"s\":\"since 4yrs... increaseed 2wks\"}', 'lifted 20kgs weight', '{\"back\":1,\"thigh\":0,\"leg\":0,\"s1\":\"\"}', '{\"back\":1,\"thigh\":0,\"leg\":0,\"s2\":\"\"}', '{\"back\":1,\"thigh\":0,\"leg\":0,\"s3\":\"\"}', '{\"bending\":0,\"sitting\":1,\"standing\":1,\"walking\":1,\"lying\":0,\"thedayprogresses\":0,\"Whentill\":0,\"otherA\":\"\"}', '{\"bending\":0,\"sitting\":0,\"standing\":0,\"walking\":0,\"lying\":0,\"the day progresses\":0,\"Whenstill\":0,\"otherR\":\"\"}', '', '{\"Cough\":0,\"Sneeze\":0,\"Strain\":0,\"+ve\":0,\"-ve\":1}', '{\"Normal\":1,\"Abnormal\":0}', '{\"Nil\":1,\"NSAIDS\":0,\"Analg\":0,\"Steroids\":0,\"Anticoag\":0,\"other\":\"\"}', '{\"Good\":0,\"Fair\":1,\"Poor\":0,\"GHealth\":\"\"}', '{\"Yes\":1,\"No\":0,\"imaging\":\"ant lithesis of l5 with pars defect\"}', '{\"Yes\":0,\"No\":1,\"surgery\":\"\"}', '{\"Yes\":0,\"No\":1,\"nPain\":\"\"}', '{\"Yes\":0,\"No\":1,\"acc\":\"\"}', '{\"Yes\":0,\"No\":1,\"weight\":\"\",\"other1\":\"\"}', NULL, '{\"Good\":0,\"Fair\":1,\"poor\":0}', '{\"Red\":0,\"Acc\":0,\"Normal\":0}', '{\"Right\":0,\"Left\":0,\"Nil\":0}', 'NIL', 'NIL', '{\"0\":{\"maj\":0,\"mod\":1,\"min\":0,\"nil\":0,\"pain\":0},\"1\":{\"maj\":0,\"mod\":1,\"min\":0,\"nil\":0,\"pain\":0},\"2\":{\"maj\":0,\"mod\":1,\"min\":0,\"nil\":0,\"pain\":0},\"3\":{\"maj\":0,\"mod\":1,\"min\":0,\"nil\":0,\"pain\":0}}', '{\"0\":{\"During-test\":\"\",\"after-test\":\"\",\"m-rom-u\":\"\",\"m-rom-d\":\"\",\"m-noefect\":\"\"}}', '{\"Derangement\":1,\"Dysfunction\":0,\"Posture\":0,\"other\":\"\",\"painlocation\":\"spondylolithesis l5  with pars defect\"}', '{\"Yes\":0,\"No\":0,\"therapy\":\"\"}'),
 (188, 474, '2021-01-06', '', '3', 'PAIN IN THE LOW BACK RADIATING TO BOTH LEGS', '{\"Improving\":0,\"Unchanging\":0,\"Worsening\":0,\"s\":\"4 YEAR\"}', 'NO AR, ELECTRICAN', '{\"back\":1,\"thigh\":0,\"leg\":0,\"s1\":\"\"}', '{\"back\":1,\"thigh\":1,\"leg\":0,\"s2\":\"\"}', '{\"back\":1,\"thigh\":0,\"leg\":1,\"s3\":\"\"}', '{\"bending\":0,\"sitting\":1,\"standing\":1,\"walking\":1,\"lying\":0,\"thedayprogresses\":0,\"Whentill\":0,\"otherA\":\"\"}', '{\"bending\":0,\"sitting\":0,\"standing\":0,\"walking\":0,\"lying\":0,\"the day progresses\":0,\"Whenstill\":0,\"otherR\":\"\"}', '', '{\"Cough\":0,\"Sneeze\":0,\"Strain\":0,\"+ve\":0,\"-ve\":1}', '{\"Normal\":1,\"Abnormal\":0}', '{\"Nil\":1,\"NSAIDS\":0,\"Analg\":0,\"Steroids\":0,\"Anticoag\":0,\"other\":\"\"}', '{\"Good\":0,\"Fair\":1,\"Poor\":0,\"GHealth\":\"\"}', '{\"Yes\":0,\"No\":0,\"imaging\":\"\"}', '{\"Yes\":0,\"No\":1,\"surgery\":\"\"}', '{\"Yes\":0,\"No\":0,\"nPain\":\"\"}', '{\"Yes\":0,\"No\":1,\"acc\":\"\"}', '{\"Yes\":0,\"No\":0,\"weight\":\"\",\"other1\":\"\"}', NULL, '{\"Good\":0,\"Fair\":0,\"poor\":0}', '{\"Red\":0,\"Acc\":0,\"Normal\":0}', '{\"Right\":0,\"Left\":0,\"Nil\":0}', 'NIL', 'NIL', '{\"0\":{\"maj\":0,\"mod\":1,\"min\":0,\"nil\":0,\"pain\":0},\"1\":{\"maj\":0,\"mod\":1,\"min\":0,\"nil\":0,\"pain\":0},\"2\":{\"maj\":0,\"mod\":1,\"min\":0,\"nil\":0,\"pain\":0},\"3\":{\"maj\":0,\"mod\":1,\"min\":0,\"nil\":0,\"pain\":0}}', '{\"0\":{\"During-test\":\"\",\"after-test\":\"\",\"m-rom-u\":\"\",\"m-rom-d\":\"\",\"m-noefect\":\"\"}}', '{\"Derangement\":1,\"Dysfunction\":0,\"Posture\":0,\"other\":\"\",\"painlocation\":\"L4L5\"}', '{\"Yes\":0,\"No\":0,\"therapy\":\"\"}'),
-(190, 482, '2021-01-06', '', '', 'PAIN IN THE KNEE BACK  (LEFT )', '{\"Improving\":0,\"Unchanging\":0,\"Worsening\":0,\"s\":\"1  YEAR\"}', 'NO AR', '{\"back\":0,\"thigh\":0,\"leg\":0,\"s1\":\"BACK OF THE LEFT KNEE\"}', '{\"back\":0,\"thigh\":0,\"leg\":0,\"s2\":\"\"}', '{\"back\":0,\"thigh\":0,\"leg\":0,\"s3\":\"\"}', '{\"bending\":0,\"sitting\":0,\"standing\":0,\"walking\":0,\"lying\":0,\"thedayprogresses\":0,\"Whentill\":0,\"otherA\":\"\"}', '{\"bending\":0,\"sitting\":0,\"standing\":0,\"walking\":0,\"lying\":0,\"the day progresses\":0,\"Whenstill\":0,\"otherR\":\"\"}', '', '{\"Cough\":0,\"Sneeze\":0,\"Strain\":0,\"+ve\":0,\"-ve\":1}', '{\"Normal\":0,\"Abnormal\":0}', '{\"Nil\":1,\"NSAIDS\":0,\"Analg\":0,\"Steroids\":0,\"Anticoag\":0,\"other\":\"\"}', '{\"Good\":0,\"Fair\":1,\"Poor\":0,\"GHealth\":\"\"}', '{\"Yes\":0,\"No\":0,\"imaging\":\"\"}', '{\"Yes\":0,\"No\":1,\"surgery\":\"\"}', '{\"Yes\":0,\"No\":1,\"nPain\":\"\"}', '{\"Yes\":0,\"No\":1,\"acc\":\"\"}', '{\"Yes\":0,\"No\":1,\"weight\":\"\",\"other1\":\"SUGGESTED FOR MRI BY ORTHO DOCTOR\"}', NULL, '{\"Good\":0,\"Fair\":1,\"poor\":0}', '{\"Red\":0,\"Acc\":1,\"Normal\":0}', '{\"Right\":0,\"Left\":1,\"Nil\":0}', '', '', '{\"0\":{\"maj\":0,\"mod\":0,\"min\":0,\"nil\":0,\"pain\":0},\"1\":{\"maj\":0,\"mod\":0,\"min\":0,\"nil\":0,\"pain\":0},\"2\":{\"maj\":0,\"mod\":0,\"min\":0,\"nil\":0,\"pain\":0},\"3\":{\"maj\":0,\"mod\":0,\"min\":0,\"nil\":0,\"pain\":0}}', '{\"0\":{\"During-test\":\"\",\"after-test\":\"\",\"m-rom-u\":\"\",\"m-rom-d\":\"\",\"m-noefect\":\"\"}}', '{\"Derangement\":0,\"Dysfunction\":0,\"Posture\":0,\"other\":\"\",\"painlocation\":\"POPLITEAL BURSITIS ???\"}', '{\"Yes\":0,\"No\":0,\"therapy\":\"\"}');
+(190, 482, '2021-01-06', '', '', 'PAIN IN THE KNEE BACK  (LEFT )', '{\"Improving\":0,\"Unchanging\":0,\"Worsening\":0,\"s\":\"1  YEAR\"}', 'NO AR', '{\"back\":0,\"thigh\":0,\"leg\":0,\"s1\":\"BACK OF THE LEFT KNEE\"}', '{\"back\":0,\"thigh\":0,\"leg\":0,\"s2\":\"\"}', '{\"back\":0,\"thigh\":0,\"leg\":0,\"s3\":\"\"}', '{\"bending\":0,\"sitting\":0,\"standing\":0,\"walking\":0,\"lying\":0,\"thedayprogresses\":0,\"Whentill\":0,\"otherA\":\"\"}', '{\"bending\":0,\"sitting\":0,\"standing\":0,\"walking\":0,\"lying\":0,\"the day progresses\":0,\"Whenstill\":0,\"otherR\":\"\"}', '', '{\"Cough\":0,\"Sneeze\":0,\"Strain\":0,\"+ve\":0,\"-ve\":1}', '{\"Normal\":0,\"Abnormal\":0}', '{\"Nil\":1,\"NSAIDS\":0,\"Analg\":0,\"Steroids\":0,\"Anticoag\":0,\"other\":\"\"}', '{\"Good\":0,\"Fair\":1,\"Poor\":0,\"GHealth\":\"\"}', '{\"Yes\":0,\"No\":0,\"imaging\":\"\"}', '{\"Yes\":0,\"No\":1,\"surgery\":\"\"}', '{\"Yes\":0,\"No\":1,\"nPain\":\"\"}', '{\"Yes\":0,\"No\":1,\"acc\":\"\"}', '{\"Yes\":0,\"No\":1,\"weight\":\"\",\"other1\":\"SUGGESTED FOR MRI BY ORTHO DOCTOR\"}', NULL, '{\"Good\":0,\"Fair\":1,\"poor\":0}', '{\"Red\":0,\"Acc\":1,\"Normal\":0}', '{\"Right\":0,\"Left\":1,\"Nil\":0}', '', '', '{\"0\":{\"maj\":0,\"mod\":0,\"min\":0,\"nil\":0,\"pain\":0},\"1\":{\"maj\":0,\"mod\":0,\"min\":0,\"nil\":0,\"pain\":0},\"2\":{\"maj\":0,\"mod\":0,\"min\":0,\"nil\":0,\"pain\":0},\"3\":{\"maj\":0,\"mod\":0,\"min\":0,\"nil\":0,\"pain\":0}}', '{\"0\":{\"During-test\":\"\",\"after-test\":\"\",\"m-rom-u\":\"\",\"m-rom-d\":\"\",\"m-noefect\":\"\"}}', '{\"Derangement\":0,\"Dysfunction\":0,\"Posture\":0,\"other\":\"\",\"painlocation\":\"POPLITEAL BURSITIS ???\"}', '{\"Yes\":0,\"No\":0,\"therapy\":\"\"}'),
+(191, 530, '2021-01-27', '', '7', 'pain in the low back radiating to R leg till thigh', '{\"Improving\":0,\"Unchanging\":0,\"Worsening\":0,\"s\":\"4 days\"}', 'lifted bike', '{\"back\":1,\"thigh\":1,\"leg\":0,\"s1\":\"\"}', '{\"back\":0,\"thigh\":1,\"leg\":0,\"s2\":\"\"}', '{\"back\":1,\"thigh\":0,\"leg\":0,\"s3\":\"\"}', '{\"bending\":0,\"sitting\":1,\"standing\":0,\"walking\":0,\"lying\":0,\"thedayprogresses\":0,\"Whentill\":0,\"otherA\":\"\"}', '{\"bending\":0,\"sitting\":0,\"standing\":1,\"walking\":0,\"lying\":0,\"the day progresses\":0,\"Whenstill\":0,\"otherR\":\"\"}', 'medication taken for the same', '{\"Cough\":0,\"Sneeze\":0,\"Strain\":0,\"+ve\":0,\"-ve\":1}', '{\"Normal\":1,\"Abnormal\":0}', '{\"Nil\":1,\"NSAIDS\":0,\"Analg\":0,\"Steroids\":0,\"Anticoag\":0,\"other\":\"\"}', '{\"Good\":0,\"Fair\":0,\"Poor\":1,\"GHealth\":\"\"}', '{\"Yes\":1,\"No\":0,\"imaging\":\"L5S1 DIFFUSE DISC PROTRUSION  WITH LATERAL RECESS\"}', '{\"Yes\":0,\"No\":1,\"surgery\":\"\"}', '{\"Yes\":0,\"No\":1,\"nPain\":\"\"}', '{\"Yes\":0,\"No\":1,\"acc\":\"\"}', '{\"Yes\":0,\"No\":1,\"weight\":\"\",\"other1\":\"\"}', NULL, '{\"Good\":0,\"Fair\":1,\"poor\":0}', '{\"Red\":0,\"Acc\":0,\"Normal\":0}', '{\"Right\":0,\"Left\":0,\"Nil\":0}', 'NIL', 'NIL', '{\"0\":{\"maj\":0,\"mod\":0,\"min\":0,\"nil\":0,\"pain\":1},\"1\":{\"maj\":0,\"mod\":0,\"min\":0,\"nil\":0,\"pain\":1},\"2\":{\"maj\":0,\"mod\":0,\"min\":0,\"nil\":0,\"pain\":1},\"3\":{\"maj\":0,\"mod\":0,\"min\":0,\"nil\":0,\"pain\":1}}', '{\"0\":{\"During-test\":\"\",\"after-test\":\"\",\"m-rom-u\":\"\",\"m-rom-d\":\"\",\"m-noefect\":\"PAIN\"}}', '{\"Derangement\":1,\"Dysfunction\":0,\"Posture\":0,\"other\":\"\",\"painlocation\":\"L5S1\"}', '{\"Yes\":0,\"No\":0,\"therapy\":\"\"}'),
+(192, 555, '2021-01-27', '', '4', 'PAIN IN THE BACK RIGHT LEG RADIATING', '{\"Improving\":0,\"Unchanging\":0,\"Worsening\":0,\"s\":\"6 MONTHS\"}', 'RUNNING AND TRAVEL', '{\"back\":1,\"thigh\":0,\"leg\":0,\"s1\":\"\"}', '{\"back\":1,\"thigh\":0,\"leg\":0,\"s2\":\"\"}', '{\"back\":1,\"thigh\":0,\"leg\":0,\"s3\":\"\"}', '{\"bending\":0,\"sitting\":1,\"standing\":1,\"walking\":0,\"lying\":0,\"thedayprogresses\":0,\"Whentill\":0,\"otherA\":\"\"}', '{\"bending\":0,\"sitting\":0,\"standing\":0,\"walking\":0,\"lying\":0,\"the day progresses\":0,\"Whenstill\":0,\"otherR\":\"\"}', 'AYRUVEDIC TREATMENT and physio', '{\"Cough\":0,\"Sneeze\":0,\"Strain\":0,\"+ve\":0,\"-ve\":1}', '{\"Normal\":1,\"Abnormal\":0}', '{\"Nil\":0,\"NSAIDS\":0,\"Analg\":1,\"Steroids\":0,\"Anticoag\":0,\"other\":\"\"}', '{\"Good\":0,\"Fair\":1,\"Poor\":0,\"GHealth\":\"\"}', '{\"Yes\":0,\"No\":0,\"imaging\":\"DIFFUSE DISC PROTRUSION L5S1 WITH LIGAMENTUM FLAVAM HYPERTROPHY\"}', '{\"Yes\":0,\"No\":1,\"surgery\":\"\"}', '{\"Yes\":0,\"No\":1,\"nPain\":\"\"}', '{\"Yes\":0,\"No\":1,\"acc\":\"\"}', '{\"Yes\":0,\"No\":1,\"weight\":\"\",\"other1\":\"\"}', NULL, '{\"Good\":0,\"Fair\":1,\"poor\":0}', '{\"Red\":0,\"Acc\":0,\"Normal\":0}', '{\"Right\":0,\"Left\":0,\"Nil\":0}', 'NIL', 'NIL', '{\"0\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0},\"1\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0},\"2\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0},\"3\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0}}', '{\"0\":{\"During-test\":\"\",\"after-test\":\"\",\"m-rom-u\":\"NE\",\"m-rom-d\":\"\",\"m-noefect\":\"NE\"}}', '{\"Derangement\":1,\"Dysfunction\":0,\"Posture\":0,\"other\":\"\",\"painlocation\":\"MULTILEVEL LIGAMENTUM FLAVUM HYPERTROPHY AND DISC PROTRUSION AT L5S1\"}', '{\"Yes\":0,\"No\":0,\"therapy\":\"\"}'),
+(193, 551, '2021-01-27', '', '', 'pain in low back , RADIATING TO RIGHT  LEG', '{\"Improving\":0,\"Unchanging\":0,\"Worsening\":0,\"s\":\"6 YRS\"}', 'WORK RELATED , PROLONG SITTING', '{\"back\":1,\"thigh\":0,\"leg\":0,\"s1\":\"\"}', '{\"back\":1,\"thigh\":0,\"leg\":0,\"s2\":\"\"}', '{\"back\":0,\"thigh\":0,\"leg\":0,\"s3\":\"\"}', '{\"bending\":0,\"sitting\":1,\"standing\":0,\"walking\":0,\"lying\":0,\"thedayprogresses\":0,\"Whentill\":0,\"otherA\":\"\"}', '{\"bending\":0,\"sitting\":1,\"standing\":0,\"walking\":0,\"lying\":0,\"the day progresses\":0,\"Whenstill\":0,\"otherR\":\"\"}', 'took ayruvedic treatment', '{\"Cough\":0,\"Sneeze\":0,\"Strain\":0,\"+ve\":0,\"-ve\":1}', '{\"Normal\":1,\"Abnormal\":0}', '{\"Nil\":1,\"NSAIDS\":0,\"Analg\":0,\"Steroids\":0,\"Anticoag\":0,\"other\":\"\"}', '{\"Good\":0,\"Fair\":1,\"Poor\":0,\"GHealth\":\"\"}', '{\"Yes\":0,\"No\":1,\"imaging\":\"\"}', '{\"Yes\":0,\"No\":1,\"surgery\":\"\"}', '{\"Yes\":0,\"No\":1,\"nPain\":\"\"}', '{\"Yes\":0,\"No\":1,\"acc\":\"\"}', '{\"Yes\":0,\"No\":1,\"weight\":\"\",\"other1\":\"\"}', NULL, '{\"Good\":0,\"Fair\":1,\"poor\":0}', '{\"Red\":0,\"Acc\":0,\"Normal\":0}', '{\"Right\":0,\"Left\":0,\"Nil\":0}', 'NIL', 'NIL', '{\"0\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0},\"1\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0},\"2\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0},\"3\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0}}', '{\"0\":{\"During-test\":\"\",\"after-test\":\"\",\"m-rom-u\":\"\",\"m-rom-d\":\"\",\"m-noefect\":\"\"}}', '{\"Derangement\":1,\"Dysfunction\":0,\"Posture\":0,\"other\":\"\",\"painlocation\":\"LUMBAR  L4L5\"}', '{\"Yes\":0,\"No\":0,\"therapy\":\"\"}'),
+(194, 546, '2021-01-27', '', '7', 'pain in low back , RADIATING TO LEFT LEG', '{\"Improving\":0,\"Unchanging\":0,\"Worsening\":0,\"s\":\"2 MONTHS\"}', 'H/O FEVER FOLLOWED BY BACK PAIN', '{\"back\":1,\"thigh\":0,\"leg\":0,\"s1\":\"\"}', '{\"back\":1,\"thigh\":1,\"leg\":1,\"s2\":\"\"}', '{\"back\":0,\"thigh\":0,\"leg\":0,\"s3\":\"\"}', '{\"bending\":0,\"sitting\":1,\"standing\":1,\"walking\":0,\"lying\":1,\"thedayprogresses\":0,\"Whentill\":0,\"otherA\":\"\"}', '{\"bending\":0,\"sitting\":0,\"standing\":0,\"walking\":0,\"lying\":0,\"the day progresses\":0,\"Whenstill\":0,\"otherR\":\"\"}', '', '{\"Cough\":0,\"Sneeze\":0,\"Strain\":0,\"+ve\":0,\"-ve\":1}', '{\"Normal\":1,\"Abnormal\":0}', '{\"Nil\":1,\"NSAIDS\":0,\"Analg\":0,\"Steroids\":0,\"Anticoag\":0,\"other\":\"\"}', '{\"Good\":0,\"Fair\":1,\"Poor\":0,\"GHealth\":\"\"}', '{\"Yes\":1,\"No\":0,\"imaging\":\"DISC DIFFUSE BLUGE AT L4L5, L5S1\"}', '{\"Yes\":0,\"No\":1,\"surgery\":\"\"}', '{\"Yes\":0,\"No\":0,\"nPain\":\"\"}', '{\"Yes\":0,\"No\":1,\"acc\":\"\"}', '{\"Yes\":0,\"No\":0,\"weight\":\"\",\"other1\":\"\"}', NULL, '{\"Good\":0,\"Fair\":1,\"poor\":0}', '{\"Red\":1,\"Acc\":0,\"Normal\":0}', '{\"Right\":0,\"Left\":0,\"Nil\":0}', 'NIL', 'NIL', '{\"0\":{\"maj\":0,\"mod\":0,\"min\":0,\"nil\":0,\"pain\":1},\"1\":{\"maj\":0,\"mod\":0,\"min\":0,\"nil\":0,\"pain\":1},\"2\":{\"maj\":0,\"mod\":0,\"min\":0,\"nil\":0,\"pain\":1},\"3\":{\"maj\":0,\"mod\":0,\"min\":0,\"nil\":0,\"pain\":1}}', '{\"0\":{\"During-test\":\"\",\"after-test\":\"\",\"m-rom-u\":\"\",\"m-rom-d\":\"\",\"m-noefect\":\"\"}}', '{\"Derangement\":0,\"Dysfunction\":0,\"Posture\":0,\"other\":\"\",\"painlocation\":\"LUMBAR L5 S1\"}', '{\"Yes\":0,\"No\":0,\"therapy\":\"\"}');
+INSERT INTO `lumbar_spine_assessment` (`lsAId`, `patientId`, `visitDate`, `funDisabilityScore`, `vasScore`, `presentSymptoms`, `presentSince`, `commencedAsResult`, `symptomsAtOnset`, `constantSymptoms`, `interSymptoms`, `aggravatingFactor`, `relivingFactor`, `prevTreatments`, `specSymptoms`, `bladder`, `medications`, `GeneralHealth`, `imaging`, `recentsurgery`, `nightPain`, `accidents`, `weightLoss`, `other`, `sitting`, `lordosis`, `lateralshift`, `motorDeficit`, `sensoryDeficit`, `moveMentLoss`, `testMovement`, `derangement`, `mechTherapy`) VALUES
+(195, 531, '2021-01-27', '', '4', 'pain in low back LEFT THIGH', '{\"Improving\":0,\"Unchanging\":0,\"Worsening\":0,\"s\":\"2 YEARS\"}', 'RIDING', '{\"back\":1,\"thigh\":0,\"leg\":0,\"s1\":\"\"}', '{\"back\":1,\"thigh\":1,\"leg\":1,\"s2\":\"\"}', '{\"back\":0,\"thigh\":0,\"leg\":0,\"s3\":\"\"}', '{\"bending\":0,\"sitting\":1,\"standing\":1,\"walking\":0,\"lying\":0,\"thedayprogresses\":0,\"Whentill\":0,\"otherA\":\"\"}', '{\"bending\":0,\"sitting\":0,\"standing\":0,\"walking\":0,\"lying\":0,\"the day progresses\":0,\"Whenstill\":0,\"otherR\":\"\"}', 'TOOK PHYSIO TREATMENT', '{\"Cough\":0,\"Sneeze\":0,\"Strain\":0,\"+ve\":0,\"-ve\":1}', '{\"Normal\":1,\"Abnormal\":0}', '{\"Nil\":1,\"NSAIDS\":0,\"Analg\":0,\"Steroids\":0,\"Anticoag\":0,\"other\":\"\"}', '{\"Good\":0,\"Fair\":1,\"Poor\":0,\"GHealth\":\"\"}', '{\"Yes\":0,\"No\":1,\"imaging\":\"\"}', '{\"Yes\":0,\"No\":1,\"surgery\":\"\"}', '{\"Yes\":0,\"No\":1,\"nPain\":\"\"}', '{\"Yes\":0,\"No\":1,\"acc\":\"\"}', '{\"Yes\":0,\"No\":1,\"weight\":\"\",\"other1\":\"\"}', NULL, '{\"Good\":0,\"Fair\":0,\"poor\":0}', '{\"Red\":0,\"Acc\":0,\"Normal\":0}', '{\"Right\":0,\"Left\":0,\"Nil\":0}', 'NIL', 'NIL', '{\"0\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0},\"1\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0},\"2\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0},\"3\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0}}', '{\"0\":{\"During-test\":\"\",\"after-test\":\"\",\"m-rom-u\":\"\",\"m-rom-d\":\"\",\"m-noefect\":\"\"}}', '{\"Derangement\":1,\"Dysfunction\":0,\"Posture\":0,\"other\":\"\",\"painlocation\":\"L4L5\"}', '{\"Yes\":0,\"No\":0,\"therapy\":\"\"}'),
+(196, 538, '2021-01-27', '', '4', 'pain in low back ', '{\"Improving\":0,\"Unchanging\":0,\"Worsening\":0,\"s\":\"10 yrs\"}', '', '{\"back\":1,\"thigh\":0,\"leg\":0,\"s1\":\"\"}', '{\"back\":1,\"thigh\":0,\"leg\":0,\"s2\":\"\"}', '{\"back\":0,\"thigh\":0,\"leg\":0,\"s3\":\"\"}', '{\"bending\":0,\"sitting\":1,\"standing\":1,\"walking\":0,\"lying\":0,\"thedayprogresses\":0,\"Whentill\":0,\"otherA\":\"NUMBNESS IN THE THIGH\"}', '{\"bending\":0,\"sitting\":0,\"standing\":0,\"walking\":0,\"lying\":0,\"the day progresses\":0,\"Whenstill\":0,\"otherR\":\"\"}', '', '{\"Cough\":0,\"Sneeze\":0,\"Strain\":0,\"+ve\":0,\"-ve\":1}', '{\"Normal\":1,\"Abnormal\":0}', '{\"Nil\":1,\"NSAIDS\":0,\"Analg\":0,\"Steroids\":0,\"Anticoag\":0,\"other\":\"\"}', '{\"Good\":0,\"Fair\":1,\"Poor\":0,\"GHealth\":\"\"}', '{\"Yes\":1,\"No\":0,\"imaging\":\"MULTILEVEL DISC BLUGE\"}', '{\"Yes\":0,\"No\":1,\"surgery\":\"\"}', '{\"Yes\":0,\"No\":1,\"nPain\":\"\"}', '{\"Yes\":0,\"No\":1,\"acc\":\"\"}', '{\"Yes\":0,\"No\":1,\"weight\":\"\",\"other1\":\"\"}', NULL, '{\"Good\":0,\"Fair\":0,\"poor\":1}', '{\"Red\":1,\"Acc\":0,\"Normal\":0}', '{\"Right\":0,\"Left\":0,\"Nil\":0}', 'NIL', 'NIL', '{\"0\":{\"maj\":0,\"mod\":1,\"min\":0,\"nil\":0,\"pain\":0},\"1\":{\"maj\":0,\"mod\":1,\"min\":0,\"nil\":0,\"pain\":0},\"2\":{\"maj\":0,\"mod\":1,\"min\":0,\"nil\":0,\"pain\":0},\"3\":{\"maj\":0,\"mod\":1,\"min\":0,\"nil\":0,\"pain\":0}}', '{\"0\":{\"During-test\":\"\",\"after-test\":\"\",\"m-rom-u\":\"\",\"m-rom-d\":\"\",\"m-noefect\":\"\"}}', '{\"Derangement\":1,\"Dysfunction\":0,\"Posture\":0,\"other\":\"\",\"painlocation\":\"DICSC BLUGE \"}', '{\"Yes\":0,\"No\":0,\"therapy\":\"\"}'),
+(197, 505, '2021-01-27', '', '7', 'pain in low back AAND TAIL BONE', '{\"Improving\":0,\"Unchanging\":0,\"Worsening\":0,\"s\":\"2 MONTHS\"}', 'H/O FALL FROM THE STAIRS', '{\"back\":0,\"thigh\":0,\"leg\":0,\"s1\":\"COCCYX\"}', '{\"back\":1,\"thigh\":0,\"leg\":0,\"s2\":\"\"}', '{\"back\":0,\"thigh\":0,\"leg\":0,\"s3\":\"\"}', '{\"bending\":0,\"sitting\":1,\"standing\":0,\"walking\":0,\"lying\":0,\"thedayprogresses\":0,\"Whentill\":0,\"otherA\":\"\"}', '{\"bending\":0,\"sitting\":0,\"standing\":0,\"walking\":0,\"lying\":0,\"the day progresses\":0,\"Whenstill\":0,\"otherR\":\"\"}', '', '{\"Cough\":0,\"Sneeze\":0,\"Strain\":0,\"+ve\":0,\"-ve\":1}', '{\"Normal\":1,\"Abnormal\":0}', '{\"Nil\":1,\"NSAIDS\":0,\"Analg\":0,\"Steroids\":0,\"Anticoag\":0,\"other\":\"\"}', '{\"Good\":0,\"Fair\":1,\"Poor\":0,\"GHealth\":\"\"}', '{\"Yes\":1,\"No\":0,\"imaging\":\"ANT. TRANSLATION OF COCCYX\"}', '{\"Yes\":0,\"No\":1,\"surgery\":\"\"}', '{\"Yes\":0,\"No\":0,\"nPain\":\"\"}', '{\"Yes\":0,\"No\":1,\"acc\":\"\"}', '{\"Yes\":0,\"No\":0,\"weight\":\"\",\"other1\":\"\"}', NULL, '{\"Good\":0,\"Fair\":0,\"poor\":0}', '{\"Red\":0,\"Acc\":0,\"Normal\":0}', '{\"Right\":0,\"Left\":0,\"Nil\":0}', 'NIL', 'NIL', '{\"0\":{\"maj\":0,\"mod\":1,\"min\":0,\"nil\":0,\"pain\":0},\"1\":{\"maj\":0,\"mod\":1,\"min\":0,\"nil\":0,\"pain\":0},\"2\":{\"maj\":0,\"mod\":1,\"min\":0,\"nil\":0,\"pain\":0},\"3\":{\"maj\":0,\"mod\":1,\"min\":0,\"nil\":0,\"pain\":0}}', '{\"0\":{\"During-test\":\"\",\"after-test\":\"\",\"m-rom-u\":\"\",\"m-rom-d\":\"\",\"m-noefect\":\"\"}}', '{\"Derangement\":1,\"Dysfunction\":0,\"Posture\":0,\"other\":\"\",\"painlocation\":\"COCCYXDYNIA\"}', '{\"Yes\":0,\"No\":0,\"therapy\":\"\"}'),
+(198, 537, '2021-01-27', '', '', 'pain in low back ', '{\"Improving\":0,\"Unchanging\":0,\"Worsening\":0,\"s\":\"2 YEARS\"}', 'LIFTED THE LOAD', '{\"back\":1,\"thigh\":0,\"leg\":0,\"s1\":\"\"}', '{\"back\":1,\"thigh\":0,\"leg\":0,\"s2\":\"\"}', '{\"back\":0,\"thigh\":0,\"leg\":0,\"s3\":\"\"}', '{\"bending\":0,\"sitting\":1,\"standing\":1,\"walking\":0,\"lying\":0,\"thedayprogresses\":0,\"Whentill\":0,\"otherA\":\"\"}', '{\"bending\":0,\"sitting\":0,\"standing\":0,\"walking\":0,\"lying\":0,\"the day progresses\":0,\"Whenstill\":0,\"otherR\":\"\"}', 'AYRUVEDIC TREATMENT', '{\"Cough\":0,\"Sneeze\":0,\"Strain\":0,\"+ve\":0,\"-ve\":1}', '{\"Normal\":1,\"Abnormal\":0}', '{\"Nil\":1,\"NSAIDS\":0,\"Analg\":0,\"Steroids\":0,\"Anticoag\":0,\"other\":\"\"}', '{\"Good\":0,\"Fair\":1,\"Poor\":0,\"GHealth\":\"\"}', '{\"Yes\":0,\"No\":1,\"imaging\":\"\"}', '{\"Yes\":0,\"No\":1,\"surgery\":\"\"}', '{\"Yes\":0,\"No\":1,\"nPain\":\"\"}', '{\"Yes\":0,\"No\":1,\"acc\":\"\"}', '{\"Yes\":0,\"No\":1,\"weight\":\"\",\"other1\":\"\"}', NULL, '{\"Good\":0,\"Fair\":0,\"poor\":0}', '{\"Red\":0,\"Acc\":0,\"Normal\":0}', '{\"Right\":0,\"Left\":0,\"Nil\":0}', '', '', '{\"0\":{\"maj\":0,\"mod\":1,\"min\":0,\"nil\":0,\"pain\":0},\"1\":{\"maj\":0,\"mod\":1,\"min\":0,\"nil\":0,\"pain\":0},\"2\":{\"maj\":0,\"mod\":1,\"min\":0,\"nil\":0,\"pain\":0},\"3\":{\"maj\":0,\"mod\":1,\"min\":0,\"nil\":0,\"pain\":0}}', '{\"0\":{\"During-test\":\"\",\"after-test\":\"\",\"m-rom-u\":\"\",\"m-rom-d\":\"\",\"m-noefect\":\"\"}}', '{\"Derangement\":1,\"Dysfunction\":0,\"Posture\":0,\"other\":\"\",\"painlocation\":\"LUMBAR  L4L5 L4L5\"}', '{\"Yes\":0,\"No\":0,\"therapy\":\"\"}'),
+(199, 526, '2021-01-27', '', '8', 'pain in low back , RADIATING TO RIGHT LEG', '{\"Improving\":0,\"Unchanging\":0,\"Worsening\":0,\"s\":\"20\"}', 'H/O FALL IN THE CHILDHOOD', '{\"back\":0,\"thigh\":0,\"leg\":0,\"s1\":\"\"}', '{\"back\":1,\"thigh\":0,\"leg\":0,\"s2\":\"\"}', '{\"back\":1,\"thigh\":0,\"leg\":0,\"s3\":\"\"}', '{\"bending\":0,\"sitting\":0,\"standing\":0,\"walking\":0,\"lying\":0,\"thedayprogresses\":0,\"Whentill\":0,\"otherA\":\"\"}', '{\"bending\":0,\"sitting\":0,\"standing\":0,\"walking\":0,\"lying\":0,\"the day progresses\":0,\"Whenstill\":0,\"otherR\":\"\"}', '', '{\"Cough\":0,\"Sneeze\":0,\"Strain\":0,\"+ve\":0,\"-ve\":1}', '{\"Normal\":1,\"Abnormal\":0}', '{\"Nil\":1,\"NSAIDS\":0,\"Analg\":0,\"Steroids\":0,\"Anticoag\":0,\"other\":\"\"}', '{\"Good\":0,\"Fair\":1,\"Poor\":0,\"GHealth\":\"\"}', '{\"Yes\":1,\"No\":0,\"imaging\":\"ANNULAR BLUGE AT L4L5\"}', '{\"Yes\":0,\"No\":1,\"surgery\":\"\"}', '{\"Yes\":0,\"No\":1,\"nPain\":\"\"}', '{\"Yes\":0,\"No\":1,\"acc\":\"\"}', '{\"Yes\":0,\"No\":1,\"weight\":\"\",\"other1\":\"\"}', NULL, '{\"Good\":0,\"Fair\":1,\"poor\":0}', '{\"Red\":0,\"Acc\":0,\"Normal\":1}', '{\"Right\":0,\"Left\":0,\"Nil\":0}', 'NIL', 'NIL', '{\"0\":{\"maj\":0,\"mod\":1,\"min\":0,\"nil\":0,\"pain\":0},\"1\":{\"maj\":0,\"mod\":1,\"min\":0,\"nil\":0,\"pain\":0},\"2\":{\"maj\":0,\"mod\":1,\"min\":0,\"nil\":0,\"pain\":0},\"3\":{\"maj\":0,\"mod\":1,\"min\":0,\"nil\":0,\"pain\":0}}', '{\"0\":{\"During-test\":\"\",\"after-test\":\"\",\"m-rom-u\":\"\",\"m-rom-d\":\"\",\"m-noefect\":\"\"}}', '{\"Derangement\":1,\"Dysfunction\":0,\"Posture\":0,\"other\":\"\",\"painlocation\":\"DIFFUSE ANNULAR L4L5\"}', '{\"Yes\":0,\"No\":0,\"therapy\":\"\"}'),
+(200, 522, '2021-01-27', '', '5', 'pain in low back ', '{\"Improving\":0,\"Unchanging\":0,\"Worsening\":0,\"s\":\"2 MONTHS\"}', 'NO AR, BIKE RIDING', '{\"back\":1,\"thigh\":0,\"leg\":0,\"s1\":\"\"}', '{\"back\":1,\"thigh\":0,\"leg\":0,\"s2\":\"\"}', '{\"back\":0,\"thigh\":0,\"leg\":0,\"s3\":\"\"}', '{\"bending\":0,\"sitting\":1,\"standing\":1,\"walking\":0,\"lying\":0,\"thedayprogresses\":0,\"Whentill\":0,\"otherA\":\"\"}', '{\"bending\":0,\"sitting\":0,\"standing\":0,\"walking\":0,\"lying\":0,\"the day progresses\":0,\"Whenstill\":0,\"otherR\":\"\"}', 'TOOK TREATMENT FOR SAME', '{\"Cough\":0,\"Sneeze\":0,\"Strain\":0,\"+ve\":0,\"-ve\":1}', '{\"Normal\":1,\"Abnormal\":0}', '{\"Nil\":1,\"NSAIDS\":0,\"Analg\":0,\"Steroids\":0,\"Anticoag\":0,\"other\":\"\"}', '{\"Good\":0,\"Fair\":1,\"Poor\":0,\"GHealth\":\"\"}', '{\"Yes\":0,\"No\":1,\"imaging\":\"\"}', '{\"Yes\":0,\"No\":1,\"surgery\":\"\"}', '{\"Yes\":0,\"No\":1,\"nPain\":\"\"}', '{\"Yes\":0,\"No\":1,\"acc\":\"\"}', '{\"Yes\":0,\"No\":1,\"weight\":\"\",\"other1\":\"\"}', NULL, '{\"Good\":0,\"Fair\":1,\"poor\":0}', '{\"Red\":0,\"Acc\":0,\"Normal\":0}', '{\"Right\":0,\"Left\":0,\"Nil\":0}', 'NIL', 'NIL', '{\"0\":{\"maj\":0,\"mod\":1,\"min\":0,\"nil\":0,\"pain\":0},\"1\":{\"maj\":0,\"mod\":1,\"min\":0,\"nil\":0,\"pain\":0},\"2\":{\"maj\":0,\"mod\":1,\"min\":0,\"nil\":0,\"pain\":0},\"3\":{\"maj\":0,\"mod\":1,\"min\":0,\"nil\":0,\"pain\":0}}', '{\"0\":{\"During-test\":\"\",\"after-test\":\"\",\"m-rom-u\":\"\",\"m-rom-d\":\"\",\"m-noefect\":\"\"}}', '{\"Derangement\":1,\"Dysfunction\":0,\"Posture\":0,\"other\":\"\",\"painlocation\":\"LBA\"}', '{\"Yes\":0,\"No\":0,\"therapy\":\"\"}'),
+(201, 502, '2021-01-27', '', '5', 'STIFFNESS IN THE BACK SHOULDER AND NECK', '{\"Improving\":0,\"Unchanging\":0,\"Worsening\":0,\"s\":\"1YRS\"}', '', '{\"back\":1,\"thigh\":0,\"leg\":0,\"s1\":\"\"}', '{\"back\":1,\"thigh\":0,\"leg\":0,\"s2\":\"\"}', '{\"back\":0,\"thigh\":0,\"leg\":0,\"s3\":\"\"}', '{\"bending\":0,\"sitting\":1,\"standing\":1,\"walking\":0,\"lying\":0,\"thedayprogresses\":0,\"Whentill\":0,\"otherA\":\"\"}', '{\"bending\":0,\"sitting\":0,\"standing\":0,\"walking\":0,\"lying\":0,\"the day progresses\":0,\"Whenstill\":0,\"otherR\":\"\"}', '', '{\"Cough\":0,\"Sneeze\":0,\"Strain\":0,\"+ve\":0,\"-ve\":1}', '{\"Normal\":1,\"Abnormal\":0}', '{\"Nil\":1,\"NSAIDS\":0,\"Analg\":0,\"Steroids\":0,\"Anticoag\":0,\"other\":\"\"}', '{\"Good\":0,\"Fair\":1,\"Poor\":0,\"GHealth\":\"\"}', '{\"Yes\":1,\"No\":0,\"imaging\":\"\"}', '{\"Yes\":0,\"No\":1,\"surgery\":\"\"}', '{\"Yes\":0,\"No\":1,\"nPain\":\"\"}', '{\"Yes\":0,\"No\":1,\"acc\":\"\"}', '{\"Yes\":0,\"No\":1,\"weight\":\"\",\"other1\":\"\"}', NULL, '{\"Good\":0,\"Fair\":1,\"poor\":0}', '{\"Red\":0,\"Acc\":0,\"Normal\":0}', '{\"Right\":0,\"Left\":0,\"Nil\":0}', 'NIL', 'NIL', '{\"0\":{\"maj\":0,\"mod\":1,\"min\":0,\"nil\":0,\"pain\":0},\"1\":{\"maj\":0,\"mod\":1,\"min\":0,\"nil\":0,\"pain\":0},\"2\":{\"maj\":0,\"mod\":1,\"min\":0,\"nil\":0,\"pain\":0},\"3\":{\"maj\":0,\"mod\":1,\"min\":0,\"nil\":0,\"pain\":0}}', '{\"0\":{\"During-test\":\"\",\"after-test\":\"\",\"m-rom-u\":\"\",\"m-rom-d\":\"\",\"m-noefect\":\"\"}}', '{\"Derangement\":1,\"Dysfunction\":0,\"Posture\":0,\"other\":\"\",\"painlocation\":\"\"}', '{\"Yes\":0,\"No\":0,\"therapy\":\"\"}'),
+(202, 525, '2021-01-27', '', '4', 'PAIN IN THE LOW BACK', '{\"Improving\":0,\"Unchanging\":0,\"Worsening\":0,\"s\":\"2 YEARS\"}', 'NO AR', '{\"back\":1,\"thigh\":0,\"leg\":0,\"s1\":\"\"}', '{\"back\":1,\"thigh\":0,\"leg\":0,\"s2\":\"\"}', '{\"back\":0,\"thigh\":0,\"leg\":0,\"s3\":\"\"}', '{\"bending\":0,\"sitting\":1,\"standing\":1,\"walking\":0,\"lying\":0,\"thedayprogresses\":0,\"Whentill\":0,\"otherA\":\"\"}', '{\"bending\":0,\"sitting\":0,\"standing\":0,\"walking\":0,\"lying\":0,\"the day progresses\":0,\"Whenstill\":0,\"otherR\":\"\"}', 'took ayruvedic treatment', '{\"Cough\":0,\"Sneeze\":0,\"Strain\":0,\"+ve\":0,\"-ve\":1}', '{\"Normal\":1,\"Abnormal\":0}', '{\"Nil\":1,\"NSAIDS\":0,\"Analg\":0,\"Steroids\":0,\"Anticoag\":0,\"other\":\"\"}', '{\"Good\":0,\"Fair\":1,\"Poor\":0,\"GHealth\":\"\"}', '{\"Yes\":1,\"No\":0,\"imaging\":\"\"}', '{\"Yes\":0,\"No\":1,\"surgery\":\"\"}', '{\"Yes\":0,\"No\":1,\"nPain\":\"\"}', '{\"Yes\":0,\"No\":1,\"acc\":\"\"}', '{\"Yes\":0,\"No\":1,\"weight\":\"\",\"other1\":\"\"}', NULL, '{\"Good\":0,\"Fair\":1,\"poor\":0}', '{\"Red\":0,\"Acc\":0,\"Normal\":0}', '{\"Right\":0,\"Left\":0,\"Nil\":0}', 'NIL', 'NIL', '{\"0\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0},\"1\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0},\"2\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0},\"3\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0}}', '{\"0\":{\"During-test\":\"\",\"after-test\":\"\",\"m-rom-u\":\"\",\"m-rom-d\":\"\",\"m-noefect\":\"\"}}', '{\"Derangement\":1,\"Dysfunction\":0,\"Posture\":0,\"other\":\"\",\"painlocation\":\"LUMBAR L5S1, L3L4.\"}', '{\"Yes\":0,\"No\":0,\"therapy\":\"\"}'),
+(203, 547, '2021-01-27', '', '6', 'pain in low back , KNEE, NECK, SHOULDER, ELBOW , ANKLE,FINGERS', '{\"Improving\":0,\"Unchanging\":0,\"Worsening\":1,\"s\":\"\"}', 'NO AR', '{\"back\":0,\"thigh\":0,\"leg\":0,\"s1\":\"KNEE\"}', '{\"back\":0,\"thigh\":0,\"leg\":0,\"s2\":\"\"}', '{\"back\":0,\"thigh\":0,\"leg\":0,\"s3\":\"\"}', '{\"bending\":1,\"sitting\":1,\"standing\":0,\"walking\":0,\"lying\":0,\"thedayprogresses\":0,\"Whentill\":0,\"otherA\":\"\"}', '{\"bending\":0,\"sitting\":0,\"standing\":0,\"walking\":0,\"lying\":0,\"the day progresses\":0,\"Whenstill\":0,\"otherR\":\"\"}', '', '{\"Cough\":0,\"Sneeze\":0,\"Strain\":0,\"+ve\":0,\"-ve\":1}', '{\"Normal\":1,\"Abnormal\":0}', '{\"Nil\":1,\"NSAIDS\":0,\"Analg\":0,\"Steroids\":0,\"Anticoag\":0,\"other\":\"\"}', '{\"Good\":0,\"Fair\":1,\"Poor\":0,\"GHealth\":\"\"}', '{\"Yes\":1,\"No\":0,\"imaging\":\"DISC DEHYDRATION WITH ANNULAR  FISSURE L5S1\"}', '{\"Yes\":0,\"No\":1,\"surgery\":\"\"}', '{\"Yes\":0,\"No\":0,\"nPain\":\"\"}', '{\"Yes\":0,\"No\":1,\"acc\":\"\"}', '{\"Yes\":0,\"No\":0,\"weight\":\"\",\"other1\":\"\"}', NULL, '{\"Good\":0,\"Fair\":1,\"poor\":0}', '{\"Red\":0,\"Acc\":0,\"Normal\":0}', '{\"Right\":0,\"Left\":0,\"Nil\":0}', 'NIL', 'NIL', '{\"0\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0},\"1\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0},\"2\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0},\"3\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0}}', '{\"0\":{\"During-test\":\"\",\"after-test\":\"\",\"m-rom-u\":\"\",\"m-rom-d\":\"\",\"m-noefect\":\"\"}}', '{\"Derangement\":1,\"Dysfunction\":0,\"Posture\":0,\"other\":\"\",\"painlocation\":\"L5 S1\"}', '{\"Yes\":0,\"No\":0,\"therapy\":\"\"}'),
+(204, 532, '2021-01-27', '', '5', 'pain in low back  RADIATING TO R LEG, ', '{\"Improving\":0,\"Unchanging\":0,\"Worsening\":0,\"s\":\"1 MONTH\"}', 'NO AR, TRAVEL, LIFTED LOAD', '{\"back\":0,\"thigh\":0,\"leg\":0,\"s1\":\"\"}', '{\"back\":1,\"thigh\":0,\"leg\":0,\"s2\":\"\"}', '{\"back\":0,\"thigh\":0,\"leg\":0,\"s3\":\"\"}', '{\"bending\":0,\"sitting\":1,\"standing\":0,\"walking\":0,\"lying\":0,\"thedayprogresses\":0,\"Whentill\":0,\"otherA\":\"\"}', '{\"bending\":0,\"sitting\":0,\"standing\":0,\"walking\":0,\"lying\":0,\"the day progresses\":0,\"Whenstill\":0,\"otherR\":\"\"}', 'AYRUVEDIC TREATMENT', '{\"Cough\":0,\"Sneeze\":0,\"Strain\":0,\"+ve\":0,\"-ve\":1}', '{\"Normal\":1,\"Abnormal\":0}', '{\"Nil\":1,\"NSAIDS\":0,\"Analg\":0,\"Steroids\":0,\"Anticoag\":0,\"other\":\"\"}', '{\"Good\":0,\"Fair\":1,\"Poor\":0,\"GHealth\":\"\"}', '{\"Yes\":1,\"No\":0,\"imaging\":\"\"}', '{\"Yes\":0,\"No\":1,\"surgery\":\"\"}', '{\"Yes\":0,\"No\":1,\"nPain\":\"\"}', '{\"Yes\":0,\"No\":1,\"acc\":\"\"}', '{\"Yes\":0,\"No\":1,\"weight\":\"\",\"other1\":\"\"}', NULL, '{\"Good\":0,\"Fair\":1,\"poor\":0}', '{\"Red\":0,\"Acc\":0,\"Normal\":0}', '{\"Right\":0,\"Left\":0,\"Nil\":0}', 'NIL', 'NIL', '{\"0\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":1},\"1\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":1},\"2\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":1},\"3\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":1}}', '{\"0\":{\"During-test\":\"\",\"after-test\":\"\",\"m-rom-u\":\"\",\"m-rom-d\":\"\",\"m-noefect\":\"\"}}', '{\"Derangement\":1,\"Dysfunction\":0,\"Posture\":0,\"other\":\"\",\"painlocation\":\"LUMBAR L5 S1\"}', '{\"Yes\":0,\"No\":0,\"therapy\":\"\"}'),
+(205, 553, '2021-01-27', '', '6', 'pain in low back ,', '{\"Improving\":0,\"Unchanging\":0,\"Worsening\":0,\"s\":\"10YRS\"}', 'NO AR, DRIVER', '{\"back\":1,\"thigh\":0,\"leg\":0,\"s1\":\"\"}', '{\"back\":1,\"thigh\":0,\"leg\":0,\"s2\":\"\"}', '{\"back\":0,\"thigh\":0,\"leg\":0,\"s3\":\"\"}', '{\"bending\":0,\"sitting\":1,\"standing\":0,\"walking\":0,\"lying\":0,\"thedayprogresses\":0,\"Whentill\":0,\"otherA\":\"LEFT SIDE SHIFT\"}', '{\"bending\":0,\"sitting\":1,\"standing\":0,\"walking\":0,\"lying\":0,\"the day progresses\":0,\"Whenstill\":0,\"otherR\":\"\"}', 'TOOK ALL TREATENTS ALL THESE YEARS', '{\"Cough\":0,\"Sneeze\":0,\"Strain\":0,\"+ve\":0,\"-ve\":1}', '{\"Normal\":1,\"Abnormal\":0}', '{\"Nil\":1,\"NSAIDS\":0,\"Analg\":0,\"Steroids\":0,\"Anticoag\":0,\"other\":\"\"}', '{\"Good\":0,\"Fair\":0,\"Poor\":0,\"GHealth\":\"\"}', '{\"Yes\":1,\"No\":0,\"imaging\":\"LARGE DISC PROTRUSION AT L4L5 DISC DEHYDRATION AT L5S1\"}', '{\"Yes\":0,\"No\":1,\"surgery\":\"\"}', '{\"Yes\":0,\"No\":0,\"nPain\":\"\"}', '{\"Yes\":0,\"No\":1,\"acc\":\"\"}', '{\"Yes\":0,\"No\":0,\"weight\":\"\",\"other1\":\"\"}', NULL, '{\"Good\":0,\"Fair\":0,\"poor\":0}', '{\"Red\":0,\"Acc\":0,\"Normal\":0}', '{\"Right\":0,\"Left\":0,\"Nil\":0}', 'NIL', 'NIL', '{\"0\":{\"maj\":0,\"mod\":1,\"min\":1,\"nil\":0,\"pain\":0},\"1\":{\"maj\":0,\"mod\":1,\"min\":0,\"nil\":0,\"pain\":0},\"2\":{\"maj\":0,\"mod\":1,\"min\":0,\"nil\":0,\"pain\":0},\"3\":{\"maj\":0,\"mod\":1,\"min\":0,\"nil\":0,\"pain\":0}}', '{\"0\":{\"During-test\":\"\",\"after-test\":\"\",\"m-rom-u\":\"\",\"m-rom-d\":\"\",\"m-noefect\":\"\"}}', '{\"Derangement\":1,\"Dysfunction\":0,\"Posture\":0,\"other\":\"\",\"painlocation\":\"L4L5 PROTRUSION\"}', '{\"Yes\":0,\"No\":0,\"therapy\":\"\"}'),
+(206, 539, '2021-01-27', '', '7', 'pain in low back ', '{\"Improving\":0,\"Unchanging\":0,\"Worsening\":0,\"s\":\"4 YEAR\"}', 'NO AR', '{\"back\":1,\"thigh\":0,\"leg\":0,\"s1\":\"\"}', '{\"back\":1,\"thigh\":0,\"leg\":0,\"s2\":\"\"}', '{\"back\":0,\"thigh\":0,\"leg\":0,\"s3\":\"\"}', '{\"bending\":0,\"sitting\":1,\"standing\":0,\"walking\":0,\"lying\":0,\"thedayprogresses\":0,\"Whentill\":0,\"otherA\":\"\"}', '{\"bending\":0,\"sitting\":0,\"standing\":0,\"walking\":0,\"lying\":0,\"the day progresses\":0,\"Whenstill\":0,\"otherR\":\"\"}', '', '{\"Cough\":0,\"Sneeze\":0,\"Strain\":0,\"+ve\":0,\"-ve\":1}', '{\"Normal\":1,\"Abnormal\":0}', '{\"Nil\":1,\"NSAIDS\":0,\"Analg\":0,\"Steroids\":0,\"Anticoag\":0,\"other\":\"\"}', '{\"Good\":0,\"Fair\":1,\"Poor\":0,\"GHealth\":\"\"}', '{\"Yes\":1,\"No\":0,\"imaging\":\"\"}', '{\"Yes\":0,\"No\":1,\"surgery\":\"\"}', '{\"Yes\":0,\"No\":1,\"nPain\":\"\"}', '{\"Yes\":0,\"No\":1,\"acc\":\"\"}', '{\"Yes\":0,\"No\":1,\"weight\":\"\",\"other1\":\"\"}', NULL, '{\"Good\":0,\"Fair\":1,\"poor\":0}', '{\"Red\":1,\"Acc\":0,\"Normal\":1}', '{\"Right\":0,\"Left\":0,\"Nil\":0}', 'NIL', 'NIL', '{\"0\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0},\"1\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0},\"2\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0},\"3\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0}}', '{\"0\":{\"During-test\":\"\",\"after-test\":\"\",\"m-rom-u\":\"\",\"m-rom-d\":\"\",\"m-noefect\":\"\"}}', '{\"Derangement\":1,\"Dysfunction\":0,\"Posture\":0,\"other\":\"\",\"painlocation\":\"LBA\"}', '{\"Yes\":0,\"No\":0,\"therapy\":\"\"}'),
+(207, 562, '2021-02-09', '', '4', 'pain in low back , radiATING TO RIGHT LEG', '{\"Improving\":0,\"Unchanging\":0,\"Worsening\":0,\"s\":\"4 YEARS\"}', 'H/O FALL', '{\"back\":1,\"thigh\":0,\"leg\":0,\"s1\":\"\"}', '{\"back\":1,\"thigh\":1,\"leg\":1,\"s2\":\"\"}', '{\"back\":0,\"thigh\":0,\"leg\":0,\"s3\":\"\"}', '{\"bending\":0,\"sitting\":1,\"standing\":1,\"walking\":0,\"lying\":0,\"thedayprogresses\":0,\"Whentill\":0,\"otherA\":\"\"}', '{\"bending\":0,\"sitting\":0,\"standing\":0,\"walking\":1,\"lying\":0,\"the day progresses\":0,\"Whenstill\":0,\"otherR\":\"\"}', 'INJECTIONS AND MEDICATIONS', '{\"Cough\":0,\"Sneeze\":0,\"Strain\":0,\"+ve\":0,\"-ve\":1}', '{\"Normal\":1,\"Abnormal\":0}', '{\"Nil\":0,\"NSAIDS\":0,\"Analg\":0,\"Steroids\":0,\"Anticoag\":0,\"other\":\"\"}', '{\"Good\":0,\"Fair\":1,\"Poor\":0,\"GHealth\":\"\"}', '{\"Yes\":0,\"No\":1,\"imaging\":\"\"}', '{\"Yes\":0,\"No\":1,\"surgery\":\"\"}', '{\"Yes\":0,\"No\":1,\"nPain\":\"\"}', '{\"Yes\":0,\"No\":1,\"acc\":\"\"}', '{\"Yes\":0,\"No\":1,\"weight\":\"\",\"other1\":\"\"}', NULL, '{\"Good\":0,\"Fair\":1,\"poor\":0}', '{\"Red\":1,\"Acc\":0,\"Normal\":0}', '{\"Right\":0,\"Left\":0,\"Nil\":0}', 'NIL', 'NIL', '{\"0\":{\"maj\":0,\"mod\":1,\"min\":0,\"nil\":0,\"pain\":1},\"1\":{\"maj\":0,\"mod\":1,\"min\":0,\"nil\":0,\"pain\":0},\"2\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0},\"3\":{\"maj\":0,\"mod\":0,\"min\":1,\"nil\":0,\"pain\":0}}', '{\"0\":{\"During-test\":\"\",\"after-test\":\"\",\"m-rom-u\":\"\",\"m-rom-d\":\"\",\"m-noefect\":\"\"}}', '{\"Derangement\":1,\"Dysfunction\":0,\"Posture\":0,\"other\":\"\",\"painlocation\":\"LUMBAR L5 S1\"}', '{\"Yes\":0,\"No\":0,\"therapy\":\"\"}'),
+(208, 565, '2021-02-09', '', '', 'INABILITY TO WALK WITHOUT SUPPORT', '{\"Improving\":0,\"Unchanging\":0,\"Worsening\":0,\"s\":\"2007\"}', 'TUMOUR NEUROFIBROMA AT D12', '{\"back\":1,\"thigh\":0,\"leg\":0,\"s1\":\"\"}', '{\"back\":0,\"thigh\":0,\"leg\":0,\"s2\":\"\"}', '{\"back\":0,\"thigh\":0,\"leg\":0,\"s3\":\"\"}', '{\"bending\":0,\"sitting\":0,\"standing\":0,\"walking\":0,\"lying\":0,\"thedayprogresses\":0,\"Whentill\":0,\"otherA\":\"\"}', '{\"bending\":0,\"sitting\":0,\"standing\":0,\"walking\":0,\"lying\":0,\"the day progresses\":0,\"Whenstill\":0,\"otherR\":\"\"}', '', '{\"Cough\":0,\"Sneeze\":0,\"Strain\":0,\"+ve\":0,\"-ve\":0}', '{\"Normal\":0,\"Abnormal\":0}', '{\"Nil\":0,\"NSAIDS\":0,\"Analg\":0,\"Steroids\":0,\"Anticoag\":0,\"other\":\"\"}', '{\"Good\":0,\"Fair\":0,\"Poor\":0,\"GHealth\":\"\"}', '{\"Yes\":0,\"No\":0,\"imaging\":\"\"}', '{\"Yes\":0,\"No\":0,\"surgery\":\"\"}', '{\"Yes\":0,\"No\":0,\"nPain\":\"\"}', '{\"Yes\":0,\"No\":0,\"acc\":\"\"}', '{\"Yes\":0,\"No\":0,\"weight\":\"\",\"other1\":\"\"}', NULL, '{\"Good\":0,\"Fair\":0,\"poor\":0}', '{\"Red\":0,\"Acc\":0,\"Normal\":0}', '{\"Right\":0,\"Left\":0,\"Nil\":0}', '', '', '{\"0\":{\"maj\":0,\"mod\":0,\"min\":0,\"nil\":0,\"pain\":0},\"1\":{\"maj\":0,\"mod\":0,\"min\":0,\"nil\":0,\"pain\":0},\"2\":{\"maj\":0,\"mod\":0,\"min\":0,\"nil\":0,\"pain\":0},\"3\":{\"maj\":0,\"mod\":0,\"min\":0,\"nil\":0,\"pain\":0}}', '{\"0\":{\"During-test\":\"\",\"after-test\":\"\",\"m-rom-u\":\"\",\"m-rom-d\":\"\",\"m-noefect\":\"\"}}', '{\"Derangement\":0,\"Dysfunction\":0,\"Posture\":0,\"other\":\"NEED NEURO REHAB\",\"painlocation\":\"SENSORY LOSS BOTH LEGS\"}', '{\"Yes\":0,\"No\":0,\"therapy\":\"\"}'),
+(209, 564, '2021-02-09', '', ' 6', 'PAIN IN THE LOW BACK RADIATING TO  LEFT LEG', '{\"Improving\":0,\"Unchanging\":0,\"Worsening\":0,\"s\":\"5 YEARS\"}', 'LIFTED LOAD  AND WORK RELATED', '{\"back\":1,\"thigh\":0,\"leg\":0,\"s1\":\"\"}', '{\"back\":1,\"thigh\":1,\"leg\":0,\"s2\":\"\"}', '{\"back\":0,\"thigh\":0,\"leg\":0,\"s3\":\"\"}', '{\"bending\":0,\"sitting\":1,\"standing\":1,\"walking\":1,\"lying\":0,\"thedayprogresses\":0,\"Whentill\":0,\"otherA\":\"\"}', '{\"bending\":0,\"sitting\":0,\"standing\":0,\"walking\":0,\"lying\":0,\"the day progresses\":0,\"Whenstill\":0,\"otherR\":\"\"}', 'MS RELAXANT INJECTION', '{\"Cough\":0,\"Sneeze\":0,\"Strain\":0,\"+ve\":0,\"-ve\":1}', '{\"Normal\":1,\"Abnormal\":0}', '{\"Nil\":1,\"NSAIDS\":0,\"Analg\":0,\"Steroids\":0,\"Anticoag\":0,\"other\":\"\"}', '{\"Good\":0,\"Fair\":1,\"Poor\":0,\"GHealth\":\"\"}', '{\"Yes\":1,\"No\":0,\"imaging\":\"DISC EXTRUSION AT L5S1 LEVEL AND EARLY SPONDYLOTIC CHANGES WITH STENOSIS\"}', '{\"Yes\":0,\"No\":1,\"surgery\":\"\"}', '{\"Yes\":0,\"No\":1,\"nPain\":\"\"}', '{\"Yes\":0,\"No\":1,\"acc\":\"\"}', '{\"Yes\":0,\"No\":1,\"weight\":\"\",\"other1\":\"\"}', NULL, '{\"Good\":0,\"Fair\":0,\"poor\":0}', '{\"Red\":0,\"Acc\":0,\"Normal\":0}', '{\"Right\":0,\"Left\":0,\"Nil\":0}', 'NIL', 'NIL', '{\"0\":{\"maj\":0,\"mod\":1,\"min\":0,\"nil\":0,\"pain\":0},\"1\":{\"maj\":0,\"mod\":1,\"min\":0,\"nil\":0,\"pain\":0},\"2\":{\"maj\":0,\"mod\":1,\"min\":0,\"nil\":0,\"pain\":0},\"3\":{\"maj\":0,\"mod\":1,\"min\":0,\"nil\":0,\"pain\":0}}', '{\"0\":{\"During-test\":\"\",\"after-test\":\"\",\"m-rom-u\":\"\",\"m-rom-d\":\"\",\"m-noefect\":\"\"}}', '{\"Derangement\":1,\"Dysfunction\":0,\"Posture\":0,\"other\":\"\",\"painlocation\":\"LUMBAR STENOSIS \"}', '{\"Yes\":0,\"No\":0,\"therapy\":\"\"}');
 
 -- --------------------------------------------------------
 
@@ -54729,14 +54966,14 @@ CREATE TABLE `medicine_master` (
   `type` varchar(30) NOT NULL,
   `name` varchar(100) NOT NULL,
   `genName` varchar(200) NOT NULL,
-  `morning` int(11) NOT NULL DEFAULT 1,
-  `noon` int(11) NOT NULL DEFAULT 1,
-  `night` int(11) NOT NULL DEFAULT 1,
+  `morning` int(11) NOT NULL DEFAULT '1',
+  `noon` int(11) NOT NULL DEFAULT '1',
+  `night` int(11) NOT NULL DEFAULT '1',
   `dosage` varchar(100) NOT NULL,
   `instruction` varchar(300) NOT NULL,
-  `days` int(11) NOT NULL DEFAULT 0,
-  `isImportant` int(11) NOT NULL DEFAULT 0,
-  `isActive` int(11) NOT NULL DEFAULT 1
+  `days` int(11) NOT NULL DEFAULT '0',
+  `isImportant` int(11) NOT NULL DEFAULT '0',
+  `isActive` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -56909,7 +57146,7 @@ INSERT INTO `medicine_master` (`medicineId`, `type`, `name`, `genName`, `morning
 CREATE TABLE `medicine_type` (
   `medicineTypeId` int(11) NOT NULL,
   `type` varchar(100) NOT NULL,
-  `isActive` int(11) NOT NULL DEFAULT 1
+  `isActive` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -56951,16 +57188,16 @@ CREATE TABLE `neck_disability_index` (
   `ndisabilityId` int(11) NOT NULL,
   `patientId` int(11) DEFAULT NULL,
   `visitDate` date DEFAULT NULL,
-  `painIntensity` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `personalCare` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `lifting` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `work` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `headaches` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `concentration` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `sleeping` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `driving` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `reading` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `recreation` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL
+  `painIntensity` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `personalCare` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `lifting` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `work` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `headaches` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `concentration` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `sleeping` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `driving` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `reading` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `recreation` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -57138,9 +57375,9 @@ CREATE TABLE `opd_patient_payment_master` (
   `pending` float NOT NULL,
   `visitDate` date NOT NULL,
   `createdBy` int(11) DEFAULT NULL,
-  `createdAt` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `isDeleted` int(11) NOT NULL DEFAULT 1,
-  `isPackage` int(11) NOT NULL DEFAULT 0,
+  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `isDeleted` int(11) NOT NULL DEFAULT '1',
+  `isPackage` int(11) NOT NULL DEFAULT '0',
   `packageId` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -57676,7 +57913,7 @@ INSERT INTO `opd_patient_payment_master` (`paymentId`, `recieptId`, `branchId`, 
 (545, 162, 9, 377, 34, 4000, 3000, NULL, 25, 1000, 2000, '2020-12-17', 36, '2020-12-18 07:47:48', 1, 0, NULL),
 (546, 250, 1, 444, 1, 400, 400, NULL, 0, 400, 0, '2020-12-18', 27, '2020-12-18 08:52:43', 1, 0, NULL),
 (547, 251, 1, 360, 1, 2000, 2000, NULL, 0, 2000, 0, '2020-12-19', 27, '2020-12-19 01:07:54', 1, 0, NULL),
-(548, 163, 9, 445, 34, 40000, 32000, NULL, 20, 12000, 10000, '2020-12-18', 36, '2021-01-06 05:13:47', 1, 1, 32),
+(548, 163, 9, 445, 34, 40000, 32000, NULL, 20, 10000, 0, '2020-12-18', 36, '2021-02-02 11:40:14', 1, 1, 32),
 (549, 252, 1, 368, 1, 400, 400, NULL, 0, 400, 0, '2020-12-19', 27, '2020-12-19 04:05:28', 1, 0, NULL),
 (550, 253, 1, 424, 1, 2000, 2000, NULL, 0, 2000, 0, '2020-12-19', 27, '2020-12-19 04:37:50', 1, 0, NULL),
 (551, 254, 1, 447, 1, 400, 400, NULL, 0, 400, 0, '2020-12-19', 27, '2020-12-19 08:02:57', 1, 0, NULL),
@@ -57688,7 +57925,7 @@ INSERT INTO `opd_patient_payment_master` (`paymentId`, `recieptId`, `branchId`, 
 (557, 257, 1, 424, 1, 2000, 2000, NULL, 0, 2000, 0, '2020-12-21', 27, '2020-12-21 02:46:10', 1, 0, NULL),
 (558, 117, 10, 443, 25, 7200, 7000.56, NULL, 2.77, 7000, 0.560059, '2020-12-23', 40, '2020-12-23 06:32:58', 1, 0, NULL),
 (559, 258, 1, 456, 1, 500, 500, NULL, 0, 500, 0, '2020-12-24', 27, '2020-12-24 04:46:12', 1, 0, NULL),
-(560, 165, 9, 449, 34, 36000, 27000, NULL, 25, 10000, 7000, '2020-12-21', 36, '2021-01-12 01:16:25', 1, 1, 25),
+(560, 165, 9, 449, 34, 36000, 27000, NULL, 25, 7000, 0, '2020-12-21', 36, '2021-01-25 18:38:52', 1, 1, 25),
 (561, 166, 9, 452, 34, 1000, 700, NULL, 30, 700, 0, '2020-12-21', 36, '2020-12-24 08:41:12', 1, 0, NULL),
 (562, 259, 1, 460, 1, 400, 400, NULL, 0, 400, 0, '2020-12-26', 27, '2020-12-26 01:29:14', 1, 0, NULL),
 (563, 118, 10, 458, 33, 400, 400, NULL, 0, 400, 0, '2020-12-26', 40, '2020-12-26 01:51:33', 1, 0, NULL),
@@ -57719,7 +57956,7 @@ INSERT INTO `opd_patient_payment_master` (`paymentId`, `recieptId`, `branchId`, 
 (588, 270, 1, 487, 1, 500, 500, NULL, 0, 500, 0, '2021-01-04', 27, '2021-01-04 08:06:11', 1, 0, NULL),
 (589, 271, 1, 494, 1, 400, 400, NULL, 0, 400, 0, '2021-01-04', 27, '2021-01-04 09:20:45', 1, 0, NULL),
 (590, 272, 1, 496, 1, 400, 400, NULL, 0, 400, 0, '2021-01-04', 27, '2021-01-04 09:22:28', 1, 0, NULL),
-(591, 173, 9, 455, 34, 36000, 22500, NULL, 37.5, 6000, 10500, '2021-01-05', 36, '2021-01-12 01:59:22', 1, 1, 25),
+(591, 173, 9, 455, 34, 36000, 22500, NULL, 37.5, 6000, 4500, '2021-01-05', 36, '2021-01-28 11:10:17', 1, 1, 25),
 (592, 127, 10, 497, 25, 10000, 8000, NULL, 20, 1600, 0, '2021-01-05', 25, '2021-01-12 02:42:07', 1, 1, 31),
 (593, 273, 1, 487, 1, 500, 500, NULL, 0, 500, 0, '2021-01-05', 27, '2021-01-05 06:15:28', 1, 0, NULL),
 (594, 174, 9, 498, 34, 400, 300, NULL, 25, 300, 0, '2021-01-05', 34, '2021-01-05 06:51:24', 1, 0, NULL),
@@ -57758,7 +57995,7 @@ INSERT INTO `opd_patient_payment_master` (`paymentId`, `recieptId`, `branchId`, 
 (627, 292, 1, 517, 1, 1000, 800, NULL, 20, 800, 0, '2021-01-12', 27, '2021-01-12 05:07:56', 1, 0, NULL),
 (628, 293, 1, 374, 1, 3500, 3010, NULL, 14, 3010, 0, '2021-01-12', 27, '2021-01-12 06:54:59', 1, 0, NULL),
 (629, 178, 9, 389, 34, 17500, 10500, NULL, 40, 10500, 0, '2021-01-07', 36, '2021-01-12 07:34:47', 1, 0, NULL),
-(630, 179, 9, 474, 34, 36000, 20160, NULL, 44, 5000, 15160, '2021-01-07', 36, '2021-01-12 07:58:56', 1, 1, 25),
+(630, 179, 9, 474, 34, 36000, 20160, NULL, 44, 10000, 160, '2021-01-07', 36, '2021-02-01 14:14:06', 1, 1, 25),
 (631, 139, 10, 518, 25, 400, 400, NULL, 0, 400, 0, '2021-01-12', 40, '2021-01-16 07:57:40', 0, 0, NULL),
 (632, 294, 1, 512, 1, 500, 500, NULL, 0, 500, 0, '2021-01-12', 27, '2021-01-12 08:38:24', 1, 0, NULL),
 (633, 140, 10, 514, 25, 3000, 3000, NULL, 0, 0, 3000, '2021-01-13', 40, '2021-01-13 01:56:35', 0, 0, NULL),
@@ -57769,7 +58006,7 @@ INSERT INTO `opd_patient_payment_master` (`paymentId`, `recieptId`, `branchId`, 
 (638, 298, 1, 517, 1, 1000, 800, NULL, 20, 800, 0, '2021-01-13', 27, '2021-01-13 05:17:27', 1, 0, NULL),
 (639, 142, 10, 507, 25, 30000, 0, NULL, 0, 15000, 0, '2021-01-13', 25, '2021-01-13 06:13:32', 0, 1, 38),
 (640, 143, 10, 514, 25, 3500, 0.65, NULL, 11.41, 3100, 0.65, '2021-01-13', 40, '2021-01-13 06:24:42', 0, 0, NULL),
-(641, 144, 10, 507, 25, 37500, 30000, NULL, 20, 15000, 15000, '2021-01-13', 25, '2021-01-13 06:17:17', 1, 0, NULL),
+(641, 144, 10, 507, 25, 37500, 30000, NULL, 20, 15000, 0, '2021-01-13', 25, '2021-02-06 18:03:17', 1, 0, NULL),
 (642, 145, 10, 514, 25, 3500, 3100.65, NULL, 11.41, 3100.65, -0.0000976563, '2021-01-13', 40, '2021-01-13 06:26:19', 1, 0, NULL),
 (643, 146, 10, 520, 25, 400, 400, NULL, 0, 400, 0, '2021-01-13', 40, '2021-01-13 06:59:12', 1, 0, NULL),
 (644, 147, 10, 518, 25, 40000, 35000, NULL, 12.5, 30000, 0, '2021-01-13', 40, '2021-01-16 07:58:21', 1, 1, 32),
@@ -57804,7 +58041,7 @@ INSERT INTO `opd_patient_payment_master` (`paymentId`, `recieptId`, `branchId`, 
 (673, 152, 10, 536, 25, 400, 400, NULL, 0, 400, 0, '2021-01-18', 40, '2021-01-18 02:01:32', 1, 0, NULL),
 (674, 321, 1, 535, 1, 3000, 3000, NULL, 0, 3000, 0, '2021-01-18', 27, '2021-01-18 02:25:13', 1, 0, NULL),
 (675, 322, 1, 517, 1, 1000, 800, NULL, 20, 800, 0, '2021-01-18', 27, '2021-01-18 05:39:37', 1, 0, NULL),
-(676, 153, 10, 527, 25, 6800, 0, NULL, 48.97, 5000.94, 0, '2021-01-18', 40, '2021-01-18 07:46:11', 1, 0, NULL),
+(676, 153, 10, 527, 25, 6800, 0, NULL, 48.97, 5000.94, 0, '2021-01-18', 40, '2021-01-27 12:08:24', 0, 0, NULL),
 (677, 323, 1, 517, 1, 1000, 800, NULL, 20, 800, 0, '2021-01-19', 27, '2021-01-19 12:34:41', 1, 0, NULL),
 (678, 324, 1, 535, 1, 3000, 3000, NULL, 0, 3000, 0, '2021-01-19', 27, '2021-01-19 12:48:18', 0, 0, NULL),
 (679, 325, 1, 535, 1, 3000, 3000, NULL, 0, 3000, 0, '2021-01-19', 27, '2021-01-19 12:49:10', 1, 0, NULL),
@@ -57822,7 +58059,50 @@ INSERT INTO `opd_patient_payment_master` (`paymentId`, `recieptId`, `branchId`, 
 (691, 333, 1, 517, 1, 1000, 800, NULL, 20, 800, 0, '2021-01-22', 27, '2021-01-22 18:50:12', 1, 0, NULL),
 (692, 334, 1, 549, 1, 21000, 19950, NULL, 5, 19950, 0, '2021-01-23', 27, '2021-01-23 13:54:19', 1, 0, NULL),
 (693, 335, 1, 517, 1, 1000, 800, NULL, 20, 800, 0, '2021-01-23', 27, '2021-01-23 17:45:26', 1, 0, NULL),
-(694, 336, 1, 552, 1, 400, 360, NULL, 10, 360, 0, '2021-01-23', 1, '2021-01-23 20:34:59', 1, 0, NULL);
+(694, 336, 1, 535, 1, 9000, 9000, NULL, 0, 9000, 0, '2021-01-25', 27, '2021-01-25 12:58:30', 1, 0, NULL),
+(695, 184, 9, 555, 34, 36000, 23004, NULL, 36.1, 23004, 0, '2021-01-25', 36, '2021-01-25 17:29:05', 1, 1, 25),
+(696, 156, 10, 527, 25, 3600, 2500.2, NULL, 30.55, 2500, 0.199951, '2021-01-27', 40, '2021-01-27 12:08:42', 1, 0, NULL),
+(697, 337, 1, 552, 1, 3000, 2010, NULL, 33, 2010, 0, '2021-01-27', 27, '2021-01-27 12:15:24', 1, 0, NULL),
+(698, 338, 1, 535, 1, 3000, 3000, NULL, 0, 3000, 0, '2021-01-27', 27, '2021-01-27 12:50:29', 1, 0, NULL),
+(699, 339, 1, 558, 1, 17500, 14000, NULL, 20, 14000, 0, '2021-01-28', 27, '2021-01-28 12:37:21', 1, 0, NULL),
+(700, 157, 10, 559, 25, 400, 400, NULL, 0, 400, 0, '2021-01-28', 40, '2021-01-28 16:12:44', 1, 0, NULL),
+(701, 158, 10, 560, 25, 900, 700.2, NULL, 22.2, 700.2, 0.000012207, '2021-01-28', 40, '2021-01-28 16:24:34', 1, 0, NULL),
+(702, 340, 1, 535, 1, 3000, 3000, NULL, 0, 0, 3000, '2021-01-30', 27, '2021-01-30 13:12:53', 0, 0, NULL),
+(703, 341, 1, 535, 1, 6000, 6000, NULL, 0, 6000, 0, '2021-01-30', 27, '2021-01-30 13:14:22', 1, 0, NULL),
+(704, 342, 1, 567, 1, 500, 500, NULL, 0, 500, 0, '2021-01-30', 27, '2021-01-30 14:33:31', 1, 0, NULL),
+(705, 343, 1, 535, 1, 3000, 3000, NULL, 0, 3000, 0, '2021-02-01', 27, '2021-02-01 13:46:28', 1, 0, NULL),
+(706, 344, 1, 567, 1, 500, 500, NULL, 0, 500, 0, '2021-02-01', 27, '2021-02-01 15:43:24', 1, 0, NULL),
+(707, 185, 9, 553, 34, 36000, 24516, NULL, 31.9, 19500, 16, '2021-02-01', 36, '2021-02-02 16:46:56', 1, 1, 25),
+(708, 345, 1, 460, 1, 500, 500, NULL, 0, 500, 0, '2021-02-01', 27, '2021-02-01 18:46:26', 1, 0, NULL),
+(709, 159, 10, 485, 25, 30000, 30000, NULL, 0, 4000, 24000, '2021-02-02', 40, '2021-02-03 13:30:35', 1, 1, 38),
+(710, 346, 1, 535, 1, 3000, 3000, NULL, 0, 3000, 0, '2021-02-02', 27, '2021-02-02 12:20:45', 1, 0, NULL),
+(711, 186, 9, 564, 34, 36000, 23040, NULL, 36, 20000, 40, '2002-01-01', 36, '2021-02-02 13:30:28', 1, 1, 25),
+(712, 347, 1, 569, 1, 400, 400, NULL, 0, 400, 0, '2021-02-02', 27, '2021-02-02 14:02:09', 1, 0, NULL),
+(713, 348, 1, 567, 1, 500, 500, NULL, 0, 500, 0, '2021-02-02', 27, '2021-02-02 15:35:35', 1, 0, NULL),
+(714, 349, 1, 418, 1, 400, 400, NULL, 0, 400, 0, '2021-02-02', 27, '2021-02-02 17:12:52', 1, 0, NULL),
+(715, 350, 1, 535, 1, 3000, 3000, NULL, 0, 3000, 0, '2021-02-03', 27, '2021-02-03 12:34:45', 1, 0, NULL),
+(716, 160, 10, 485, 25, 400, 400, NULL, 0, 0, 400, '2021-02-03', 40, '2021-02-03 13:29:30', 0, 0, NULL),
+(717, 351, 1, 567, 1, 500, 500, NULL, 0, 500, 0, '2021-02-03', 27, '2021-02-03 15:31:58', 1, 0, NULL),
+(718, 161, 10, 571, 25, 400, 400, NULL, 0, 400, 0, '2021-02-03', 40, '2021-02-03 16:02:17', 1, 0, NULL),
+(719, 162, 10, 572, 25, 400, 400, NULL, 0, 400, 0, '2021-02-03', 40, '2021-02-03 18:31:53', 1, 0, NULL),
+(720, 352, 1, 573, 1, 400, 400, NULL, 0, 400, 0, '2021-02-03', 27, '2021-02-03 18:45:29', 1, 0, NULL),
+(721, 353, 1, 574, 1, 400, 400, NULL, 0, 400, 0, '2021-02-03', 27, '2021-02-03 19:06:35', 1, 0, NULL),
+(722, 354, 1, 535, 1, 3000, 3000, NULL, 0, 3000, 0, '2021-02-04', 27, '2021-02-04 12:25:06', 1, 0, NULL),
+(723, 355, 1, 575, 1, 500, 500, NULL, 0, 500, 0, '2021-02-04', 27, '2021-02-04 16:11:38', 1, 0, NULL),
+(724, 187, 9, 576, 34, 36000, 25560, NULL, 29, 25500, 60, '2002-01-01', 36, '2021-02-05 13:54:22', 1, 1, 25),
+(725, 163, 10, 577, 25, 400, 400, NULL, 0, 400, 0, '2021-02-05', 40, '2021-02-05 14:21:40', 1, 0, NULL),
+(726, 356, 1, 535, 1, 3000, 3000, NULL, 0, 3000, 0, '2021-02-05', 27, '2021-02-05 14:49:35', 1, 0, NULL),
+(727, 164, 10, 579, 25, 800, 400, NULL, 0, 400, 0, '2021-02-06', 40, '2021-02-06 11:33:39', 1, 0, NULL),
+(728, 165, 10, 507, 25, 400, 400, NULL, 0, 0, 400, '2021-02-06', 40, '2021-02-06 17:55:54', 0, 0, NULL),
+(729, 166, 10, 507, 25, 400, 400, NULL, 0, 0, 400, '2021-02-06', 40, '2021-02-06 18:05:04', 0, 0, NULL),
+(730, 167, 10, 507, 25, 2800, 2500.4, NULL, 10.7, 2500.4, -0.0000976563, '2021-02-06', 40, '2021-02-06 18:17:16', 1, 0, NULL),
+(731, 168, 10, 583, 25, 900, 900, NULL, 0, 900, 0, '2021-02-08', 40, '2021-02-08 10:58:11', 1, 0, NULL),
+(732, 357, 1, 584, 1, 400, 400, NULL, 0, 400, 0, '2021-02-08', 27, '2021-02-08 12:15:10', 1, 0, NULL),
+(733, 358, 1, 535, 1, 3000, 3000, NULL, 0, 3000, 0, '2021-02-08', 27, '2021-02-08 15:57:38', 1, 0, NULL),
+(734, 359, 1, 586, 1, 400, 400, NULL, 0, 400, 0, '2021-02-08', 27, '2021-02-08 17:20:48', 1, 0, NULL),
+(735, 188, 9, 581, 34, 5000, 5000, NULL, 0, 500, 4500, '2021-02-08', 36, '2021-02-08 17:59:03', 1, 0, NULL),
+(736, 360, 1, 535, 1, 3000, 3000, NULL, 0, 3000, 0, '2021-02-09', 27, '2021-02-09 16:43:27', 1, 0, NULL),
+(737, 361, 1, 589, 1, 4000, 3520, NULL, 12, 3520, 0, '2021-02-09', 27, '2021-02-09 17:17:50', 1, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -58556,34 +58836,82 @@ INSERT INTO `opd_payment_transaction_master` (`transactionId`, `paymentId`, `old
 (717, 691, 800, 0, 800, 'PhonePay', '', '2021-01-22', 'Prajakta Tamhankar'),
 (718, 692, 19950, 0, 19950, 'Card', '100000383815533', '2021-01-23', 'Prajakta Tamhankar'),
 (719, 693, 800, 0, 800, 'Cash', '', '2021-01-23', 'Prajakta Tamhankar'),
-(720, 694, 360, 0, 360, 'Cash', '', '2021-01-23', 'Dr. Pradyna Pansare');
+(720, 694, 9000, 0, 9000, 'Card', '100000384307804', '2021-01-25', 'Prajakta Tamhankar'),
+(721, 695, 23004, 0, 23004, 'Card', '2012', '2021-01-25', 'Mary Roshmy T. A.'),
+(722, 560, 7000, 0, 7000, 'Card', '3352', '2021-01-25', 'Mary Roshmy T. A.'),
+(723, 696, 2500.2, 0.2, 2500, 'Cash', '', '2021-01-27', 'Archana Vikas Lokhande'),
+(724, 697, 2010, 0, 2010, 'PhonePay', '', '2021-01-27', 'Prajakta Tamhankar'),
+(725, 698, 3000, 0, 3000, 'Card', '100000384758934', '2021-01-27', 'Prajakta Tamhankar'),
+(726, 630, 15160, 10160, 5000, 'Card', '4157', '2021-01-27', 'Dr. Abhirami J'),
+(727, 591, 10500, 4500, 6000, 'Card', '7888', '2021-01-28', 'Mary Roshmy T. A.'),
+(728, 699, 14000, 0, 14000, 'Card', '100000384970468', '2021-01-28', 'Prajakta Tamhankar'),
+(729, 700, 400, 0, 400, 'PhonePay', '250121', '2021-01-28', 'Archana Vikas Lokhande'),
+(730, 701, 700.2, 0, 700.2, 'PhonePay', 'T2101251206564106079782', '2021-01-28', 'Archana Vikas Lokhande'),
+(731, 703, 6000, 0, 6000, 'Card', '100000385414999', '2021-01-30', 'Prajakta Tamhankar'),
+(732, 704, 500, 0, 500, 'PhonePay', '', '2021-01-30', 'Prajakta Tamhankar'),
+(733, 705, 3000, 0, 3000, 'Card', '100000385912745', '2021-02-01', 'Prajakta Tamhankar'),
+(734, 630, 10160, 160, 10000, 'Cash', '', '2021-02-01', 'Mary Roshmy T. A.'),
+(735, 706, 500, 0, 500, 'PhonePay', '', '2021-02-01', 'Prajakta Tamhankar'),
+(736, 707, 24516, 19516, 5000, 'Card', '9092', '2021-02-01', 'Mary Roshmy T. A.'),
+(737, 708, 500, 0, 500, 'Cash', '', '2021-02-01', 'Prajakta Tamhankar'),
+(738, 709, 30000, 28000, 2000, 'Cash', '', '2021-02-02', 'Archana Vikas Lokhande'),
+(739, 548, 10000, 0, 10000, 'Cash', '', '2021-02-02', 'Mary Roshmy T. A.'),
+(740, 710, 3000, 0, 3000, 'Card', '100000386138981', '2021-02-02', 'Prajakta Tamhankar'),
+(741, 711, 23040, 20040, 3000, 'Cash', '', '2021-02-02', 'Mary Roshmy T. A.'),
+(742, 711, 20040, 40, 20000, 'Card', '3791', '2021-02-02', 'Mary Roshmy T. A.'),
+(743, 712, 400, 0, 400, 'Cash', '', '2021-02-02', 'Prajakta Tamhankar'),
+(744, 713, 500, 0, 500, 'PhonePay', '', '2021-02-02', 'Prajakta Tamhankar'),
+(745, 707, 19516, 16, 19500, 'Cash', '', '2021-02-02', 'Mary Roshmy T. A.'),
+(746, 714, 400, 0, 400, 'Cash', '', '2021-02-02', 'Prajakta Tamhankar'),
+(747, 715, 3000, 0, 3000, 'Card', '100000386368682', '2021-02-03', 'Prajakta Tamhankar'),
+(748, 709, 28000, 24000, 4000, 'Cash', '', '2021-02-03', 'Archana Vikas Lokhande'),
+(749, 717, 500, 0, 500, 'PhonePay', '', '2021-02-03', 'Prajakta Tamhankar'),
+(750, 718, 400, 0, 400, 'Card', '100000386423693', '2021-02-03', 'Archana Vikas Lokhande'),
+(751, 719, 400, 0, 400, 'Card', '103418357974', '2021-02-03', 'Archana Vikas Lokhande'),
+(752, 720, 400, 0, 400, 'Cash', '', '2021-02-03', 'Prajakta Tamhankar'),
+(753, 721, 400, 0, 400, 'Cash', '', '2021-02-03', 'Prajakta Tamhankar'),
+(754, 722, 3000, 0, 3000, 'Card', '100000386594686', '2021-02-04', 'Prajakta Tamhankar'),
+(755, 723, 500, 0, 500, 'Cash', '', '2021-02-04', 'Prajakta Tamhankar'),
+(756, 724, 25560, 60, 25500, 'Card', '9135', '2021-02-05', 'Mary Roshmy T. A.'),
+(757, 725, 400, 0, 400, 'PhonePay', '103600735307', '2021-02-05', 'Archana Vikas Lokhande'),
+(758, 726, 3000, 0, 3000, 'Card', '100000386864455', '2021-02-05', 'Prajakta Tamhankar'),
+(759, 727, 400, 0, 400, 'PhonePay', '060221', '2021-02-06', 'Archana Vikas Lokhande'),
+(760, 641, 15000, 0, 15000, 'PhonePay', '103718067059', '2021-02-06', 'Archana Vikas Lokhande'),
+(761, 730, 2500.4, 0, 2500.4, 'PhonePay', '103718067059', '2021-02-06', 'Archana Vikas Lokhande'),
+(762, 731, 900, 0, 900, 'Cash', '', '2021-02-08', 'Archana Vikas Lokhande'),
+(763, 732, 400, 0, 400, 'Cash', '', '2021-02-08', 'Prajakta Tamhankar'),
+(764, 733, 3000, 0, 3000, 'Card', '100000387681678', '2021-02-08', 'Prajakta Tamhankar'),
+(765, 734, 400, 0, 400, 'Cash', '', '2021-02-08', 'Prajakta Tamhankar'),
+(766, 735, 5000, 4500, 500, 'Cash', '', '2021-02-08', 'Mary Roshmy T. A.'),
+(767, 736, 3000, 0, 3000, 'Card', '100000387906268', '2021-02-09', 'Prajakta Tamhankar'),
+(768, 737, 3520, 0, 3520, 'Card', '100000387939896', '2021-02-09', 'Prajakta Tamhankar');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `packageaccount`
+-- Table structure for table `PackageAccount`
 --
 
-CREATE TABLE `packageaccount` (
+CREATE TABLE `PackageAccount` (
   `pId` int(11) NOT NULL,
   `packageId` int(11) DEFAULT NULL,
   `patientId` int(11) DEFAULT NULL,
   `packageCost` float DEFAULT NULL,
-  `isActive` int(11) DEFAULT 0,
-  `isDelete` int(11) DEFAULT 0,
+  `isActive` int(11) DEFAULT '0',
+  `isDelete` int(11) DEFAULT '0',
   `branchId` int(11) DEFAULT NULL,
   `userId` int(11) DEFAULT NULL,
   `packageDuration` int(11) DEFAULT NULL,
   `expirayDate` date DEFAULT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `packageaccount`
+-- Dumping data for table `PackageAccount`
 --
 
-INSERT INTO `packageaccount` (`pId`, `packageId`, `patientId`, `packageCost`, `isActive`, `isDelete`, `branchId`, `userId`, `packageDuration`, `expirayDate`, `created_at`, `updated_at`) VALUES
+INSERT INTO `PackageAccount` (`pId`, `packageId`, `patientId`, `packageCost`, `isActive`, `isDelete`, `branchId`, `userId`, `packageDuration`, `expirayDate`, `created_at`, `updated_at`) VALUES
 (3, 1, 71, 12600, 1, 0, 9, 34, 10, '2020-06-16', '2020-06-06 05:19:46', '2020-06-06 05:19:46'),
 (6, 9, 76, 5000, 1, 0, 9, 34, 10, '2020-06-13', '2020-06-08 06:00:05', '2020-06-08 06:00:05'),
 (8, 5, 80, 30200, 1, 0, 9, 34, 10, '2020-06-20', '2020-06-10 11:32:15', '2020-06-10 11:32:15'),
@@ -58632,29 +58960,34 @@ INSERT INTO `packageaccount` (`pId`, `packageId`, `patientId`, `packageCost`, `i
 (100, 25, 474, 36000, 1, 0, 9, 36, 10, '2021-01-27', '2021-01-12 07:54:10', '2021-01-12 07:54:10'),
 (102, 32, 518, 40000, 1, 0, 10, 40, 10, '2021-02-02', '2021-01-13 07:21:23', '2021-01-13 07:21:23'),
 (103, 32, 532, 40000, 1, 0, 9, 36, 10, '2021-02-05', '2021-01-16 07:00:34', '2021-01-16 07:00:34'),
-(104, 32, 530, 40000, 1, 0, 9, 36, 10, '2021-02-05', '2021-01-16 07:11:01', '2021-01-16 07:11:01');
+(104, 32, 530, 40000, 1, 0, 9, 36, 10, '2021-02-05', '2021-01-16 07:11:01', '2021-01-16 07:11:01'),
+(105, 25, 555, 36000, 1, 0, 9, 36, 10, '2021-02-09', '2021-01-25 17:28:31', '2021-01-25 17:28:31'),
+(106, 25, 553, 36000, 1, 0, 9, 36, 10, '2021-02-16', '2021-02-01 16:15:03', '2021-02-01 16:15:03'),
+(107, 38, 485, 30000, 1, 0, 10, 40, 10, '2021-02-17', '2021-02-02 11:15:30', '2021-02-02 11:15:30'),
+(108, 25, 564, 36000, 1, 0, 9, 36, 10, '2021-02-17', '2021-02-02 13:29:44', '2021-02-02 13:29:44'),
+(109, 25, 576, 36000, 1, 0, 9, 36, 10, '2021-02-20', '2021-02-05 13:53:51', '2021-02-05 13:53:51');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `packagecustomerdetails`
+-- Table structure for table `PackageCustomerDetails`
 --
 
-CREATE TABLE `packagecustomerdetails` (
+CREATE TABLE `PackageCustomerDetails` (
   `DetailId` int(11) NOT NULL,
   `pId` int(11) DEFAULT NULL,
   `TestId` int(11) DEFAULT NULL,
   `Quota` int(11) DEFAULT NULL,
   `originalQuota` int(11) DEFAULT NULL,
-  `created_at` datetime DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `packagecustomerdetails`
+-- Dumping data for table `PackageCustomerDetails`
 --
 
-INSERT INTO `packagecustomerdetails` (`DetailId`, `pId`, `TestId`, `Quota`, `originalQuota`, `created_at`, `updated_at`) VALUES
+INSERT INTO `PackageCustomerDetails` (`DetailId`, `pId`, `TestId`, `Quota`, `originalQuota`, `created_at`, `updated_at`) VALUES
 (1, 1, 1, 1, 1, '2020-05-30 07:09:55', '2020-05-30 07:09:55'),
 (2, 1, 10, 10, 10, '2020-05-30 07:09:55', '2020-05-30 07:09:55'),
 (3, 1, 3, 15, 15, '2020-05-30 07:09:55', '2020-05-30 07:09:55'),
@@ -58918,23 +59251,42 @@ INSERT INTO `packagecustomerdetails` (`DetailId`, `pId`, `TestId`, `Quota`, `ori
 (371, 103, 7, 20, 20, '2021-01-16 07:00:34', '2021-01-16 07:00:34'),
 (372, 104, 2, 20, 20, '2021-01-16 07:11:01', '2021-01-16 07:11:01'),
 (373, 104, 3, 20, 20, '2021-01-16 07:11:01', '2021-01-16 07:11:01'),
-(374, 104, 7, 20, 20, '2021-01-16 07:11:01', '2021-01-16 07:11:01');
+(374, 104, 7, 20, 20, '2021-01-16 07:11:01', '2021-01-16 07:11:01'),
+(375, 105, 2, 15, 15, '2021-01-25 17:28:31', '2021-01-25 17:28:31'),
+(376, 105, 3, 15, 15, '2021-01-25 17:28:31', '2021-01-25 17:28:31'),
+(377, 105, 7, 10, 10, '2021-01-25 17:28:31', '2021-01-25 17:28:31'),
+(378, 105, 1, 1, 1, '2021-01-25 17:28:31', '2021-01-25 17:28:31'),
+(382, 106, 2, 15, 15, '2021-02-01 16:15:03', '2021-02-01 16:15:03'),
+(383, 106, 3, 15, 15, '2021-02-01 16:15:03', '2021-02-01 16:15:03'),
+(384, 106, 7, 10, 10, '2021-02-01 16:15:03', '2021-02-01 16:15:03'),
+(385, 106, 1, 1, 1, '2021-02-01 16:15:03', '2021-02-01 16:15:03'),
+(389, 107, 2, 15, 15, '2021-02-02 11:15:30', '2021-02-02 11:15:30'),
+(390, 107, 8, 15, 15, '2021-02-02 11:15:30', '2021-02-02 11:15:30'),
+(391, 107, 3, 15, 15, '2021-02-02 11:15:30', '2021-02-02 11:15:30'),
+(392, 108, 2, 15, 15, '2021-02-02 13:29:44', '2021-02-02 13:29:44'),
+(393, 108, 3, 15, 15, '2021-02-02 13:29:44', '2021-02-02 13:29:44'),
+(394, 108, 7, 10, 10, '2021-02-02 13:29:44', '2021-02-02 13:29:44'),
+(395, 108, 1, 1, 1, '2021-02-02 13:29:44', '2021-02-02 13:29:44'),
+(399, 109, 2, 15, 15, '2021-02-05 13:53:51', '2021-02-05 13:53:51'),
+(400, 109, 3, 15, 15, '2021-02-05 13:53:51', '2021-02-05 13:53:51'),
+(401, 109, 7, 10, 10, '2021-02-05 13:53:51', '2021-02-05 13:53:51'),
+(402, 109, 1, 1, 1, '2021-02-05 13:53:51', '2021-02-05 13:53:51');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `packagetransaction`
+-- Table structure for table `PackageTransaction`
 --
 
-CREATE TABLE `packagetransaction` (
+CREATE TABLE `PackageTransaction` (
   `transactionId` int(11) NOT NULL,
   `detailId` int(11) DEFAULT NULL,
   `transactionType` enum('C','D') NOT NULL DEFAULT 'D',
-  `typeCount` int(11) DEFAULT 1,
+  `typeCount` int(11) DEFAULT '1',
   `userId` int(11) DEFAULT NULL,
-  `remarks` text DEFAULT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `remarks` text,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -58948,7 +59300,7 @@ CREATE TABLE `package_branch_mapping` (
   `packageId` int(11) DEFAULT NULL,
   `branchId` int(11) DEFAULT NULL,
   `packageDiscount` float DEFAULT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -59127,22 +59479,22 @@ INSERT INTO `package_master` (`packageId`, `title`, `details`, `cost`, `isActive
 -- --------------------------------------------------------
 
 --
--- Table structure for table `patientdocs`
+-- Table structure for table `patientDocs`
 --
 
-CREATE TABLE `patientdocs` (
+CREATE TABLE `patientDocs` (
   `docId` int(11) NOT NULL,
   `patientId` int(11) DEFAULT NULL,
   `extension` varchar(50) DEFAULT NULL,
-  `isActive` int(11) NOT NULL DEFAULT 1,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp()
+  `isActive` int(11) NOT NULL DEFAULT '1',
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `patientdocs`
+-- Dumping data for table `patientDocs`
 --
 
-INSERT INTO `patientdocs` (`docId`, `patientId`, `extension`, `isActive`, `created_at`) VALUES
+INSERT INTO `patientDocs` (`docId`, `patientId`, `extension`, `isActive`, `created_at`) VALUES
 (1, 53, 'jpg', 1, '2020-03-14 07:00:28'),
 (2, 70, 'jpg', 1, '2020-06-08 12:06:21'),
 (3, 70, 'jpg', 1, '2020-06-08 12:07:42'),
@@ -59221,7 +59573,7 @@ CREATE TABLE `patient_doctor_appointment_scheduling` (
   `appointmentDate` datetime NOT NULL,
   `doctorId` int(11) NOT NULL,
   `scheduledBy` varchar(70) NOT NULL,
-  `createdAt` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -60477,9 +60829,74 @@ INSERT INTO `patient_doctor_appointment_scheduling` (`appointmentId`, `patientId
 (1303, 535, '2021-01-23 11:00:00', 1, 'Prajakta Tamhankar', '2021-01-23 14:01:33'),
 (1304, 552, '2021-01-22 15:56:00', 1, 'Prajakta Tamhankar', '2021-01-23 15:56:31'),
 (1305, 517, '2021-01-23 16:30:00', 1, 'Prajakta Tamhankar', '2021-01-23 16:30:20'),
-(1306, 552, '2021-01-23 22:00:00', 1, 'Dr. Pradyna Pansare', '2021-01-23 20:33:47'),
-(1307, 552, '2021-01-27 22:00:00', 1, 'Dr. Pradyna Pansare', '2021-01-26 20:01:25'),
-(1308, 549, '2021-01-26 20:02:00', 1, 'Dr. Pradyna Pansare', '2021-01-26 20:02:29');
+(1306, 535, '2021-01-25 11:00:00', 1, 'Prajakta Tamhankar', '2021-01-25 12:52:35'),
+(1307, 549, '2021-01-25 12:00:00', 1, 'Prajakta Tamhankar', '2021-01-25 12:53:05'),
+(1308, 554, '2021-01-25 14:00:00', 1, 'Prajakta Tamhankar', '2021-01-25 17:20:01'),
+(1309, 556, '2021-01-25 17:20:00', 1, 'Prajakta Tamhankar', '2021-01-25 17:20:14'),
+(1310, 557, '2021-01-25 18:04:00', 1, 'Prajakta Tamhankar', '2021-01-25 18:04:58'),
+(1311, 535, '2021-01-27 11:00:00', 1, 'Prajakta Tamhankar', '2021-01-27 11:58:06');
+INSERT INTO `patient_doctor_appointment_scheduling` (`appointmentId`, `patientId`, `appointmentDate`, `doctorId`, `scheduledBy`, `createdAt`) VALUES
+(1312, 549, '2021-01-27 12:00:00', 1, 'Prajakta Tamhankar', '2021-01-27 11:58:35'),
+(1313, 558, '2021-01-27 12:48:00', 1, 'Prajakta Tamhankar', '2021-01-27 12:49:04'),
+(1314, 530, '2021-01-27 14:00:00', 34, 'Dr. Abhirami J', '2021-01-27 14:14:13'),
+(1315, 555, '2021-01-27 14:00:00', 34, 'Dr. Abhirami J', '2021-01-27 14:14:41'),
+(1316, 548, '2021-01-27 14:00:00', 34, 'Dr. Abhirami J', '2021-01-27 14:14:53'),
+(1317, 546, '2021-01-27 14:00:00', 34, 'Dr. Abhirami J', '2021-01-27 14:15:05'),
+(1318, 553, '2021-01-27 14:00:00', 34, 'Dr. Abhirami J', '2021-01-27 14:15:16'),
+(1319, 551, '2021-01-27 14:00:00', 34, 'Dr. Abhirami J', '2021-01-27 14:15:27'),
+(1321, 538, '2021-01-27 15:00:00', 34, 'Dr. Abhirami J', '2021-01-27 14:42:30'),
+(1322, 531, '2021-01-27 15:00:00', 34, 'Dr. Abhirami J', '2021-01-27 15:03:39'),
+(1324, 505, '2021-01-27 15:00:00', 34, 'Dr. Abhirami J', '2021-01-27 15:12:18'),
+(1325, 537, '2021-01-27 15:00:00', 34, 'Dr. Abhirami J', '2021-01-27 15:13:00'),
+(1326, 526, '2021-01-27 15:00:00', 34, 'Dr. Abhirami J', '2021-01-27 15:18:32'),
+(1327, 522, '2021-01-27 15:00:00', 34, 'Dr. Abhirami J', '2021-01-27 15:23:23'),
+(1328, 525, '2021-01-27 15:00:00', 34, 'Dr. Abhirami J', '2021-01-27 15:26:22'),
+(1329, 502, '2021-01-27 15:00:00', 34, 'Dr. Abhirami J', '2021-01-27 15:27:18'),
+(1330, 547, '2021-01-27 16:00:00', 34, 'Dr. Abhirami J', '2021-01-27 15:46:47'),
+(1331, 532, '2021-01-27 16:00:00', 34, 'Dr. Abhirami J', '2021-01-27 15:47:02'),
+(1332, 553, '2021-01-27 16:00:00', 34, 'Dr. Abhirami J', '2021-01-27 15:47:20'),
+(1333, 539, '2021-01-27 16:00:00', 34, 'Dr. Abhirami J', '2021-01-27 16:00:40'),
+(1335, 535, '2021-01-28 11:06:00', 1, 'Prajakta Tamhankar', '2021-01-28 11:06:30'),
+(1336, 549, '2021-01-28 12:06:00', 1, 'Prajakta Tamhankar', '2021-01-28 12:06:55'),
+(1337, 558, '2021-01-29 12:43:00', 1, 'Prajakta Tamhankar', '2021-01-29 12:43:08'),
+(1338, 558, '2021-01-30 12:30:00', 1, 'Prajakta Tamhankar', '2021-01-30 13:09:21'),
+(1339, 567, '2021-01-30 14:35:00', 1, 'Prajakta Tamhankar', '2021-01-30 14:35:27'),
+(1340, 566, '2021-01-30 13:00:00', 1, 'Prajakta Tamhankar', '2021-01-30 14:35:45'),
+(1341, 535, '2021-02-01 11:00:00', 1, 'Prajakta Tamhankar', '2021-02-01 13:34:07'),
+(1342, 558, '2021-02-01 12:30:00', 1, 'Prajakta Tamhankar', '2021-02-01 13:34:47'),
+(1343, 562, '2021-02-01 15:00:00', 34, 'Dr. Abhirami J', '2021-02-01 15:09:58'),
+(1344, 555, '2021-02-01 15:00:00', 34, 'Dr. Abhirami J', '2021-02-01 15:11:37'),
+(1345, 563, '2021-02-01 15:00:00', 34, 'Dr. Abhirami J', '2021-02-01 15:13:07'),
+(1346, 567, '2021-02-01 15:18:00', 1, 'Prajakta Tamhankar', '2021-02-01 15:18:36'),
+(1347, 460, '2021-02-01 18:45:00', 1, 'Prajakta Tamhankar', '2021-02-01 18:45:51'),
+(1348, 374, '2021-02-01 18:49:00', 1, 'Prajakta Tamhankar', '2021-02-01 18:49:43'),
+(1349, 535, '2021-02-02 10:51:00', 1, 'Prajakta Tamhankar', '2021-02-02 10:51:21'),
+(1350, 558, '2021-02-02 12:36:00', 1, 'Prajakta Tamhankar', '2021-02-02 12:36:33'),
+(1351, 569, '2021-02-02 13:30:00', 1, 'Prajakta Tamhankar', '2021-02-02 13:30:25'),
+(1352, 567, '2021-02-02 15:32:00', 1, 'Prajakta Tamhankar', '2021-02-02 15:32:42'),
+(1353, 418, '2021-02-02 16:57:00', 1, 'Prajakta Tamhankar', '2021-02-02 16:57:21'),
+(1354, 535, '2021-02-03 11:05:00', 1, 'Prajakta Tamhankar', '2021-02-03 11:05:44'),
+(1355, 558, '2021-02-03 12:42:00', 1, 'Prajakta Tamhankar', '2021-02-03 12:42:11'),
+(1356, 567, '2021-02-03 15:00:00', 1, 'Prajakta Tamhankar', '2021-02-03 15:31:23'),
+(1357, 573, '2021-02-03 18:44:00', 1, 'Prajakta Tamhankar', '2021-02-03 18:44:58'),
+(1358, 535, '2021-02-04 11:00:00', 1, 'Prajakta Tamhankar', '2021-02-04 11:40:56'),
+(1359, 549, '2021-02-04 12:11:00', 1, 'Prajakta Tamhankar', '2021-02-04 12:11:44'),
+(1360, 575, '2021-02-04 16:03:00', 1, 'Prajakta Tamhankar', '2021-02-04 16:03:47'),
+(1361, 549, '2021-02-05 12:00:00', 1, 'Prajakta Tamhankar', '2021-02-05 14:04:42'),
+(1362, 535, '2021-02-05 13:30:00', 1, 'Prajakta Tamhankar', '2021-02-05 14:05:08'),
+(1363, 474, '2021-02-05 16:00:00', 34, 'Dr. Abhirami J', '2021-02-05 16:24:58'),
+(1364, 584, '2021-02-08 12:05:00', 1, 'Prajakta Tamhankar', '2021-02-08 12:05:53'),
+(1365, 535, '2021-02-08 14:30:00', 1, 'Prajakta Tamhankar', '2021-02-08 15:12:55'),
+(1366, 586, '2021-02-08 16:51:00', 1, 'Prajakta Tamhankar', '2021-02-08 16:51:20'),
+(1367, 589, '2021-02-08 19:26:00', 1, 'Prajakta Tamhankar', '2021-02-08 19:26:20'),
+(1368, 580, '2021-02-09 13:00:00', 34, 'Dr. Abhirami J', '2021-02-09 13:18:36'),
+(1369, 535, '2021-02-09 13:37:00', 1, 'Prajakta Tamhankar', '2021-02-09 13:38:37'),
+(1370, 564, '2021-02-09 15:00:00', 34, 'Dr. Abhirami J', '2021-02-09 15:13:44'),
+(1371, 539, '2021-02-09 15:00:00', 34, 'Dr. Abhirami J', '2021-02-09 15:14:17'),
+(1372, 565, '2021-02-09 15:00:00', 34, 'Dr. Abhirami J', '2021-02-09 15:14:38'),
+(1373, 562, '2021-02-09 15:00:00', 34, 'Dr. Abhirami J', '2021-02-09 15:14:59'),
+(1374, 585, '2021-02-06 18:00:00', 34, 'Dr. Abhirami J', '2021-02-09 16:56:04'),
+(1375, 589, '2021-02-09 16:00:00', 1, 'Prajakta Tamhankar', '2021-02-09 18:08:57');
 
 -- --------------------------------------------------------
 
@@ -60499,7 +60916,7 @@ CREATE TABLE `patient_feedback` (
   `suggestions` varchar(255) NOT NULL,
   `tdata` text NOT NULL,
   `visitdate` date NOT NULL,
-  `createdat` datetime NOT NULL DEFAULT current_timestamp()
+  `createdat` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -60540,13 +60957,13 @@ CREATE TABLE `patient_master` (
   `firstVisitDate` date NOT NULL,
   `lastVisitDate` date NOT NULL,
   `nextVisitDate` datetime DEFAULT NULL,
-  `smoking` int(11) NOT NULL DEFAULT 0,
-  `alcohol` int(11) NOT NULL DEFAULT 0,
-  `tobacco` int(11) NOT NULL DEFAULT 0,
-  `HTN` int(11) NOT NULL DEFAULT 0,
-  `diabetes` int(11) DEFAULT 0,
-  `cholestrol` int(11) NOT NULL DEFAULT 0,
-  `history` int(11) NOT NULL DEFAULT 0,
+  `smoking` int(11) NOT NULL DEFAULT '0',
+  `alcohol` int(11) NOT NULL DEFAULT '0',
+  `tobacco` int(11) NOT NULL DEFAULT '0',
+  `HTN` int(11) NOT NULL DEFAULT '0',
+  `diabetes` int(11) DEFAULT '0',
+  `cholestrol` int(11) NOT NULL DEFAULT '0',
+  `history` int(11) NOT NULL DEFAULT '0',
   `occupation` varchar(100) NOT NULL,
   `lifestyle` varchar(200) NOT NULL,
   `urban` int(11) NOT NULL,
@@ -60557,7 +60974,7 @@ CREATE TABLE `patient_master` (
   `pincode` int(11) DEFAULT NULL,
   `remarks` varchar(255) DEFAULT NULL,
   `hardDrink` int(11) DEFAULT NULL,
-  `createdAt` datetime NOT NULL DEFAULT current_timestamp(),
+  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `branchId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -61065,10 +61482,47 @@ INSERT INTO `patient_master` (`patientId`, `firstName`, `middleName`, `surname`,
 (546, 'SHEETHAL ', '', 'SUBRAMANIAN', 'Male', '166', '65', '1991-01-21', 'NULL', 'NULL', '', '9633252085', 'NULL', 'NULL', 1892, 'KUTHUKKATT HOUSE, PANAKAPAR MBIL LANE, MARADU. ', 1, '2021-01-21', '2021-01-21', '2021-01-19 00:00:00', 0, 0, 0, 0, 0, 0, 0, '', 'NULL', 0, 'NULL', 101, 19, 'Married', 0, 'NULL', 0, '2021-01-21 17:01:17', 9),
 (547, 'SABU ', '', 'K G ', 'Male', '162', '63', '1967-04-10', 'NULL', 'NULL', '', '7042866757', 'NULL', 'NULL', 1848, 'THARALLI VELIYIL , THUMPOLY POST, ALAPPUZHA', 1, '2021-01-21', '2021-01-21', '2021-01-21 00:00:00', 0, 0, 0, 0, 0, 0, 0, '', 'NULL', 0, 'NULL', 101, 19, 'Married', 0, 'NULL', 0, '2021-01-21 17:04:39', 9),
 (548, 'JAMEELA', '', 'SALIM', 'Male', '5.1', '60', '1946-04-01', 'NULL', 'NULL', '', '9495273687', 'NULL', 'NULL', 1892, 'ABAD NORTH STAR, 3C, SRM ROAD, NORTH END, ERNAKULAM', 1, '2021-01-22', '2021-01-22', '2021-01-22 00:00:00', 0, 0, 0, 0, 0, 0, 0, '', 'NULL', 0, 'NULL', 101, 19, 'Married', 0, 'NULL', 0, '2021-01-22 12:21:48', 9),
-(549, 'ANITA', '', 'DASARE', 'Female', '5.2', '65', '1985-01-22', 'NULL', 'NULL', '', '7875008108', 'NULL', 'NULL', 2763, 'KASARWADI', 143, '2021-01-22', '2021-01-22', '2021-02-01 00:00:00', 0, 0, 0, 0, 0, 0, 0, '', 'NULL', 0, 'NULL', 101, 22, 'Single', 0, 'NULL', 0, '2021-01-22 12:42:56', 1),
+(549, 'ANITA', '', 'DASARE', 'Female', '5.2', '65', '1985-01-22', 'NULL', 'NULL', '', '7875008108', 'NULL', 'NULL', 2763, 'KASARWADI', 143, '2021-01-22', '2021-01-22', '2021-01-22 00:00:00', 0, 0, 0, 0, 0, 0, 0, '', 'NULL', 0, 'NULL', 101, 22, 'Single', 0, 'NULL', 0, '2021-01-22 12:42:56', 1),
 (550, 'ANURADHA', '', 'KUTWAL', 'Female', '5.3', '65', '1986-01-22', 'NULL', 'NULL', '', '7972365989', 'NULL', 'NULL', 2763, 'SHIVANE', 1, '2021-01-22', '2021-01-22', '2021-01-22 00:00:00', 0, 0, 0, 0, 0, 0, 0, '', 'NULL', 0, 'NULL', 101, 22, 'Single', 0, 'NULL', 0, '2021-01-22 18:54:13', 1),
 (551, 'RATHEESH ', '', 'P S ', 'Male', '173', '73', '1983-05-10', 'NULL', 'NULL', '', '9946677722', 'NULL', 'NULL', 1892, 'MADATHIPARAMBIL, CHURCH CROSS ROAD, CHITTOOR', 1, '2021-01-23', '2021-01-23', '2021-01-23 00:00:00', 0, 0, 0, 0, 0, 0, 0, '', 'NULL', 0, 'NULL', 101, 19, 'Single', 0, 'NULL', 0, '2021-01-23 11:13:38', 9),
-(552, 'RAVINDER', '', 'KAUR', 'Female', '5.3', '75', '1982-01-23', 'NULL', 'NULL', '', '7028015578', 'NULL', 'NULL', 2763, 'PUNE', 143, '2021-01-23', '2021-01-23', '2021-01-22 00:00:00', 0, 0, 0, 0, 0, 0, 0, '', 'NULL', 0, 'NULL', 101, 22, 'Single', 0, 'NULL', 0, '2021-01-23 15:55:32', 1);
+(552, 'RAVINDER', '', 'KAUR', 'Female', '5.3', '75', '1982-01-23', 'NULL', 'NULL', '', '7028015578', 'NULL', 'NULL', 2763, 'PUNE', 143, '2021-01-23', '2021-01-23', '2021-01-22 00:00:00', 0, 0, 0, 0, 0, 0, 0, '', 'NULL', 0, 'NULL', 101, 22, 'Single', 0, 'NULL', 0, '2021-01-23 15:55:32', 1),
+(553, 'SANTO ', '', 'DEVASSY', 'Male', '5.7', '70', '1982-11-09', 'NULL', 'NULL', '', '9847041312', 'NULL', 'NULL', 1892, 'PUTHUSSERRY, NORTH ADUVASSERRY, S. ADUVASSERRY P O, ERNAKULAM', 1, '2021-01-25', '2021-01-25', '2021-01-25 00:00:00', 0, 0, 0, 0, 0, 0, 0, '', 'NULL', 0, 'NULL', 101, 19, 'Married', 0, 'NULL', 0, '2021-01-25 13:40:52', 9),
+(554, 'VILAS', '', 'DHEPE', 'Male', '5.3', '60', '1994-01-25', 'NULL', 'NULL', '', '8237206082', 'NULL', 'NULL', 2763, 'PIMPLE GURAV', 1, '2021-01-25', '2021-01-25', '2021-01-25 00:00:00', 0, 0, 0, 0, 0, 0, 0, '', 'NULL', 0, 'NULL', 101, 22, 'Single', 0, 'NULL', 0, '2021-01-25 13:42:06', 1),
+(555, 'MAHIN', '', 'M A ', 'Male', '5.1', '70', '1983-05-24', 'NULL', 'NULL', '', '9388635733', 'NULL', 'NULL', 1892, 'MANKANDY, HOUSE, PERUMBAVOOR P O, ERNAKULAM', 1, '2021-01-25', '2021-01-25', '2021-01-21 00:00:00', 0, 0, 0, 0, 0, 0, 0, '', 'NULL', 0, 'NULL', 101, 19, 'Married', 0, 'NULL', 0, '2021-01-25 17:08:45', 9),
+(556, 'ARCHANA', '', 'SUBHEDAR', 'Male', '5.2', '70', '1975-01-25', 'NULL', 'NULL', '', '9850992495', 'NULL', 'NULL', 2763, 'KOTHRUD', 1, '2021-01-25', '2021-01-25', '2021-01-25 00:00:00', 0, 0, 0, 0, 0, 0, 0, '', 'NULL', 0, 'NULL', 101, 22, 'Single', 0, 'NULL', 0, '2021-01-25 17:19:24', 1),
+(557, 'SACHIN', '', 'TARU', 'Male', '5.3', '75', '1979-01-25', 'NULL', 'NULL', '', '9552579107', 'NULL', 'NULL', 2763, 'DHAYRI', 1, '2021-01-25', '2021-01-25', '2021-01-25 00:00:00', 0, 0, 0, 0, 0, 0, 0, '', 'NULL', 0, 'NULL', 101, 22, 'Single', 0, 'NULL', 0, '2021-01-25 18:04:35', 1),
+(558, 'SHRUTI', '', 'CHAUDHARI', 'Female', '158', '56', '1992-01-27', 'NULL', 'NULL', '', '9970405198', 'NULL', 'NULL', 2763, 'ASHOK NAGAR', 143, '2021-01-27', '2021-01-27', '2021-01-27 00:00:00', 0, 0, 0, 0, 0, 0, 0, '', 'NULL', 0, 'NULL', 101, 22, 'Single', 0, 'NULL', 0, '2021-01-27 12:48:44', 1),
+(559, 'DHARMENDRA', '', 'PATIDAR', 'Male', '158', '58', '1989-01-28', 'NULL', 'NULL', '', '7755925445', 'NULL', 'NULL', 2763, 'NILESH SIR CONSULTED (PRACTO)', 1, '2021-01-28', '2021-01-28', '2021-01-25 00:00:00', 0, 0, 0, 0, 0, 0, 0, '', 'NULL', 0, 'NULL', 101, 22, 'Single', 0, 'NULL', 0, '2021-01-28 16:11:57', 10),
+(560, 'PALASH ', '', 'SAHA', 'Male', '168', '68', '1986-01-28', 'NULL', 'NULL', '', '9890108425', 'NULL', 'NULL', 2763, 'PRACTO SHRIYA CONSULTED', 1, '2021-01-28', '2021-01-28', '2021-01-25 00:00:00', 0, 0, 0, 0, 0, 0, 0, '', 'NULL', 0, 'NULL', 101, 22, 'Married', 0, 'NULL', 0, '2021-01-28 16:16:27', 10),
+(561, 'RAJESH ', '', 'NAIR', 'Male', '180', '48', '1973-05-05', 'NULL', 'NULL', '', '9656312261', 'NULL', 'NULL', 1892, '22 LOTUS GARDENS, HIDAYATH NAGAR, KALAMMASSERRY, KOCHI', 1, '2021-01-29', '2021-01-29', '2021-01-27 00:00:00', 0, 0, 0, 0, 0, 0, 0, '', 'NULL', 0, 'NULL', 101, 19, 'Married', 0, 'NULL', 0, '2021-01-29 15:31:59', 9),
+(562, 'BIPIN ', '', 'M ', 'Male', '174', '82', '1975-09-06', 'NULL', 'NULL', '', '8848011972', 'NULL', 'NULL', 1892, 'USHAS, TPRRA - 98 , EDAPPALLY, ERNAKULAM, ', 1, '2021-01-29', '2021-01-29', '2021-01-27 00:00:00', 0, 0, 0, 0, 0, 0, 0, '', 'NULL', 0, 'NULL', 101, 19, 'Married', 0, 'NULL', 0, '2021-01-29 15:40:22', 9),
+(563, 'FR  MICHAEL', '', 'PUNNACKAL', 'Male', '5.4', '70', '1976-10-28', 'NULL', 'NULL', '', '9447708480', 'NULL', 'NULL', 1921, 'STEIN MOUNT MONASTERY. KANNUR', 1, '2021-01-29', '2021-01-29', '2021-01-28 00:00:00', 0, 0, 0, 0, 0, 0, 0, '', 'NULL', 0, 'NULL', 101, 19, 'Single', 0, 'NULL', 0, '2021-01-29 15:58:24', 9),
+(564, 'JOSEPH ', '', 'SHAJI', 'Male', '5.7', '76', '1976-08-26', 'NULL', 'NULL', '', '7594826161', 'NULL', 'NULL', 1892, 'THACHAPPALLY HOUSE, KANNAMALY, ERNAKULAM', 1, '2021-01-29', '2021-01-29', '2021-01-29 00:00:00', 0, 0, 0, 0, 0, 0, 0, '', 'NULL', 0, 'NULL', 101, 19, 'Married', 0, '8086736216', 0, '2021-01-29 16:04:12', 9),
+(565, 'SANTHAMMA ', '', 'APPUKKUTTAN ', 'Male', '5.1', '60', '1951-05-27', 'NULL', 'NULL', '', '9961169381', 'NULL', 'NULL', 1849, 'AZHIKKAL HOUSE, THAIKKATTUKARA, ALUVA', 1, '2021-01-29', '2021-01-29', '2021-01-29 00:00:00', 0, 0, 0, 0, 0, 0, 0, '', 'NULL', 0, 'NULL', 101, 19, 'Married', 0, '9656119204', 0, '2021-01-29 16:10:34', 9),
+(566, 'SHARMILA', '', 'KAOURAV', 'Female', '5.4', '70', '1990-01-30', 'NULL', 'NULL', '', '8149835487', 'NULL', 'NULL', 2763, 'MADYA PRADESH', 1, '2021-01-30', '2021-01-30', '2021-01-30 00:00:00', 0, 0, 0, 0, 0, 0, 0, '', 'NULL', 0, 'NULL', 101, 22, 'Single', 0, 'NULL', 0, '2021-01-30 13:26:20', 1),
+(567, 'MANISHA', '', 'PAWAR', 'Female', '5.2', '70', '1984-01-30', 'NULL', 'NULL', '', '9119522094', 'NULL', 'NULL', 2763, 'BAVDHAN', 143, '2021-01-30', '2021-01-30', '2021-01-30 00:00:00', 0, 0, 0, 0, 0, 0, 0, '', 'NULL', 0, 'NULL', 101, 22, 'Single', 0, 'NULL', 0, '2021-01-30 14:32:52', 1),
+(568, 'DIPTI', '', 'SHINDE', 'Female', '168', '45', '1732-01-30', 'NULL', 'NULL', '', '9156735238', 'NULL', 'NULL', 2763, 'KALEWADI FREE CONS', 1, '2021-01-30', '2021-01-30', '2021-01-30 00:00:00', 0, 0, 0, 0, 0, 0, 0, '', 'NULL', 0, 'NULL', 101, 22, 'Single', 0, 'NULL', 0, '2021-01-30 18:37:41', 10),
+(569, 'YASHWANT', '', 'KUNIYLL', 'Male', '5.3', '70', '1997-02-02', 'NULL', 'NULL', '', '9881762716', 'NULL', 'NULL', 2763, 'S.B.ROAD', 1, '2021-02-02', '2021-02-02', '2021-02-02 00:00:00', 0, 0, 0, 0, 0, 0, 0, '', 'NULL', 0, 'NULL', 101, 22, 'Single', 0, 'NULL', 0, '2021-02-02 13:30:01', 1),
+(570, 'UMAIVAN ', '', 'P M ', 'Female', '158', '54', '1966-06-05', 'NULL', 'NULL', '', '9526952455', 'NULL', 'NULL', 1892, 'ERSHAD MANZIL, W. KODUNGALLUR P O, ALUVA, ERNAKULAM', 1, '2021-02-02', '2021-02-02', '2021-02-01 00:00:00', 0, 0, 0, 0, 0, 0, 0, '', 'NULL', 0, 'NULL', 101, 19, 'Married', 0, 'NULL', 0, '2021-02-02 17:56:32', 9),
+(571, 'RATUL', '', 'MAJUMDAR', 'Male', '168', '68', '1985-02-03', 'NULL', 'NULL', '', '9836293288', 'NULL', 'NULL', 2763, 'WAKAD', 1, '2021-02-03', '2021-02-03', '2021-02-03 00:00:00', 0, 0, 0, 0, 0, 0, 0, '', 'NULL', 0, 'NULL', 101, 22, 'Married', 0, 'NULL', 0, '2021-02-03 15:11:51', 10),
+(572, 'DEEPANSHU', '', 'SINGH', 'Male', '168', '68', '1995-02-03', 'NULL', 'NULL', '', '8586064542', 'NULL', 'NULL', 2763, 'THERGAON', 28, '2021-02-03', '2021-02-03', '2021-02-03 00:00:00', 0, 0, 0, 0, 0, 0, 0, '', 'NULL', 0, 'NULL', 101, 22, 'Single', 0, 'NULL', 0, '2021-02-03 18:20:04', 10),
+(573, 'AJAY', '', 'KAMBLE', 'Female', '5.4', '70', '1961-02-03', 'NULL', 'NULL', '', '8767749323', 'NULL', 'NULL', 2763, 'VISHRANTWADI', 143, '2021-02-03', '2021-02-03', '2021-02-03 00:00:00', 0, 0, 0, 0, 0, 0, 0, '', 'NULL', 0, 'NULL', 101, 22, 'Single', 0, 'NULL', 0, '2021-02-03 18:44:37', 1),
+(574, 'ZAINAB', '', 'SHAIKH', 'Female', '5.3', '65', '1991-02-03', 'NULL', 'NULL', '', '7744907011', 'NULL', 'NULL', 2763, 'PUNE CAMP', 143, '2021-02-03', '2021-02-03', '2021-02-03 00:00:00', 0, 0, 0, 0, 0, 0, 0, '', 'NULL', 0, 'NULL', 101, 22, 'Single', 0, 'NULL', 0, '2021-02-03 19:06:05', 1),
+(575, 'NIRMALA', '', 'DEVI', 'Female', '5.3', '65', '1966-02-04', 'NULL', 'NULL', '', '9334449511', 'NULL', 'NULL', 2763, 'SUSGAON', 143, '2021-02-04', '2021-02-04', '2021-02-04 00:00:00', 0, 0, 0, 0, 0, 0, 0, '', 'NULL', 0, 'NULL', 101, 22, 'Single', 0, 'NULL', 0, '2021-02-04 16:03:28', 1),
+(576, 'SWEETO', '', 'SEBASTIAN', 'Male', '5.7', '83', '1996-02-05', 'NULL', 'NULL', '', '9048905806', 'NULL', 'NULL', 1892, 'Thundathil house, nettoor, p o, maradu , ekm', 1, '2021-02-05', '2021-02-05', '2021-02-05 00:00:00', 0, 0, 0, 0, 0, 0, 0, '', 'NULL', 0, 'NULL', 101, 19, 'Single', 0, 'NULL', 0, '2021-02-05 13:52:58', 9),
+(577, 'GAURAB', '', 'MITRA', 'Male', '168', '68', '1985-02-05', 'NULL', 'NULL', '', '9730754965', 'NULL', 'NULL', 2763, 'moshi', 1, '2021-02-05', '2021-02-05', '2021-02-05 00:00:00', 0, 0, 0, 0, 0, 0, 0, '', 'NULL', 0, 'NULL', 101, 22, 'Single', 0, 'NULL', 0, '2021-02-05 13:54:32', 10),
+(578, 'ANIL ', '', 'KABRA', 'Male', '5.4', '67', '1969-02-05', 'NULL', 'NULL', '', '7012503353', 'NULL', 'NULL', 1892, '6/1949 QRS ROAD, COCHIN', 1, '2021-02-05', '2021-02-05', '2021-02-05 00:00:00', 0, 0, 0, 0, 0, 0, 0, '', 'NULL', 0, 'NULL', 101, 19, 'Married', 0, 'NULL', 0, '2021-02-05 18:46:36', 9),
+(579, 'Amol', '', 'Avlakki', 'Male', '170', '70', '1957-02-06', 'NULL', 'NULL', '', '9822840319', 'NULL', 'NULL', 2763, 'Rose valley', 1, '2021-02-06', '2021-02-06', '2021-02-06 00:00:00', 0, 0, 0, 0, 0, 0, 0, '', 'NULL', 0, 'NULL', 101, 22, 'Single', 0, 'NULL', 0, '2021-02-06 11:02:07', 10),
+(580, 'DEVANAND ', '', 'K R ', 'Male', '170', '73', '1985-03-12', 'NULL', 'NULL', '', '8281291755', 'NULL', 'NULL', 1909, 'THURUTHIYIL HOUSE, MANICKAMANGALAM P O, KALADY', 1, '2021-02-06', '2021-02-06', '2021-02-06 00:00:00', 0, 0, 0, 0, 0, 0, 0, '', 'NULL', 0, 'NULL', 101, 19, 'Married', 0, 'NULL', 0, '2021-02-06 14:15:06', 9),
+(581, 'HAMEED ', '', 'P K ', 'Male', '4.7', '70', '1959-11-25', 'NULL', 'NULL', 'hameedpk2007@yahoo.com', '9388609678', 'NULL', 'NULL', 1892, 'ASSET E SCAPE, 8-D, 8 TH FLOOR, KAKKANADU, PALLIKKARA ROAD, THENGODE P O, KOCHI ', 1, '2021-02-06', '2021-02-06', '2021-02-06 00:00:00', 0, 0, 0, 0, 0, 0, 0, '', 'NULL', 0, 'NULL', 101, 19, 'Married', 0, 'NULL', 0, '2021-02-06 15:00:53', 9),
+(582, 'JAMEELA ', '', 'UMMER', 'Female', '5.3', '76', '1959-01-01', 'NULL', 'NULL', '', '9061874987', 'NULL', 'NULL', 1892, 'KATTUTHANIPARAM BU HOUSE, NETTOOR P O, MARADU , EKM ', 1, '2021-02-06', '2021-02-06', '2021-02-06 00:00:00', 0, 0, 0, 0, 0, 0, 0, '', 'NULL', 0, 'NULL', 101, 19, 'Married', 0, 'NULL', 0, '2021-02-06 17:02:51', 9),
+(583, 'ABHIJIT', '', 'SHRAWAGI', 'Male', '168', '60', '1985-02-08', 'NULL', 'NULL', '', '9920953539', 'NULL', 'NULL', 2763, 'PRACTO', 1, '2021-02-08', '2021-02-08', '2021-02-08 00:00:00', 0, 0, 0, 0, 0, 0, 0, '', 'NULL', 0, 'NULL', 101, 22, 'Single', 0, 'NULL', 0, '2021-02-08 10:31:26', 10),
+(584, 'OMKAR', '', 'RANDIVE', 'Male', '5.5', '60', '1998-02-08', 'NULL', 'NULL', '', '8208250071', 'NULL', 'NULL', 2763, 'BARAMATI', 143, '2021-02-08', '2021-02-08', '2021-02-08 00:00:00', 0, 0, 0, 0, 0, 0, 0, '', 'NULL', 0, 'NULL', 101, 22, 'Single', 0, 'NULL', 0, '2021-02-08 12:05:26', 1),
+(585, 'PRAVEEN ', '', 'E P ', 'Male', '5.7', '76', '1972-02-04', 'NULL', 'NULL', '', '9497192586', 'NULL', 'NULL', 1849, 'JANCY NIVAS, KAPPASSERRY, NEDUMBASSERRY P O, ALUVA', 1, '2021-02-08', '2021-02-08', '2021-02-08 00:00:00', 0, 0, 0, 0, 0, 0, 0, '', 'NULL', 0, 'NULL', 101, 19, 'Married', 0, 'NULL', 0, '2021-02-08 14:54:05', 9),
+(586, 'NILIMA', '', 'MANE', 'Female', '5.2', '70', '1961-02-08', 'NULL', 'NULL', '', '9130596300', 'NULL', 'NULL', 2763, 'SADASHIV PETH', 1, '2021-02-08', '2021-02-08', '2021-02-08 00:00:00', 0, 0, 0, 0, 0, 0, 0, '', 'NULL', 0, 'NULL', 101, 22, 'Single', 0, 'NULL', 0, '2021-02-08 16:50:57', 1),
+(587, 'PREETHI ', '', 'V ', 'Female', '148', '55', '1986-05-20', 'NULL', 'NULL', '', '9744813494', 'NULL', 'NULL', 1960, 'VALLANIKKATTIL HOUSE, UGRAPURAM P O, ARECODE, MALAPPURAM', 1, '2021-02-08', '2021-02-08', '2021-02-08 00:00:00', 0, 0, 0, 0, 0, 0, 0, '', 'NULL', 0, 'NULL', 101, 19, 'Married', 0, 'NULL', 0, '2021-02-08 17:17:35', 9),
+(588, 'PREENA ', '', 'V ', 'Female', '150', '45', '1998-02-08', 'NULL', 'NULL', '', '9061430583', 'NULL', 'NULL', 1960, 'VALLANIKKATTIL HOUSE, UGRAPURAM P O, ARECODE, MALAPPURAM', 1, '2021-02-08', '2021-02-08', '2021-02-08 00:00:00', 0, 0, 0, 0, 0, 0, 0, '', 'NULL', 0, 'NULL', 101, 19, 'Single', 0, 'NULL', 0, '2021-02-08 17:20:55', 9),
+(589, 'RAJSHRI', '', 'LONDHE', 'Female', '5.1', '75', '1979-02-08', 'NULL', 'NULL', '', '9423569071', 'NULL', 'NULL', 2763, 'MODEL COLONY', 143, '2021-02-08', '2021-02-08', '2021-02-08 00:00:00', 0, 0, 0, 0, 0, 0, 0, '', 'NULL', 0, 'NULL', 101, 22, 'Single', 16, 'NULL', 0, '2021-02-08 19:25:02', 1);
 
 -- --------------------------------------------------------
 
@@ -61117,8 +61571,7 @@ INSERT INTO `patient_medication` (`patientId`, `visitDate`, `nextVisitDate`, `co
 (126, '2020-07-12', '2020-07-22', 'NULL', 'NULL', 'NULL', 1),
 (164, '2020-09-21', '0000-00-00', '', '', '', 1),
 (199, '2020-09-21', '0000-00-00', '', '', '', 1),
-(247, '2020-09-21', '0000-00-00', '', '', '', 1),
-(549, '2021-01-26', '2021-02-01', 'DRYNESS OF MOUTH , SEVERE LOSS OF;MILD SOB , HEAD HEAVINESS;vikas', 'ANA LEVEL', 'DIABETES - NEWLY DETECTED , HTN , HYPOTHYROIDISAM;santosh', 1);
+(247, '2020-09-21', '0000-00-00', '', '', '', 1);
 
 -- --------------------------------------------------------
 
@@ -61238,8 +61691,7 @@ INSERT INTO `patient_onassessment_master` (`onAssesmentId`, `patientId`, `doctor
 (15, 126, 1, '130/90', '', '', '34.5', 75, '2020-07-12', '', '', '', '', '', '', '', '', NULL, NULL, 175, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (16, 247, 1, '', '', '', '36', 49, '2020-09-21', '', '', '', '', '', '', '', '', NULL, NULL, 156, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (17, 164, 1, '', '', '', '', 70, '2020-09-21', '', '', '', '', '', '', '', '', NULL, NULL, 157, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(18, 199, 1, '', '', '', '', 69, '2020-09-21', '', '', '', '', '', '', '', '', NULL, NULL, 159, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(19, 549, 1, '152/142', '25', '25', '150', 60, '2021-01-26', '52', '25', '', '', '', '', '', '', NULL, NULL, 150, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(18, 199, 1, '', '', '', '', 69, '2020-09-21', '', '', '', '', '', '', '', '', NULL, NULL, 159, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -61255,8 +61707,8 @@ CREATE TABLE `patient_prescribed_exercise` (
   `steps` text NOT NULL,
   `doctorId` int(11) NOT NULL,
   `visitDate` date NOT NULL,
-  `createdAt` datetime NOT NULL DEFAULT current_timestamp(),
-  `updatedAt` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -61507,7 +61959,11 @@ INSERT INTO `patient_prescribed_exercise` (`exerciseId`, `patientId`, `title`, `
 (757, 473, 'Hams Stretching', 'Place a towel behind foot and raise the leg straight up to 90 degrees or as much as possible.Hold the stretch for 20 counts, 3 Reps.', '', 34, '2021-01-07', '2021-01-09 04:57:50', '2021-01-09 04:57:50'),
 (758, 473, 'Gluets Stretch', 'Lie on your back, bend the knee and pull it towards chest with hands.10 counts hold, 5 Reps', '', 34, '2021-01-07', '2021-01-09 04:57:50', '2021-01-09 04:57:50'),
 (759, 473, 'knee to chest', 'Lie on your back with your knees bent and your feet flat on the floor.lift both the legs towards the chest and then lower down .Repeat for 10 times ', '', 34, '2021-01-07', '2021-01-09 04:57:50', '2021-01-09 04:57:50'),
-(768, 274, 'Priformis stretch', ' Lie on the back with both feet flat on the floor and both knees bent. Place  the right ankle on left knee , grasp the knee with the left hand and pull it towards the left shoulder and hold the stretch. Repeat for each side.', '', 34, '2021-01-08', '2021-01-13 06:34:29', '2021-01-13 06:34:29');
+(768, 274, 'Priformis stretch', ' Lie on the back with both feet flat on the floor and both knees bent. Place  the right ankle on left knee , grasp the knee with the left hand and pull it towards the left shoulder and hold the stretch. Repeat for each side.', '', 34, '2021-01-08', '2021-01-13 06:34:29', '2021-01-13 06:34:29'),
+(773, 474, 'Back Extension', 'Lying on stomatch , ask the patient to come up making the angle of 90degree between elbow and shoulder with neck facing up. Repeat it for 10 times.', '', 34, '2021-02-05', '2021-02-05 16:31:32', '2021-02-05 16:31:32'),
+(774, 474, 'Hip Extension (Prone)', 'Lie on your stomach and raise the leg straight  up without bending knee.10 Reps', '', 34, '2021-02-05', '2021-02-05 16:31:32', '2021-02-05 16:31:32'),
+(775, 474, 'Priformis stretch', ' Lie on the back with both feet flat on the floor and both knees bent. Place  the right ankle on left knee , grasp the knee with the left hand and pull it towards the left shoulder and hold the stretch. Repeat for each side.', '', 34, '2021-02-05', '2021-02-05 16:31:32', '2021-02-05 16:31:32'),
+(776, 474, 'Gluets Stretch', 'Lie on your back, bend the knee and pull it towards chest with hands.10 counts hold, 5 Reps', '', 34, '2021-02-05', '2021-02-05 16:31:32', '2021-02-05 16:31:32');
 
 -- --------------------------------------------------------
 
@@ -61527,7 +61983,7 @@ CREATE TABLE `patient_prescription_medicine` (
   `instruction` varchar(250) CHARACTER SET utf8 NOT NULL,
   `period` varchar(100) NOT NULL,
   `doctorId` int(11) NOT NULL,
-  `createdAt` datetime NOT NULL DEFAULT current_timestamp()
+  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -61536,8 +61992,7 @@ CREATE TABLE `patient_prescription_medicine` (
 
 INSERT INTO `patient_prescription_medicine` (`patientId`, `visitDate`, `type`, `name`, `genName`, `morning`, `evining`, `night`, `instruction`, `period`, `doctorId`, `createdAt`) VALUES
 (36, '2020-03-05', '', 'EXEL+ OCCU BASE', '', '1', '1', '1', ' SOS IF FEVER', '10', 1, '2020-03-05 13:38:39'),
-(67, '2020-05-30', '', 'Basalog 100u/ml', '', '1', '1', '1', ' After food', '0', 34, '2020-05-30 07:06:57'),
-(549, '2021-01-26', 'gel', 'BETADINE GARGLES', '', '112', '1', '1', ' after food SUBCUTANEOUS ', '2', 1, '2021-01-26 20:10:11');
+(67, '2020-05-30', '', 'Basalog 100u/ml', '', '1', '1', '1', ' After food', '0', 34, '2020-05-30 07:06:57');
 
 -- --------------------------------------------------------
 
@@ -61554,8 +62009,8 @@ CREATE TABLE `referring_master` (
   `landline` varchar(20) NOT NULL,
   `birthDate` date DEFAULT NULL,
   `address` varchar(300) NOT NULL,
-  `photoData` longtext DEFAULT NULL,
-  `createdat` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `photoData` longtext,
+  `createdat` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -61730,7 +62185,7 @@ INSERT INTO `rolemaster` (`roleId`, `role`, `created_at`) VALUES
 CREATE TABLE `states` (
   `id` int(11) NOT NULL,
   `name` varchar(30) NOT NULL,
-  `country_id` int(11) NOT NULL DEFAULT 1
+  `country_id` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -65892,9 +66347,9 @@ CREATE TABLE `user_master` (
   `branchId` int(11) NOT NULL,
   `address` varchar(400) NOT NULL,
   `firmName` varchar(150) NOT NULL,
-  `isActive` int(11) NOT NULL DEFAULT 1,
+  `isActive` int(11) NOT NULL DEFAULT '1',
   `sign` text NOT NULL,
-  `createdAt` datetime NOT NULL DEFAULT current_timestamp()
+  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -65904,9 +66359,9 @@ CREATE TABLE `user_master` (
 INSERT INTO `user_master` (`userId`, `username`, `upassword`, `mobile`, `addharId`, `designation`, `branchId`, `address`, `firmName`, `isActive`, `sign`, `createdAt`) VALUES
 (1, 'Dr. Pradyna Pansare', 'Pradnya@6687', '9822326687', '', 'Physiotherapist', 1, '', 'Mobility', 1, 'BPT ', '2020-03-03 13:26:15'),
 (23, 'Dr. Mansi Songirkar', 'Mansi@6458', '7774916458', '', 'Physiotherapist', 7, '', 'Nliven', 1, '', '2020-03-03 13:26:15'),
-(25, 'Dr. Shriya Patel', 'Shriya@3696', '8446993696', '', 'Physiotherapist', 10, '', 'Kriday', 1, '', '2020-03-03 13:26:15'),
+(25, 'Dr. Shriya Patel', '12345678', '8446993696', '', 'Physiotherapist', 10, '', 'Kriday', 1, '', '2020-03-03 13:26:15'),
 (27, 'Prajakta Tamhankar', 'Prajakta@5907', '7057665907', '', 'Front Desk Executive', 1, '', 'Mobility', 1, '', '2020-03-03 13:26:15'),
-(31, 'Dr. Rashmi Mathur', '12345', '9657613754', '', 'Operations Manager', 1, '', 'RWC', 1, '', '2020-03-03 13:26:15'),
+(31, 'Dr. Rashmi Mathur', 'Vignesh@2161', '8489333393', '', 'Operations Manager', 1, '', 'RWC', 1, '', '2020-03-03 13:26:15'),
 (33, 'Dr. Jesley Jose', 'Jesly@4474', '8594074474', '', 'Physiotherapist', 10, '', 'Kriday', 1, '', '2020-03-03 13:26:15'),
 (34, 'Dr. Abhirami J', 'Abhirami@5669', '7506735669', '', 'Physiotherapist', 9, '', 'Laespina ', 1, '', '2020-03-16 08:12:09'),
 (35, 'R. Vighnesh', 'Vignesh2161@spine360', '9361852161', '', 'CEO', 1, '', 'RWC', 1, '', '2020-03-18 12:37:54'),
@@ -65918,8 +66373,7 @@ INSERT INTO `user_master` (`userId`, `username`, `upassword`, `mobile`, `addharI
 (41, 'Dr. Nilesh Patil', 'Nilesh@5912', '7720005912', '', 'Franchise Owner\r\n', 10, '', 'Kriday', 1, '', '2020-03-03 13:26:15'),
 (42, 'Dr. Vinit Dhohkcule', 'Dhohkcule@2067', '9975292067', '', 'Physiotherapist', 11, '', 'Royal Medical Center', 1, '', '2020-03-03 13:26:15'),
 (43, 'Pratik', 'Pratik@4567', '9765074567', '', 'Front Desk Executive', 11, '', 'Royal Medical Center', 1, '', '2020-03-03 13:26:15'),
-(44, 'TEST', '1234', '9011015859', '', '', 12, 'aasfasfa', '', 0, '', '2020-08-14 07:41:33'),
-(45, 'vikas', 'vikas', '9960425214', '343063675839', 'Physiotherapist', 13, 'Pune', 'Nliven', 1, 'KOTAK GROUP', '2021-01-27 12:49:28');
+(44, 'TEST', '1234', '9011015859', '', '', 12, 'aasfasfa', '', 0, '', '2020-08-14 07:41:33');
 
 -- --------------------------------------------------------
 
@@ -65931,7 +66385,7 @@ CREATE TABLE `user_role_mapping` (
   `mapid` int(10) NOT NULL,
   `userid` int(11) NOT NULL,
   `roleid` int(11) NOT NULL,
-  `created` datetime NOT NULL DEFAULT current_timestamp()
+  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -65955,8 +66409,7 @@ INSERT INTO `user_role_mapping` (`mapid`, `userid`, `roleid`, `created`) VALUES
 (14, 41, 6, '2020-08-14 13:32:15'),
 (15, 42, 3, '2020-08-14 13:32:15'),
 (16, 43, 2, '2020-08-14 13:32:27'),
-(17, 44, 8, '2020-08-14 07:41:34'),
-(18, 45, 3, '2021-01-27 12:49:29');
+(17, 44, 8, '2020-08-14 07:41:34');
 
 -- --------------------------------------------------------
 
@@ -65965,7 +66418,7 @@ INSERT INTO `user_role_mapping` (`mapid`, `userid`, `roleid`, `created`) VALUES
 --
 DROP TABLE IF EXISTS `patient_nonexist`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`spine360`@`localhost` SQL SECURITY DEFINER VIEW `patient_nonexist`  AS  select `pm`.`patientId` AS `patientId`,`pm`.`firstName` AS `firstName`,`pm`.`middleName` AS `middleName`,`pm`.`surname` AS `surname`,`pm`.`gender` AS `gender`,`pm`.`height` AS `height`,`pm`.`weight` AS `weight`,`pm`.`birthDate` AS `birthDate`,`pm`.`religion` AS `religion`,`pm`.`allergy` AS `allergy`,`pm`.`email` AS `email`,`pm`.`mobile1` AS `mobile1`,`pm`.`mobile2` AS `mobile2`,`pm`.`landline` AS `landline`,`pm`.`city` AS `city`,`pm`.`address` AS `address`,`pm`.`referredby` AS `referredby`,`pm`.`firstVisitDate` AS `firstVisitDate`,`pm`.`lastVisitDate` AS `lastVisitDate`,`pm`.`nextVisitDate` AS `nextVisitDate`,`pm`.`smoking` AS `smoking`,`pm`.`alcohol` AS `alcohol`,`pm`.`tobacco` AS `tobacco`,`pm`.`HTN` AS `HTN`,`pm`.`diabetes` AS `diabetes`,`pm`.`cholestrol` AS `cholestrol`,`pm`.`history` AS `history`,`pm`.`occupation` AS `occupation`,`pm`.`lifestyle` AS `lifestyle`,`pm`.`urban` AS `urban`,`pm`.`economicStrata` AS `economicStrata`,`pm`.`country` AS `country`,`pm`.`state` AS `state`,`pm`.`maritalstatus` AS `maritalstatus`,`pm`.`pincode` AS `pincode`,`pm`.`remarks` AS `remarks`,`pm`.`hardDrink` AS `hardDrink`,`pm`.`createdAt` AS `createdAt`,`pm`.`branchId` AS `branchId` from `patient_master` `pm` where `pm`.`branchId` = 0 ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`spine360`@`localhost` SQL SECURITY DEFINER VIEW `patient_nonexist`  AS SELECT `pm`.`patientId` AS `patientId`, `pm`.`firstName` AS `firstName`, `pm`.`middleName` AS `middleName`, `pm`.`surname` AS `surname`, `pm`.`gender` AS `gender`, `pm`.`height` AS `height`, `pm`.`weight` AS `weight`, `pm`.`birthDate` AS `birthDate`, `pm`.`religion` AS `religion`, `pm`.`allergy` AS `allergy`, `pm`.`email` AS `email`, `pm`.`mobile1` AS `mobile1`, `pm`.`mobile2` AS `mobile2`, `pm`.`landline` AS `landline`, `pm`.`city` AS `city`, `pm`.`address` AS `address`, `pm`.`referredby` AS `referredby`, `pm`.`firstVisitDate` AS `firstVisitDate`, `pm`.`lastVisitDate` AS `lastVisitDate`, `pm`.`nextVisitDate` AS `nextVisitDate`, `pm`.`smoking` AS `smoking`, `pm`.`alcohol` AS `alcohol`, `pm`.`tobacco` AS `tobacco`, `pm`.`HTN` AS `HTN`, `pm`.`diabetes` AS `diabetes`, `pm`.`cholestrol` AS `cholestrol`, `pm`.`history` AS `history`, `pm`.`occupation` AS `occupation`, `pm`.`lifestyle` AS `lifestyle`, `pm`.`urban` AS `urban`, `pm`.`economicStrata` AS `economicStrata`, `pm`.`country` AS `country`, `pm`.`state` AS `state`, `pm`.`maritalstatus` AS `maritalstatus`, `pm`.`pincode` AS `pincode`, `pm`.`remarks` AS `remarks`, `pm`.`hardDrink` AS `hardDrink`, `pm`.`createdAt` AS `createdAt`, `pm`.`branchId` AS `branchId` FROM `patient_master` AS `pm` WHERE (`pm`.`branchId` = 0) ;
 
 --
 -- Indexes for dumped tables
@@ -65999,9 +66452,9 @@ ALTER TABLE `audit_log`
   ADD PRIMARY KEY (`logid`);
 
 --
--- Indexes for table `bill_details`
+-- Indexes for table `Bill_Details`
 --
-ALTER TABLE `bill_details`
+ALTER TABLE `Bill_Details`
   ADD PRIMARY KEY (`billId`),
   ADD KEY `Bill_Details_ibfk_1` (`paymentId`);
 
@@ -66044,9 +66497,9 @@ ALTER TABLE `cities`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `classdiscountmapping`
+-- Indexes for table `classDiscountMapping`
 --
-ALTER TABLE `classdiscountmapping`
+ALTER TABLE `classDiscountMapping`
   ADD PRIMARY KEY (`Id`);
 
 --
@@ -66083,15 +66536,15 @@ ALTER TABLE `diagnostic_tests_master`
   ADD UNIQUE KEY `testName` (`testName`);
 
 --
--- Indexes for table `discountmapping`
+-- Indexes for table `DiscountMapping`
 --
-ALTER TABLE `discountmapping`
+ALTER TABLE `DiscountMapping`
   ADD PRIMARY KEY (`Id`);
 
 --
--- Indexes for table `discountmaster`
+-- Indexes for table `DiscountMaster`
 --
-ALTER TABLE `discountmaster`
+ALTER TABLE `DiscountMaster`
   ADD PRIMARY KEY (`discountId`);
 
 --
@@ -66201,21 +66654,21 @@ ALTER TABLE `opd_payment_transaction_master`
   ADD KEY `paymentId` (`paymentId`);
 
 --
--- Indexes for table `packageaccount`
+-- Indexes for table `PackageAccount`
 --
-ALTER TABLE `packageaccount`
+ALTER TABLE `PackageAccount`
   ADD PRIMARY KEY (`pId`);
 
 --
--- Indexes for table `packagecustomerdetails`
+-- Indexes for table `PackageCustomerDetails`
 --
-ALTER TABLE `packagecustomerdetails`
+ALTER TABLE `PackageCustomerDetails`
   ADD PRIMARY KEY (`DetailId`);
 
 --
--- Indexes for table `packagetransaction`
+-- Indexes for table `PackageTransaction`
 --
-ALTER TABLE `packagetransaction`
+ALTER TABLE `PackageTransaction`
   ADD PRIMARY KEY (`transactionId`);
 
 --
@@ -66239,9 +66692,9 @@ ALTER TABLE `package_master`
   ADD UNIQUE KEY `title` (`title`);
 
 --
--- Indexes for table `patientdocs`
+-- Indexes for table `patientDocs`
 --
-ALTER TABLE `patientdocs`
+ALTER TABLE `patientDocs`
   ADD PRIMARY KEY (`docId`);
 
 --
@@ -66350,13 +66803,13 @@ ALTER TABLE `advice_master`
 -- AUTO_INCREMENT for table `audit_log`
 --
 ALTER TABLE `audit_log`
-  MODIFY `logid` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2424;
+  MODIFY `logid` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2583;
 
 --
--- AUTO_INCREMENT for table `bill_details`
+-- AUTO_INCREMENT for table `Bill_Details`
 --
-ALTER TABLE `bill_details`
-  MODIFY `billId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=860;
+ALTER TABLE `Bill_Details`
+  MODIFY `billId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=920;
 
 --
 -- AUTO_INCREMENT for table `call_center`
@@ -66386,7 +66839,7 @@ ALTER TABLE `call_reference_master`
 -- AUTO_INCREMENT for table `cervical_spine_assessment`
 --
 ALTER TABLE `cervical_spine_assessment`
-  MODIFY `cerSpineId` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `cerSpineId` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `cities`
@@ -66395,9 +66848,9 @@ ALTER TABLE `cities`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48315;
 
 --
--- AUTO_INCREMENT for table `classdiscountmapping`
+-- AUTO_INCREMENT for table `classDiscountMapping`
 --
-ALTER TABLE `classdiscountmapping`
+ALTER TABLE `classDiscountMapping`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
@@ -66431,15 +66884,15 @@ ALTER TABLE `diagnostic_tests_master`
   MODIFY `testId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT for table `discountmapping`
+-- AUTO_INCREMENT for table `DiscountMapping`
 --
-ALTER TABLE `discountmapping`
+ALTER TABLE `DiscountMapping`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `discountmaster`
+-- AUTO_INCREMENT for table `DiscountMaster`
 --
-ALTER TABLE `discountmaster`
+ALTER TABLE `DiscountMaster`
   MODIFY `discountId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
@@ -66464,13 +66917,13 @@ ALTER TABLE `exercise_photo_master`
 -- AUTO_INCREMENT for table `franchise_master`
 --
 ALTER TABLE `franchise_master`
-  MODIFY `franchiseid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `franchiseid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `hospital_branch_master`
 --
 ALTER TABLE `hospital_branch_master`
-  MODIFY `branchId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `branchId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `instruction_master`
@@ -66494,7 +66947,7 @@ ALTER TABLE `low_backpain_questionnaire`
 -- AUTO_INCREMENT for table `lumbar_spine_assessment`
 --
 ALTER TABLE `lumbar_spine_assessment`
-  MODIFY `lsAId` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=191;
+  MODIFY `lsAId` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=210;
 
 --
 -- AUTO_INCREMENT for table `medicine_master`
@@ -66518,30 +66971,30 @@ ALTER TABLE `neck_disability_index`
 -- AUTO_INCREMENT for table `opd_patient_payment_master`
 --
 ALTER TABLE `opd_patient_payment_master`
-  MODIFY `paymentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=695;
+  MODIFY `paymentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=738;
 
 --
 -- AUTO_INCREMENT for table `opd_payment_transaction_master`
 --
 ALTER TABLE `opd_payment_transaction_master`
-  MODIFY `transactionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=721;
+  MODIFY `transactionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=769;
 
 --
--- AUTO_INCREMENT for table `packageaccount`
+-- AUTO_INCREMENT for table `PackageAccount`
 --
-ALTER TABLE `packageaccount`
-  MODIFY `pId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+ALTER TABLE `PackageAccount`
+  MODIFY `pId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
 
 --
--- AUTO_INCREMENT for table `packagecustomerdetails`
+-- AUTO_INCREMENT for table `PackageCustomerDetails`
 --
-ALTER TABLE `packagecustomerdetails`
-  MODIFY `DetailId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=375;
+ALTER TABLE `PackageCustomerDetails`
+  MODIFY `DetailId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=406;
 
 --
--- AUTO_INCREMENT for table `packagetransaction`
+-- AUTO_INCREMENT for table `PackageTransaction`
 --
-ALTER TABLE `packagetransaction`
+ALTER TABLE `PackageTransaction`
   MODIFY `transactionId` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -66563,16 +67016,16 @@ ALTER TABLE `package_master`
   MODIFY `packageId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
--- AUTO_INCREMENT for table `patientdocs`
+-- AUTO_INCREMENT for table `patientDocs`
 --
-ALTER TABLE `patientdocs`
+ALTER TABLE `patientDocs`
   MODIFY `docId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT for table `patient_doctor_appointment_scheduling`
 --
 ALTER TABLE `patient_doctor_appointment_scheduling`
-  MODIFY `appointmentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1309;
+  MODIFY `appointmentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1376;
 
 --
 -- AUTO_INCREMENT for table `patient_feedback`
@@ -66584,19 +67037,19 @@ ALTER TABLE `patient_feedback`
 -- AUTO_INCREMENT for table `patient_master`
 --
 ALTER TABLE `patient_master`
-  MODIFY `patientId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=553;
+  MODIFY `patientId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=590;
 
 --
 -- AUTO_INCREMENT for table `patient_onassessment_master`
 --
 ALTER TABLE `patient_onassessment_master`
-  MODIFY `onAssesmentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `onAssesmentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `patient_prescribed_exercise`
 --
 ALTER TABLE `patient_prescribed_exercise`
-  MODIFY `exerciseId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=769;
+  MODIFY `exerciseId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=777;
 
 --
 -- AUTO_INCREMENT for table `referring_master`
@@ -66626,13 +67079,13 @@ ALTER TABLE `user_access_control`
 -- AUTO_INCREMENT for table `user_master`
 --
 ALTER TABLE `user_master`
-  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `user_role_mapping`
 --
 ALTER TABLE `user_role_mapping`
-  MODIFY `mapid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `mapid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Constraints for dumped tables

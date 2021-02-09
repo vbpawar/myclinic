@@ -165,6 +165,10 @@ function GeneratePayment() {
                 recieved: parseFloat($('#receivedP').text())
             };
             details = JSON.stringify(details);
+            console.log(details);
+            console.log(packageDetails);
+            console.log(updateDetails);
+           
             $.ajax({
                 url: url + 'generatePayment.php',
                 type: 'POST',
