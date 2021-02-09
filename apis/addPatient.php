@@ -18,27 +18,28 @@ if (isset($_POST['firstName']) && isset($_POST['surname'])  && isset($_POST['mob
     $religion       = isset($_POST['religion']) ? $_POST['religion'] : 'NULL';
     $allergy        = isset($_POST['allergy']) ? $_POST['allergy'] : 'NULL';
     $email          = isset($_POST['email']) ? $_POST['email'] : 'NULL';
+    $mobile1        = isset($_POST['mobile1']) ? $_POST['mobile1'] : 'NULL';
     $mobile2        = isset($_POST['mobile2']) ? $_POST['mobile2'] : 'NULL';
     $landline       = isset($_POST['landline']) ? $_POST['landline'] : 'NULL';
-    $city           = isset($_POST['city']) ? $_POST['city'] : 'NULL';
+    $city           = isset($_POST['city']) ? $_POST['city'] : 0;
     $referredby     = isset($_POST['referredby']) ? $_POST['referredby'] : 'NULL';
     $firstVisitDate = date('Y-m-d');
     $lastVisitDate  = date('Y-m-d');
     // $nextVisitDate  = date('y-m-d');
     $nextVisitDate  = isset($_POST['nextVisitDate']) ? $_POST['nextVisitDate'] : 'NULL';
-    $smoking        = isset($_POST['smoking']) ? $_POST['smoking'] : 'NULL';
-    $alcohol        = isset($_POST['alcohol']) ? $_POST['alcohol'] : 'NULL';
-    $tobacco        = isset($_POST['tobacco']) ? $_POST['tobacco'] : 'NULL';
-    $HTN            = isset($_POST['HTN']) ? $_POST['HTN'] : 'NULL';
-    $diabetes       = isset($_POST['diabetes']) ? $_POST['diabetes'] : 'NULL';
-    $cholestrol     = isset($_POST['cholestrol']) ? $_POST['cholestrol'] : 'NULL';
-    $history        = isset($_POST['history']) ? $_POST['history'] : 'NULL';
+    $smoking        = isset($_POST['smoking']) ? $_POST['smoking'] : 0;
+    $alcohol        = isset($_POST['alcohol']) ? $_POST['alcohol'] : 0;
+    $tobacco        = isset($_POST['tobacco']) ? $_POST['tobacco'] : 0;
+    $HTN            = isset($_POST['HTN']) ? $_POST['HTN'] : 0;
+    $diabetes       = isset($_POST['diabetes']) ? $_POST['diabetes'] : 0;
+    $cholestrol     = isset($_POST['cholestrol']) ? $_POST['cholestrol'] : 0;
+    $history        = isset($_POST['history']) ? $_POST['history'] : 0;
     $occupation     = isset($_POST['occupation']) ? $_POST['occupation'] : 'NULL';
     $lifestyle      = isset($_POST['lifestyle']) ? $_POST['lifestyle'] : 'NULL';
-    $urban          = isset($_POST['urban']) ? $_POST['urban'] : 'NULL';
+    $urban          = isset($_POST['urban']) ? $_POST['urban'] : 0;
     $economicStrata = isset($_POST['economicStrata']) ? $_POST['economicStrata'] : 'NULL';
     $remarks = isset($_POST['remarks']) ? $_POST['remarks'] : 'NULL';
-    $hardDrink = isset($_POST['hardDrink']) ? $_POST['hardDrink'] : 'NULL';
+    $hardDrink = isset($_POST['hardDrink']) ? $_POST['hardDrink'] : 0;
     
     $address = mysqli_real_escape_string($conn, $address);
     
@@ -46,10 +47,10 @@ if (isset($_POST['firstName']) && isset($_POST['surname'])  && isset($_POST['mob
      landline,city,address,referredby,firstVisitDate,lastVisitDate,nextVisitDate,smoking,alcohol,tobacco,HTN,diabetes, 
      cholestrol,history,occupation,lifestyle,urban,economicStrata,country,state,maritalstatus,pincode,remarks,hardDrink,branchId) 
      VALUES ('$firstName', '$middleName', '$surname', '$gender', '$height', '$weight', '$birthdate', '$religion', '$allergy',
-      '$email', '$mobile1', '$mobile2', '$landline', '$city', '$address', '$referredby', '$firstVisitDate', '$lastVisitDate', '$nextVisitDate',
-       '$smoking', '$alcohol', '$tobacco', '$HTN', '$diabetes', '$cholestrol', '$history', '$occupation', '$lifestyle', '$urban', '$economicStrata','$country','$state',
+      '$email', '$mobile1', '$mobile2', '$landline', $city, '$address', '$referredby', '$firstVisitDate', '$lastVisitDate', '$nextVisitDate',
+       '$smoking', '$alcohol', '$tobacco', '$HTN', '$diabetes', '$cholestrol', '$history', '$occupation', '$lifestyle', '$urban', '$economicStrata',$country,$state,
        '$maritalstatus','$pincode','$remarks','$hardDrink','$branchId')";
-    
+//    echo $sql;exit;
     $query = mysqli_query($conn, $sql);
     
     $rowsAffected = mysqli_affected_rows($conn);

@@ -29,6 +29,7 @@ function getStates() {
     $.ajax({
         url: url + 'getStates.php',
         type: 'POST',
+        async:false,
         dataType: 'json',
         success: function(response) {
             if (response.Responsecode == 200) {
@@ -45,6 +46,7 @@ function getCities() {
     $.ajax({
         url: url + 'getCities.php',
         type: 'POST',
+        async:false,
         dataType: 'json',
         success: function(response) {
             if (response.Responsecode == 200) {
