@@ -5,8 +5,8 @@
 // $dbname = 'tkinfote_myclinic';
 // $conn = new mysqli($server,$user,$password,$dbname) or die(mysqli_error($conn));
 $server = '208.109.12.251';
-$user   = 'soulsoft_myclinic';
+$user   = 'tkinfote_myclinic_sit';
 $password = 'Soulsoft@1987';
-$dbname = 'soulsoft_myclinic';
+$dbname = 'tkinfote_myclinic';
 $conn = new mysqli($server,$user,$password,$dbname) or die(mysqli_error($conn));
 ?>

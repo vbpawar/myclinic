@@ -25,13 +25,13 @@ if (isset($_POST['patientId']) && isset($_POST['firstName']) && isset($_POST['su
     $firstVisitDate = isset($_POST['firstVisitDate']) ? $_POST['firstVisitDate'] : 'NULL';
     $lastVisitDate  = isset($_POST['lastVisitDate']) ? $_POST['lastVisitDate'] : 'NULL';
  
-    $smoking        = isset($_POST['smoking']) ? $_POST['smoking'] : 'NULL';
-    $alcohol        = isset($_POST['alcohol']) ? $_POST['alcohol'] : 'NULL';
-    $tobacco        = isset($_POST['tobacco']) ? $_POST['tobacco'] : 'NULL';
-    $HTN            = isset($_POST['HTN']) ? $_POST['HTN'] : 'NULL';
-    $diabetes       = isset($_POST['diabetes']) ? $_POST['diabetes'] : 'NULL';
-    $cholestrol     = isset($_POST['cholestrol']) ? $_POST['cholestrol'] : 'NULL';
-    $history        = isset($_POST['history']) ? $_POST['history'] : 'NULL';
+    $smoking        = isset($_POST['smoking']) ? $_POST['smoking'] : 0;
+    $alcohol        = isset($_POST['alcohol']) ? $_POST['alcohol'] : 0;
+    $tobacco        = isset($_POST['tobacco']) ? $_POST['tobacco'] : 0;
+    $HTN            = isset($_POST['HTN']) ? $_POST['HTN'] : 0;
+    $diabetes       = isset($_POST['diabetes']) ? $_POST['diabetes'] : 0;
+    $cholestrol     = isset($_POST['cholestrol']) ? $_POST['cholestrol'] : 0;
+    $history        = isset($_POST['history']) ? $_POST['history'] : 0;
     $occupation     = isset($_POST['occupation']) ? $_POST['occupation'] : 'NULL';
     $hardDrink     = isset($_POST['hardDrink']) ? $_POST['hardDrink'] : 'NULL';
 
@@ -45,7 +45,6 @@ if (isset($_POST['patientId']) && isset($_POST['firstName']) && isset($_POST['su
     ,smoking='$smoking',alcohol='$alcohol',tobacco='$tobacco',HTN='$HTN',diabetes='$diabetes', 
      cholestrol='$cholestrol',history='$history',occupation='$occupation',economicStrata='$economicStrata',
      country='$country',state='$state',maritalstatus='$maritalstatus',pincode='$pincode',remarks ='$remarks',hardDrink='$hardDrink' WHERE patientId='$patientId'";
-  
     
     $query = mysqli_query($conn, $sql);
     
