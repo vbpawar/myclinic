@@ -14,7 +14,6 @@ if ($jobQuery != null) {
         while ($academicResults = mysqli_fetch_assoc($jobQuery)) {
             $records[] = $academicResults;
         }
-        
         $response = array(
             'Message' => "All Data Fetched successfully",
             "Data" => $records,

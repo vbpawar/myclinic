@@ -40,6 +40,7 @@ if (isset($_POST['postdata'])) {
     $sql              = "INSERT INTO patient_medication(patientId, visitDate,nextVisitDate,complaint,advice,diagnosis,doctorId) VALUES ($patientId,'$visitDate','$nextVisitDate','$complaints','$remarks','$diagnosis',$doctorId)";
     $query            = mysqli_query($conn, $sql);
     if ($query == 1) {
+        
         $last_id = mysqli_insert_id($conn);
         $tId     = strval($last_id);
         foreach ($medicinesDetails as $key => $value) {
@@ -57,7 +58,8 @@ if (isset($_POST['postdata'])) {
         if ($rowsAffected >0) {
            // $msg = sendSMS($patientId,$nextVisitDate) ? 'Send':'Not send';
            if(sendSMS($patientId,$nextVisitDate)){
-            $sms = 1;
+//            $sms = 1;
+            $sms = 0;
         }else{
            $sms = 0;
         }
