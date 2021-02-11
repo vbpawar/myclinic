@@ -6,7 +6,7 @@ mysqli_set_charset($conn, 'utf8');
 $response = null;
 $records  = null;
 
-$sql = "SELECT id,name,state_id FROM cities";
+$sql = "SELECT id,name,state_id FROM cities WHERE state_id = 22";
 $jobQuery = mysqli_query($conn, $sql);
 if ($jobQuery != null) {
     $academicAffected = mysqli_num_rows($jobQuery);
