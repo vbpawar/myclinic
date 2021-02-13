@@ -11,9 +11,10 @@ $records       = null;
 $transactionId = null;
 extract($_POST);
 $wital = null;
+
 if (isset($_POST['postdata'])) {
     $someArray = json_decode($postdata, true);
-
+//print_r($someArray);exit;
     $remarks          = isset($someArray['remarks']) ? $someArray['remarks']:'NULL';
     $complaints       = isset($someArray['complaints']) ? $someArray['complaints']:'NULL';
     $diagnosis        = isset($someArray['diagnosis']) ? $someArray['diagnosis']:'NULL';

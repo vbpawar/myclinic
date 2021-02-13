@@ -137,31 +137,31 @@
                             <a class="nav-link active" id="pills-timeline-tab" data-toggle="pill" href="#current-month" role="tab" aria-controls="pills-timeline" aria-selected="true">Prescription</a>
                         </li>
 
-                        <li class="nav-item">
+                        <li class="nav-item" style="display: none">
                             <a class="nav-link" id="pills-setting-tab" data-toggle="pill" href="#cervical" role="tab" aria-controls="pills-setting" aria-selected="false">Cervical Spine Assessment</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" style="display: none">
                             <a class="nav-link" id="pills-setting-tab" data-toggle="pill" href="#neck" role="tab" aria-controls="pills-setting" aria-selected="false">Neck Disability</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" style="display: none">
                             <a class="nav-link" id="pills-setting-tab" data-toggle="pill" href="#fullwindowModal1" role="tab" aria-controls="pills-setting" aria-selected="false">Lumbar Spine Assessment</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" style="display: none">
                             <a class="nav-link" id="pills-setting-tab" data-toggle="pill" href="#ques" role="tab" aria-controls="pills-setting" aria-selected="false">Back Pain Questions</a>
                         </li>
                         <!-- <li class="nav-item">
                                             <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#last-month" role="tab" aria-controls="pills-profile" aria-selected="false">Present Illness</a>
                                         </li> -->
-                        <li class="nav-item">
+                        <li class="nav-item" style="display: none">
                             <a class="nav-link" id="pills-setting-tab" data-toggle="pill" href="#previous-month" role="tab" aria-controls="pills-setting" aria-selected="false">Consent form</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" style="display: none">
                             <a class="nav-link" id="pills-setting-tab" data-toggle="pill" href="#present" role="tab" aria-controls="pills-setting" aria-selected="false">Present illness</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" style="display: none">
                             <a class="nav-link" id="pills-setting-tab" data-toggle="pill" href="#exercise" role="tab" aria-controls="pills-setting" aria-selected="false">Exercise chart</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" style="display: none">
                             <a class="nav-link" id="pills-setting-tab" data-toggle="pill" href="#feedbackform" role="tab" aria-controls="pills-setting" aria-selected="false">Feedback Form</a>
                         </li>
                     </ul>
