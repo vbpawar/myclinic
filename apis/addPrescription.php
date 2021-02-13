@@ -11,6 +11,7 @@ $records       = null;
 $transactionId = null;
 extract($_POST);
 $wital = null;
+//print_r($_POST['postdata']);exit;
 if (isset($_POST['postdata'])) {
     $someArray = json_decode($postdata, true);
 
