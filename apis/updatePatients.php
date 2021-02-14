@@ -33,7 +33,7 @@ if (isset($_POST['patientId']) && isset($_POST['firstName']) && isset($_POST['su
     $cholestrol     = isset($_POST['cholestrol']) ? $_POST['cholestrol'] : 0;
     $history        = isset($_POST['history']) ? $_POST['history'] : 0;
     $occupation     = isset($_POST['occupation']) ? $_POST['occupation'] : 'NULL';
-    $hardDrink     = isset($_POST['hardDrink']) ? $_POST['hardDrink'] : 'NULL';
+    $hardDrink     = isset($_POST['hardDrink']) ? $_POST['hardDrink'] : 0;
 
     $remarks = isset($_POST['remarks']) ? $_POST['remarks'] : 'NULL';
     $economicStrata = isset($_POST['economicStrata']) ? $_POST['economicStrata'] : 'NULL';
