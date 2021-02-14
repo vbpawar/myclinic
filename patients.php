@@ -53,7 +53,7 @@ if(isset($_SESSION['branchId'])){
                 <div id="editProfile"></div>
                 <div class="main-content template-demo " id="tData">
                 
-                <button class="btn btn-danger" type="button" style="float: right;margin-bottom: 10px;" data-toggle="modal" data-target="#demoModal">Add New Patient</button>
+                <button class="btn btn-primary" type="button" style="float: right;margin-bottom: 10px;" data-toggle="modal" data-target="#demoModal">Add New Patient</button>
                     <div class="container-fluid">
                     <div class="page-header">
                             <div class="row align-items-end">

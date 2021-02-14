@@ -1,5 +1,5 @@
 <div class="app-sidebar colored" >
-    <div class="sidebar-header" style="background-image: linear-gradient(to left, rgba(255,0,0,0), rgba(255,0,0,1));">
+    <div class="sidebar-header" style="background-image: linear-gradient(to left, rgba(64,78,103,0), rgba(0,0,255,1));">
         <a class="header-brand" href="#">
             <div class="logo-img">
                 <img src="temp-icon.png"  alt="lavalite" width="30px" class="rounded-circle">
@@ -10,7 +10,7 @@
         <button id="sidebarClose" class="nav-close"><i class="ik ik-x"></i></button>
     </div>
 
-    <div class="sidebar-content" style="background-image: linear-gradient(to left, rgba(255,0,0,0), rgba(255,0,0,1));">
+    <div class="sidebar-content" style="background-image: linear-gradient(to left, rgba(64,78,103,0), rgba(0,0,255,1));">
         <div class="nav-container">
             <nav id="main-menu-navigation" class="navigation-main">
                 <div class="nav-lavel">

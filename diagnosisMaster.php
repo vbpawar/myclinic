@@ -45,7 +45,7 @@ if(isset($_SESSION['branchId'])){
                 <?php include 'sidebar.php';?>
                 <div id="editdiaNew"></div>
                 <div class="main-content template-demo " id="diagnosisData">
-                <button class="btn btn-danger" type="button" style="float: right;margin-bottom: 10px;" data-toggle="modal" data-target="#diagnosisModal">Add New Diagnosis</button>
+                <button class="btn btn-primary" type="button" style="float: right;margin-bottom: 10px;" data-toggle="modal" data-target="#diagnosisModal">Add New Diagnosis</button>
                     <div class="container-fluid">
                         <div class="page-header">
                             <div class="row align-items-end">
