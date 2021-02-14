@@ -81,7 +81,7 @@ color: #212121;
                                                     <div class="radio radio-outline radio-inline">
                                                         <label>
                                                             <input type="radio" name="radio" value="0" id="chP" style="display: none;">
-                                                            <i class="helper"></i>Package Payment
+                                                            <!--<i class="helper"></i>Package Payment-->
                                                         </label>
                                                     </div>
                                                 </div>
