@@ -80,7 +80,7 @@ var listPatients = patients => {
             tblData += '<td bgcolor="#BB8FCE">' + patient.nextVisitDate + '</td>';
             tblData += '<td bgcolor="#BB8FCE"><div class="table-actions" style="text-align: left;">';
             tblData += '<a href="#" onclick="editPatient(' + (k) + ')" title="Edit patients details"><i class="fas fa-user-injured" style="color:red"></i></a>';
-            tblData += '<a href="#" class="list-delete" onclick="takeAppointment(' + (k) + ')" title="Take appointment"><i class="fas fa-rupee-sign" style="color:purple"></i></a>';
+            tblData += '<a href="#" class="list-delete" onclick="takeAppointment(' + (k) + ')" title="Take appointment"><i class="fa fa-calendar" style="color:purple"></i></a>';
             tblData += '<a href="#"  onclick="opdPayment(' + (k) + ')" title="Opd Payment"><i class="fas fa-receipt" style="color:blue"></i></a>';
             tblData += '<a href="#"  onclick="acceptPayment(' + (k) + ')" title="Generate Payment"><i class="fas fa-rupee-sign" style="color:green"></i></a>';
     
@@ -94,7 +94,7 @@ var listPatients = patients => {
             tblData += '<td>' + patient.nextVisitDate + '</td>';
             tblData += '<td><div class="table-actions" style="text-align: left;">';
             tblData += '<a href="#" onclick="editPatient(' + (k) + ')" title="Edit patients details"><i class="fas fa-user-injured" style="color:red"></i></a>';
-            tblData += '<a href="#" class="list-delete" onclick="takeAppointment(' + (k) + ')" title="Take appointment"><i class="fas fa-rupee-sign" style="color:purple"></i></a>';
+            tblData += '<a href="#" class="list-delete" onclick="takeAppointment(' + (k) + ')" title="Take appointment"><i class="fa fa-calendar" style="color:purple"></i></a>';
             tblData += '<a href="#"  onclick="opdPayment(' + (k) + ')" title="Opd Payment"><i class="fas fa-receipt" style="color:blue"></i></a>';
             tblData += '<a href="#"  onclick="acceptPayment(' + (k) + ')" title="Generate Payment"><i class="fas fa-rupee-sign" style="color:green"></i></a>';
 }
