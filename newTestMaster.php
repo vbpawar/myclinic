@@ -1,6 +1,7 @@
  <?php
 session_start();
-if(isset($_SESSION['branchId'])){
+//if(isset($_SESSION['branchId'])){
+if(true){
     ?>  
 <!doctype html>
 <html class="no-js" lang="en">
