@@ -1,8 +1,8 @@
  <?php
 session_start();
-echo $_SESSION['branchId'];exit;
-//if(isset($_SESSION['branchId'])){
-if(true){
+//echo $_SESSION['branchId'];exit;
+if(isset($_SESSION['branchId'])){
+//if(true){
     ?>  
 <!doctype html>
 <html class="no-js" lang="en">

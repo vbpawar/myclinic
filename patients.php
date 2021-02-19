@@ -1,6 +1,6 @@
 <?php
 session_start();
-echo $_SESSION['branchId'];exit;
+//echo $_SESSION['branchId'];exit;
 if(isset($_SESSION['branchId'])){
     ?>
 <!doctype html>
