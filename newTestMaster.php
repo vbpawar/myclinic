@@ -1,5 +1,6 @@
  <?php
 session_start();
+echo $_SESSION['branchId'];exit;
 //if(isset($_SESSION['branchId'])){
 if(true){
     ?>  
