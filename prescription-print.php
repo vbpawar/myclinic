@@ -196,7 +196,7 @@ $html = '<link rel="stylesheet" href="dompdf/style.css">
         <div class="col-12 ">
                     <div class="row p-5 " id="header">
                         <div class="col-xs-4 ">
-                        <img class="img-fluid" src="img/auth/mybrand.png" width="60% " height="70%">
+                        <!--img class="img-fluid" src="img/auth/mybrand.png" width="60% " height="70%" -->
                         </div>
                        ' . doctor_details($doctorId) . '
                     </div>
