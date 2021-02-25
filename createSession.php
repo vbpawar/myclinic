@@ -8,8 +8,8 @@ if(isset($_GET['page']) && isset($_GET['franchiseid']) && isset($_GET['userId'])
     $_SESSION['role'] = $role;
     $_SESSION['roleName'] = $roleName;
     $_SESSION['franchiseid'] = $franchiseid;
-    $_SESSION['company'] = 'Soulsoft';
-    $_SESSION['hospital'] = 'Myclinic';
+    $_SESSION['company'] = 'DayCare';
+    $_SESSION['hospital'] = 'DayCare';
     $_SESSION['favicon'] = 'temp-icon.png';
     $page = $page;
 header('Location:'.$page);
