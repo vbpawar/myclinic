@@ -58,12 +58,13 @@ if (isset($_POST['postdata'])) {
         $rowsAffected = mysqli_affected_rows($conn);
         if ($rowsAffected >0) {
            // $msg = sendSMS($patientId,$nextVisitDate) ? 'Send':'Not send';
-           if(sendSMS($patientId,$nextVisitDate)){
-//            $sms = 1;
-            $sms = 0;
-        }else{
-           $sms = 0;
-        }
+//           if(sendSMS($patientId,$nextVisitDate)){
+////            $sms = 1;
+//            $sms = 0;
+//        }else{
+//           $sms = 0;
+//        }
+            $sms=0;
             $response = array(
                 'Message' => "Prescription saved successfully",
                 'patientId'=>$patientId,
