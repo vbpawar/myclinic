@@ -6,8 +6,8 @@ use Dompdf\Dompdf;
 
 /* instantiate and use the dompdf class */
 $dompdf = new Dompdf();
-extract($_POST);
-$paymentId = isset($_POST['ppaymentId']) ? $_POST['ppaymentId']:1;
+extract($_GET);
+$paymentId = isset($_GET['ppaymentId']) ? $_GET['ppaymentId']:1;
 
 $sign = '-';
 $clinic = '';
