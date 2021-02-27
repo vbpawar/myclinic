@@ -6,12 +6,12 @@ use Dompdf\Dompdf;
 /* instantiate and use the dompdf class */
 $dompdf = new Dompdf();
 define("DOMPDF_UNICODE_ENABLED", true);
-extract($_POST);
+extract($_GET);
 $response = [];
-$doctorId  = $_POST['pdoctorId'];
-$patientId = $_POST['ppatientId'];
-$visitDate = $_POST['pvisitDate'];
-$lang_flag = $_POST['pflag'];
+$doctorId  = $_GET['pdoctorId'];
+$patientId = $_GET['ppatientId'];
+$visitDate = $_GET['pvisitDate'];
+$lang_flag = $_GET['pflag'];
 $sign      = '';
 $advice='';
 $patientName;
