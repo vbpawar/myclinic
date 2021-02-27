@@ -165,12 +165,16 @@ function GeneratePayment() {
                 recieved: parseFloat($('#receivedP').text())
             };
             details = JSON.stringify(details);
+//            new code start
+            packageDetails = JSON.stringify(packageDetails);
+            updateDetails = JSON.stringify(updateDetails);
+//            new code end
             console.log(details);
             console.log(packageDetails);
             console.log(updateDetails);
            
             $.ajax({
-                url: url + 'generatePayment.php',
+                url: url + 'generatePayment1.php',
                 type: 'POST',
                 data: { postdata: details, packageDetails: packageDetails, uFlag: updateDetails,suserid:data.userId,
                     susername:data.username },
