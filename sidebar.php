@@ -2,7 +2,7 @@
     <div class="sidebar-header" style="background-image: linear-gradient(to left, rgba(64,78,103,0), rgba(0,0,255,1));">
         <a class="header-brand" href="#">
             <div class="logo-img">
-                <img src="temp-icon.png"  alt="lavalite" width="30px" class="rounded-circle">
+                <img src="img/logo/3.jpg"  alt="lavalite" width="30px" class="rounded-circle">
             </div>
             <span class="text" style="font-size:17px;"><?php echo $_SESSION['hospital'];?></span>
         </a>
